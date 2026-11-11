@@ -1,0 +1,39 @@
+# 本地执行报告、日志与测试证据不进入发行仓库
+/REPORT.md
+logs/
+evidence/
+artifacts/
+test-results/
+*.log
+*.pid
+
+# 依赖、缓存、构建临时文件
+__pycache__/
+*.py[cod]
+.cache/
+node_modules/
+coverage/
+dist/
+build/
+.tmp/
+tmp/
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+.DS_Store
+
+# 凭证与环境文件
+.env
+.env.*
+!.env.example
+.ssh/
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa*
+id_ed25519*
+credentials*
+secrets*
