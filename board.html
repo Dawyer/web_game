@@ -67,7 +67,8 @@
 <body>
 <header class="top">
   <h1>游戏开发板</h1>
-  <div class="meta">web_game 项目 · 共 8 个在册游戏（已上线 1） · 更新于 2026-11-12</div>
+  <div class="meta">web_game 项目 · 共 15 个在册游戏（验收通过 0） · 更新于 2026-11-12</div>
+  <p class="meta">先完成 PvZ 补验，再按原有 7 款队列逐项推进，Vol.165 新增 7 款追加其后；本轮仅入队，不授权开工，不自动修改当晚计划。</p>
 </header>
 <div class="wrap">
   <div class="info">
@@ -76,8 +77,21 @@
   </div>
   <div class="board">
       <section class="col col-verifying">
-        <header><h2>待验收<span class="count">0</span></h2><p>只差协调方本机验收</p></header>
-<p class="empty">（暂无）</p>
+        <header><h2>待验收<span class="count">1</span></h2><p>只差协调方本机验收</p></header>
+      <article class="card">
+        <div class="chead">
+          <h3>植物大战僵尸（非官方粉丝重制）</h3>
+          <span class="diff" title="难度 4 / 5">★★★★☆</span>
+        </div>
+        <p class="pitch">5 行 9 列塔防：种植物挡住 20 波僵尸</p>
+        <div class="tags"><span class="tag">塔防</span><span class="tag">已上线·补验中</span></div>
+        <dl>
+          <dt>来源</dt><dd>MIT 上游引擎 plantsvszombiesjs + 本项目原创素材</dd>
+          <dt>素材</dt><dd>已完成：9 植物 / 5 僵尸 / 场景（房子+分道草坪+绿篱+人行道）/ 割草机 + 14 个 CC0 音效</dd>
+        </dl>
+        <div class="sec"><h4>验收要点</h4><ul><li>核心玩法实机可玩（种植、阳光、波次、割草机、胜负）</li><li>场景与格子对齐；音效加载完成且首次点击解锁</li><li>0 个 404、无 console 报错，干净克隆即可运行</li><li>Top 10 写入路径已验证</li></ul></div><div class="sec"><h4>已完成</h4><ul class="done"><li>第 1 期：移植 + emoji 版上线（24cfcc6）</li><li>第 2 期：原创精灵图 + 页面美术（96030b9）</li><li>第 3 期：CC0 音效 14 个 + 静音开关（22731d8）</li><li>第 4 期：左侧房子 / 分道草坪 / 每行割草机（77d69ae）</li></ul></div>
+        <p class="note">备注：2026-11-12 20:42 用户确认今晚只做 favicon 404 修复及完整波次/胜负/存档/移动输入补验；未全部验收通过不得启动下一款。完整 20 波与真机触屏仍须如实报告。</p>
+      </article>
       </section>
       <section class="col col-active">
         <header><h2>开发中<span class="count">0</span></h2><p>LOS 正在执行</p></header>
@@ -87,21 +101,21 @@
         <header><h2>计划中<span class="count">1</span></h2><p>已排进下一轮</p></header>
       <article class="card">
         <div class="chead">
-          <h3>Roll Sort!（台球 + 箭头）</h3>
+          <h3>Pocket Bounce《弹球入袋》（源：Roll Sort!）</h3>
           <span class="diff" title="难度 2 / 5">★★☆☆☆</span>
         </div>
         <p class="pitch">台球按箭头方向滚动，撞墙反弹，滚进同色袋口即消除</p>
         <div class="tags"><span class="tag">逻辑解谜</span><span class="tag">优先候选</span></div>
         <dl>
           <dt>来源</dt><dd>一周游语 Vol.166 第 5 款；玩法机制自研实现</dd>
-          <dt>素材</dt><dd>原创：球、袋口、桌面、箭头</dd>
+          <dt>素材</dt><dd>已完成 17 个原创素材文件：台面/木边（512² 无缝）、六色球（256²）、箭头/袋口/圆环/镜面/木箱/金星（320²）、面板/按钮、关卡选择背景 1920×1080；预览 sheets/mock-game.png</dd>
         </dl>
-        <div class="sec"><h4>验收要点</h4><ul><li>≥ 10 关可玩，关卡数据与渲染分离，便于日后加关</li><li>反弹与进袋判定无死角（含角袋/多球连锁）</li><li>触屏可玩；无 console 报错；无外链</li></ul></div>
-        <p class="note">备注：纯网格逻辑 + 滚动动画，最容易一次做扎实；建议作为下一个</p>
+        <div class="sec"><h4>验收要点</h4><ul><li>≥16 关，node tools/validate_levels.js 证明每关可解并打印最短步数</li><li>反弹与进袋判定无死角（台边/障碍/球撞球 90°、异色出口当墙、镜面斜向、角袋、多球连锁）</li><li>撤销/重置/关卡选择/星级/localStorage 可用</li><li>素材与音效 0 个 404、无 console 报错、无外链</li><li>画质按规格第 4 节：DPR 画布、自转、拖尾、进袋吸入、粒子、绒布质感</li></ul></div>
+        <p class="note">备注：17 个素材已就绪但未启动实现；待 PvZ 完成收尾并通过验收后再排期，不占用今晚修复范围。规格 spec-pocket-bounce.md；模型 openai/gpt-6.1-sol-pro + xhigh。</p>
       </article>
       </section>
       <section class="col col-backlog">
-        <header><h2>待排期<span class="count">6</span></h2><p>按难度从低到高</p></header>
+        <header><h2>待排期<span class="count">13</span></h2><p>按难度从低到高</p></header>
       <article class="card">
         <div class="chead">
           <h3>Arc Jam（扇形色块 + 小球收集）</h3>
@@ -186,23 +200,108 @@
         <div class="sec"><h4>验收要点</h4><ul><li>刚体下落与消除判定稳定（无卡死/抖动）</li><li>7 选 3 的操作约束与可解性经过验证</li><li>≥ 15 关；触屏可玩；无 console 报错</li></ul></div>
         <p class="note">备注：三消 + 刚体耦合，手感风险最高，放最后</p>
       </article>
-      </section>
-      <section class="col col-shipped">
-        <header><h2>已上线<span class="count">1</span></h2><p>已通过验收</p></header>
       <article class="card">
         <div class="chead">
-          <h3>植物大战僵尸（非官方粉丝重制）</h3>
+          <h3>Hole Shot: Black Hole（黑洞弹射吞噬）</h3>
           <span class="diff" title="难度 4 / 5">★★★★☆</span>
         </div>
-        <p class="pitch">5 行 9 列塔防：种植物挡住 20 波僵尸</p>
-        <div class="tags"><span class="tag">塔防</span><span class="tag">已上线</span></div>
+        <p class="pitch">瞄准弹射黑洞，让它反弹吞噬砖块并逐渐长大，在有限步数内清空场地</p>
+        <div class="tags"><span class="tag">物理休闲</span><span class="tag">黑洞吞噬</span><span class="tag">Vol.165</span></div>
         <dl>
-          <dt>来源</dt><dd>MIT 上游引擎 plantsvszombiesjs + 本项目原创素材</dd>
-          <dt>素材</dt><dd>已完成：9 植物 / 5 僵尸 / 场景（房子+分道草坪+绿篱+人行道）/ 割草机 + 14 个 CC0 音效</dd>
+          <dt>来源</dt><dd>一周游语 Vol.165 第 1 款；仅作为同类玩法参考，规则开工前确认</dd>
+          <dt>素材</dt><dd>待制作原创：黑洞与融合特效、大小砖块、场景；不提取原作素材</dd>
         </dl>
-        <div class="sec"><h4>验收要点</h4><ul><li>核心玩法实机可玩（种植、阳光、波次、割草机、胜负）</li><li>场景与格子对齐；音效加载完成且首次点击解锁</li><li>0 个 404、无 console 报错，干净克隆即可运行</li><li>Top 10 写入路径已验证</li></ul></div><div class="sec"><h4>已完成</h4><ul class="done"><li>第 1 期：移植 + emoji 版上线（24cfcc6）</li><li>第 2 期：原创精灵图 + 页面美术（96030b9）</li><li>第 3 期：CC0 音效 14 个 + 静音开关（22731d8）</li><li>第 4 期：左侧房子 / 分道草坪 / 每行割草机（77d69ae）</li></ul></div>
-        <p class="note">备注：完整 20 波通关与真机触屏仍未验证</p>
+        <div class="sec"><h4>验收要点</h4><ul><li>至少 15 关，吞噬尺寸门槛、成长与融合规则明确</li><li>反弹/吞噬无穿透，有限步数关卡有可复现解</li><li>触屏瞄准可用，反馈流畅，零资源错误</li></ul></div>
+        <p class="note">备注：实现难度为初评；物理与成长反馈风险较高。开工前先定同类自研规则及独立名称。</p>
       </article>
+      <article class="card">
+        <div class="chead">
+          <h3>Lucky Scratch: Virtual Tickets（虚拟刮刮乐）</h3>
+          <span class="diff" title="难度 2 / 5">★★☆☆☆</span>
+        </div>
+        <p class="pitch">刮开票面获得虚拟奖励，再用虚拟金币解锁票种与刮奖效率升级</p>
+        <div class="tags"><span class="tag">刮擦交互</span><span class="tag">放置升级</span><span class="tag">Vol.165</span></div>
+        <dl>
+          <dt>来源</dt><dd>一周游语 Vol.165 第 2 款；仅作为同类玩法参考，规则开工前确认</dd>
+          <dt>素材</dt><dd>待制作原创：票面、刮层、奖章、颗粒与界面，不复用原作票面</dd>
+        </dl>
+        <div class="sec"><h4>验收要点</h4><ul><li>刮层覆盖率与揭奖判定可靠，鼠标/触屏均可操作</li><li>虚拟经济、奖励规则与存档经过测试，可重置</li><li>仅无现金价值的虚拟积分；无充值、提现、付费抽奖、真实兑奖或支付入口</li></ul></div>
+        <p class="note">备注：实现难度为初评；仅作无真实赌资的休闲模拟，粒子与音效体现刮擦质感，不承诺设备震动。</p>
+      </article>
+      <article class="card">
+        <div class="chead">
+          <h3>Dust Bus（清洁工调度）</h3>
+          <span class="diff" title="难度 3 / 5">★★★☆☆</span>
+        </div>
+        <p class="pitch">调度不同颜色与容量的车辆派出清洁工，清理对应房间后释放车位</p>
+        <div class="tags"><span class="tag">调度解谜</span><span class="tag">房间清洁</span><span class="tag">Vol.165</span></div>
+        <dl>
+          <dt>来源</dt><dd>一周游语 Vol.165 第 3 款；仅作为同类玩法参考，规则开工前确认</dd>
+          <dt>素材</dt><dd>待制作原创：清洁工、车辆、不同房型、脏污/整洁两态与清理动画</dd>
+        </dl>
+        <div class="sec"><h4>验收要点</h4><ul><li>至少 15 关；颜色/容量/出车顺序与车位释放规则明确且可解</li><li>清理完成和房间关联状态正确，支持重置或撤销</li><li>脏乱到整洁的变化清楚可见，触屏调度与进度保存可用</li></ul></div>
+        <p class="note">备注：实现难度为初评；关卡策略与多房间清理动效为重点，网页可先用高质量俯视 2D 表现。</p>
+      </article>
+      <article class="card">
+        <div class="chead">
+          <h3>Screw Machine（环形螺母分拣）</h3>
+          <span class="diff" title="难度 3 / 5">★★★☆☆</span>
+        </div>
+        <p class="pitch">将上方待分拣的彩色螺母送入环形收集区，按颜色匹配完成收集</p>
+        <div class="tags"><span class="tag">颜色分拣</span><span class="tag">环形循环</span><span class="tag">Vol.165</span></div>
+        <dl>
+          <dt>来源</dt><dd>一周游语 Vol.165 第 4 款；仅作为同类玩法参考，规则开工前确认</dd>
+          <dt>素材</dt><dd>待制作原创：金属螺母、环形轨道、收集盒与机械界面</dd>
+        </dl>
+        <div class="sec"><h4>验收要点</h4><ul><li>至少 15 关；分拣/环形移动/颜色收集/容量限制规则明确</li><li>循环区无重叠或丢失对象，死局与过关判定正确</li><li>金属质感、收集动画与音效统一，触屏与存档可用</li></ul></div>
+        <p class="note">备注：实现难度为初评；文章不足以确定全部交互细节，开工前核实操作与规则，不擅自宣称还原原作。</p>
+      </article>
+      <article class="card">
+        <div class="chead">
+          <h3>Magic Fever（魔法师范围消除）</h3>
+          <span class="diff" title="难度 3 / 5">★★★☆☆</span>
+        </div>
+        <p class="pitch">选择不同颜色魔法师进入传送带，范围消除场中对应颜色的像素砖块</p>
+        <div class="tags"><span class="tag">颜色调度</span><span class="tag">范围消除</span><span class="tag">Vol.165</span></div>
+        <dl>
+          <dt>来源</dt><dd>一周游语 Vol.165 第 5 款；仅作为同类玩法参考，规则开工前确认</dd>
+          <dt>素材</dt><dd>待制作原创：魔法师、传送带、像素图案、法术与连锁消除特效</dd>
+        </dl>
+        <div class="sec"><h4>验收要点</h4><ul><li>至少 15 关；传送带容量、入场顺序与同色范围消除规则明确</li><li>范围与连锁边界判定正确，目标、剩余容量与失败原因可读</li><li>连续消除反馈清晰，触屏调度与进度保存可用</li></ul></div>
+        <p class="note">备注：实现难度为初评；先验证范围消除的可理解性与关卡可解性，再打磨特效。</p>
+      </article>
+      <article class="card">
+        <div class="chead">
+          <h3>Color Arrow Master（同色箭塔防守）</h3>
+          <span class="diff" title="难度 4 / 5">★★★★☆</span>
+        </div>
+        <p class="pitch">把对应颜色箭矢送到炮台，阻挡逐渐逼近的同色敌人</p>
+        <div class="tags"><span class="tag">防守</span><span class="tag">颜色调度</span><span class="tag">Vol.165</span></div>
+        <dl>
+          <dt>来源</dt><dd>一周游语 Vol.165 第 6 款；仅作为同类玩法参考，规则开工前确认</dd>
+          <dt>素材</dt><dd>待制作原创：弓箭、炮台、敌人、战场；采用高质量 2.5D 或 3D 需先评估</dd>
+        </dl>
+        <div class="sec"><h4>验收要点</h4><ul><li>至少 10 个波次关卡，颜色匹配、装填、伤害与突破判定正确</li><li>调度顺序和实时压力可控，无穿透或错误目标选择</li><li>触屏操作、暂停/重开与存档可用；性能与美术质量单独验收</li></ul></div>
+        <p class="note">备注：实现难度为初评；3D 仅是参考表现，不自动承诺完全 3D，开工前定渲染方案。</p>
+      </article>
+      <article class="card">
+        <div class="chead">
+          <h3>HopMatch（乘客跳洞循环消除）</h3>
+          <span class="diff" title="难度 3 / 5">★★★☆☆</span>
+        </div>
+        <p class="pitch">整理彩色乘客与单色车辆，结合循环黑洞完成同色收集与消除</p>
+        <div class="tags"><span class="tag">乘客整理</span><span class="tag">循环消除</span><span class="tag">Vol.165</span></div>
+        <dl>
+          <dt>来源</dt><dd>一周游语 Vol.165 第 7 款；仅作为同类玩法参考，规则开工前确认</dd>
+          <dt>素材</dt><dd>待制作原创：乘客、车辆、循环轨道、黑洞入口与跳跃动效</dd>
+        </dl>
+        <div class="sec"><h4>验收要点</h4><ul><li>至少 15 关；乘客/车辆匹配、循环区容量与离场规则明确</li><li>调度、跳跃与消除状态同步，关卡可解、失败可重试</li><li>触屏、撤销或重置、进度保存可用，动画流畅</li></ul></div>
+        <p class="note">备注：实现难度为初评；文章对黑洞与车辆的确切操作描述有限，开工前核实，不能凭推测定最终规则。</p>
+      </article>
+      </section>
+      <section class="col col-shipped">
+        <header><h2>已上线<span class="count">0</span></h2><p>已通过验收</p></header>
+<p class="empty">（暂无）</p>
       </section>
   </div>
   <div class="wide">
