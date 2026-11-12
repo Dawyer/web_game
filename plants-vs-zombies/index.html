@@ -20,7 +20,7 @@ Copyright (c) 2025 Valentyn Kolesnikov <0009-0003-9608-3364@orcid.org>
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(180deg, #7ec8e8 0%, #bfe3a1 55%, #4f8f39 100%);
             overflow: hidden;
             position: relative;
             height: 100vh;
@@ -213,11 +213,30 @@ Copyright (c) 2025 Valentyn Kolesnikov <0009-0003-9608-3364@orcid.org>
         .projectile.sprite { width: 20px; height: 20px; }
         .plantCard .emoji.sprite { width: 46px; height: 46px; margin-bottom: -10px; }
         #gameBoard {
-            background-image: url('art/bg_lawn_v2.jpg');
+            background-image: url('art/bg_scene.jpg');
             background-size: 100% 100%;
             background-position: center;
             background-repeat: no-repeat;
         }
+        /* 割草机：每行最左端，僵尸压线时自动启动 */
+        .mower {
+            position: fixed;
+            width: 58px;
+            height: 40px;
+            background-image: url('art/item_mower.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center bottom;
+            z-index: 1;
+            pointer-events: none;
+            filter: drop-shadow(1px 2px 2px rgba(0,0,0,0.35));
+        }
+        .mower.mowing { animation: mowerShake 0.12s infinite; }
+        @keyframes mowerShake {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-2px); }
+        }
+
         .cell {
             background: rgba(255,255,255,0.02);
             border: 1px solid rgba(255,255,255,0.16);
@@ -982,6 +1001,8 @@ Copyright (c) 2025 Valentyn Kolesnikov <0009-0003-9608-3364@orcid.org>
             isVictory: false,
             cellSize: { width: 0, height: 0 },
             boardRect: null,
+            lawnInset: 0,
+            mowers: [],
             gameSpeed: 1,
             lastUpdate: Date.now(),
             zombieDamageMultiplier: 1.0,
@@ -1176,10 +1197,11 @@ Copyright (c) 2025 Valentyn Kolesnikov <0009-0003-9608-3364@orcid.org>
                 wave: 'audio/wave.mp3',
                 win: 'audio/win.mp3',
                 lose: 'audio/lose.mp3',
-                plantdie: 'audio/plant_die.mp3'
+                plantdie: 'audio/plant_die.mp3',
+                mower: 'audio/mower.mp3'
             };
             const VOL = { click: 0.35, place: 0.5, shoot: 0.22, hit: 0.2, zhurt: 0.3, zdie: 0.4,
-                          groan: 0.3, eat: 0.22, sun: 0.45, wave: 0.5, win: 0.6, lose: 0.6, plantdie: 0.4 };
+                          groan: 0.3, eat: 0.22, sun: 0.45, wave: 0.5, win: 0.6, lose: 0.6, plantdie: 0.4, mower: 0.5 };
             const COOLDOWN = { shoot: 90, hit: 70, eat: 350, groan: 400, click: 60 };
             const pools = {}, last = {};
             let muted = false;
@@ -1278,6 +1300,8 @@ Copyright (c) 2025 Valentyn Kolesnikov <0009-0003-9608-3364@orcid.org>
                 isVictory: false,
                 cellSize: { width: 0, height: 0 },
                 boardRect: null,
+                lawnInset: 0,
+                mowers: [],
                 gameSpeed: 1,
                 lastUpdate: Date.now(),
                 zombieDamageMultiplier: 1.0,
@@ -1552,9 +1576,85 @@ Copyright (c) 2025 Valentyn Kolesnikov <0009-0003-9608-3364@orcid.org>
             setTimeout(updateBoardDimensions, 100);
         }
 
+        // ==== 割草机：每行最左端，僵尸压线时自动启动 ====
+        const MOWER_W = 58;
+        const MOWER_SPEED = 950;
+
+        function mowerTop(row) {
+            const cellH = gameState.cellSize.height || 1;
+            return gameState.boardRect.top + row * cellH + cellH / 2 + 2;
+        }
+
+        function createMowers() {
+            document.querySelectorAll('.mower').forEach(el => el.remove());
+            gameState.mowers = [];
+            const container = document.getElementById('gameContainer');
+            for (let row = 0; row < 5; row++) {
+                const el = document.createElement('div');
+                el.className = 'mower';
+                const m = { row: row, x: gameState.lawnInset - MOWER_W + 10, element: el, active: false, used: false };
+                container.appendChild(el);
+                gameState.mowers.push(m);
+            }
+            layoutMowers();
+        }
+
+        function layoutMowers() {
+            if (!gameState.boardRect || !gameState.mowers) return;
+            gameState.mowers.forEach(m => {
+                if (!m.element) return;
+                if (!m.active) m.x = gameState.lawnInset - MOWER_W + 10;
+                m.element.style.left = (gameState.boardRect.left + m.x) + 'px';
+                m.element.style.top = mowerTop(m.row) + 'px';
+            });
+        }
+
+        function tryMow(zombie) {
+            if (!gameState.mowers) return false;
+            const m = gameState.mowers.find(mm => mm.row === zombie.row && mm.element && !mm.active && !mm.used);
+            if (!m) return false;
+            m.active = true;
+            m.element.classList.add('mowing');
+            SFX.play('mower');
+            return true;
+        }
+
+        function updateMowers(deltaTime) {
+            if (!gameState.mowers) return;
+            gameState.mowers.forEach(m => {
+                if (!m.active || !m.element) return;
+                m.x += MOWER_SPEED * deltaTime / 1000 * gameState.gameSpeed;
+                m.element.style.left = (gameState.boardRect.left + m.x) + 'px';
+                gameState.zombies.forEach(z => {
+                    if (!z.element || z.row !== m.row) return;
+                    if (z.x <= m.x + MOWER_W * 0.85) {
+                        const points = (zombieTypes[z.type] ? zombieTypes[z.type].points : 10) * 2;
+                        showPointsPopup(z.element, points);
+                        addScore(points);
+                        createParticleEffect(z.element, '\u{1F4A5}');
+                        z.element.remove();
+                        z.element = null;
+                        gameState.zombiesDefeated++;
+                        SFX.play('zdie');
+                    }
+                });
+                if (m.x > gameState.boardRect.width + 30) {
+                    m.element.remove();
+                    m.element = null;
+                    m.active = false;
+                    m.used = true;
+                }
+            });
+        }
+
         // Update board dimensions
         function updateBoardDimensions() {
             const board = document.getElementById('gameBoard');
+            // 左侧房子与右侧路边各占一条内边距，草坪只占中间，与背景图分区对齐
+            const boardWidth = board.getBoundingClientRect().width;
+            gameState.lawnInset = Math.round(boardWidth * 0.1296);
+            board.style.paddingLeft = gameState.lawnInset + 'px';
+            board.style.paddingRight = Math.round(boardWidth * 0.0185) + 'px';
             gameState.boardRect = board.getBoundingClientRect();
             const cells = board.getElementsByClassName('cell');
             if (cells.length > 0) {
@@ -1572,6 +1672,8 @@ Copyright (c) 2025 Valentyn Kolesnikov <0009-0003-9608-3364@orcid.org>
                     zombie.element.style.top = yPosition + 'px';
                 }
             });
+            if (!gameState.mowers || gameState.mowers.length === 0) createMowers();
+            else layoutMowers();
         }
 
         // Setup Event Listeners
@@ -1761,7 +1863,7 @@ Copyright (c) 2025 Valentyn Kolesnikov <0009-0003-9608-3364@orcid.org>
             }
             
             const hasTarget = targetRows.some(row => 
-                gameState.zombies.some(z => z.row === row && z.element && z.x > plant.col * gameState.cellSize.width)
+                gameState.zombies.some(z => z.row === row && z.element && z.x > gameState.lawnInset + plant.col * gameState.cellSize.width)
             );
             
             if (!hasTarget) return;
@@ -1930,7 +2032,7 @@ Copyright (c) 2025 Valentyn Kolesnikov <0009-0003-9608-3364@orcid.org>
                 }
                 
                 zombie.attacking = false;
-                const zombieCol = Math.floor(zombie.x / gameState.cellSize.width);
+                const zombieCol = Math.floor((zombie.x - gameState.lawnInset) / gameState.cellSize.width);
                 
                 gameState.plants.forEach(plant => {
                     if (!plant.element || plant.row !== zombie.row) return;
@@ -1980,8 +2082,8 @@ Copyright (c) 2025 Valentyn Kolesnikov <0009-0003-9608-3364@orcid.org>
                     zombie.element.classList.remove('eating');
                 }
                 
-                if (zombie.x <= -gameState.cellSize.width) {
-                    gameOver();
+                if (zombie.x <= gameState.lawnInset) {
+                    if (!tryMow(zombie)) gameOver();
                 }
                 
                 return zombie.element !== null;
@@ -2289,6 +2391,7 @@ Copyright (c) 2025 Valentyn Kolesnikov <0009-0003-9608-3364@orcid.org>
                 if (!gameState.isPaused && !gameState.isGameOver) {
                     moveZombies(deltaTime);
                     moveProjectiles(deltaTime);
+                    updateMowers(deltaTime);
                     
                     gameState.plants.forEach(plant => {
                         if (!plant.element) return;
