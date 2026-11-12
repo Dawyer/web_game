@@ -219,10 +219,14 @@ Copyright (c) 2025 Valentyn Kolesnikov <0009-0003-9608-3364@orcid.org>
             background-repeat: no-repeat;
         }
         .cell {
-            background: rgba(255,255,255,0.05);
-            border-color: rgba(255,255,255,0.26);
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.16);
+            border-radius: 6px;
         }
-        .cell:hover { background: rgba(255,255,255,0.22); }
+        .cell:hover {
+            background: rgba(255,255,255,0.18);
+            border-color: rgba(255,255,255,0.45);
+        }
 
         #ui {
             position: absolute;
@@ -905,6 +909,7 @@ Copyright (c) 2025 Valentyn Kolesnikov <0009-0003-9608-3364@orcid.org>
                 <div class="controlRow">
                     <button class="controlBtn" id="leaderBtn">🏆 Top 10</button>
                     <button class="controlBtn" id="fullscreenBtn">🔳 Full</button>
+                    <button class="controlBtn" id="muteBtn">🔊 音效</button>
                 </div>
             </div>
         </div>
@@ -1155,6 +1160,68 @@ Copyright (c) 2025 Valentyn Kolesnikov <0009-0003-9608-3364@orcid.org>
             const icon = document.getElementById('sunIcon');
             if (icon) applyArt(icon, '\u2600\ufe0f');
         }
+
+        // ==== 音效（CC0 素材：Kenney，见 ATTRIBUTION.md）====
+        const SFX = (() => {
+            const SRC = {
+                click: 'audio/click.mp3',
+                place: 'audio/place.mp3',
+                shoot: 'audio/shoot.mp3',
+                hit: 'audio/hit.mp3',
+                zhurt: 'audio/zombie_hurt.mp3',
+                zdie: 'audio/zombie_die.mp3',
+                groan: 'audio/zombie_groan.mp3',
+                eat: 'audio/eat.mp3',
+                sun: 'audio/sun.mp3',
+                wave: 'audio/wave.mp3',
+                win: 'audio/win.mp3',
+                lose: 'audio/lose.mp3',
+                plantdie: 'audio/plant_die.mp3'
+            };
+            const VOL = { click: 0.35, place: 0.5, shoot: 0.22, hit: 0.2, zhurt: 0.3, zdie: 0.4,
+                          groan: 0.3, eat: 0.22, sun: 0.45, wave: 0.5, win: 0.6, lose: 0.6, plantdie: 0.4 };
+            const COOLDOWN = { shoot: 90, hit: 70, eat: 350, groan: 400, click: 60 };
+            const pools = {}, last = {};
+            let muted = false;
+            try { muted = localStorage.getItem('pvz_muted') === '1'; } catch (e) {}
+            for (const k in SRC) {
+                pools[k] = [];
+                for (let i = 0; i < 4; i++) {
+                    const a = new Audio(SRC[k]);
+                    a.preload = 'auto';
+                    a.volume = VOL[k] !== undefined ? VOL[k] : 0.4;
+                    pools[k].push(a);
+                }
+                pools[k].idx = 0;
+            }
+            function play(name) {
+                if (muted) return;
+                const p = pools[name];
+                if (!p) return;
+                const now = Date.now();
+                if (COOLDOWN[name] && now - (last[name] || 0) < COOLDOWN[name]) return;
+                last[name] = now;
+                p.idx = (p.idx + 1) % p.length;
+                const a = p[p.idx];
+                try { a.currentTime = 0; const pr = a.play(); if (pr && pr.catch) pr.catch(() => {}); } catch (e) {}
+            }
+            function setMuted(m) {
+                muted = !!m;
+                try { localStorage.setItem('pvz_muted', muted ? '1' : '0'); } catch (e) {}
+                const btn = document.getElementById('muteBtn');
+                if (btn) btn.textContent = muted ? '\u{1F507} \u9759\u97f3' : '\u{1F50A} \u97f3\u6548';
+            }
+            function init() {
+                setMuted(muted);
+                const btn = document.getElementById('muteBtn');
+                if (btn) btn.addEventListener('click', () => { setMuted(!muted); if (!muted) play('click'); });
+                document.querySelectorAll('#controlButtons button:not(#muteBtn)').forEach(b =>
+                    b.addEventListener('click', () => play('click')));
+                document.querySelectorAll('.plantCard').forEach(c =>
+                    c.addEventListener('click', () => play('click')));
+            }
+            return { play: play, setMuted: setMuted, init: init };
+        })();
 
         // Reset game state to initial values
         function resetGame() {
@@ -1513,6 +1580,7 @@ Copyright (c) 2025 Valentyn Kolesnikov <0009-0003-9608-3364@orcid.org>
 
             document.getElementById('fullscreenBtn').addEventListener('click', toggleFullscreen);
 
+            SFX.init();
             window.addEventListener('resize', updateBoardDimensions);
             
             document.addEventListener('fullscreenchange', () => {
@@ -1587,6 +1655,7 @@ Copyright (c) 2025 Valentyn Kolesnikov <0009-0003-9608-3364@orcid.org>
                 gameState.selectedPlant = null;
                 document.querySelectorAll('.plantCard').forEach(c => c.classList.remove('selected'));
                 
+                SFX.play('place');
                 createParticleEffect(cell, '✨');
                 
                 addScore(25);
@@ -1695,6 +1764,7 @@ Copyright (c) 2025 Valentyn Kolesnikov <0009-0003-9608-3364@orcid.org>
                 projectile.style.position = 'fixed';
                 
                 document.getElementById('gameContainer').appendChild(projectile);
+                SFX.play('shoot');
                 
                 let projectileDamage = plantType.damage;
                 if (plant.type === 'chomper' && plantType.shootDamage) {
@@ -1755,6 +1825,7 @@ Copyright (c) 2025 Valentyn Kolesnikov <0009-0003-9608-3364@orcid.org>
                     
                     if (projRect.left < zombieRect.right && projRect.right > zombieRect.left) {
                         zombie.health -= proj.damage;
+                        SFX.play('hit');
                         updateZombieHealth(zombie);
                         zombie.element.classList.add('damage-effect');
                         
@@ -1784,6 +1855,7 @@ Copyright (c) 2025 Valentyn Kolesnikov <0009-0003-9608-3364@orcid.org>
                                 zombie.element = null;
                             }
                             gameState.zombiesDefeated++;
+                            SFX.play('zdie');
                         }
                         
                         if (!proj.pierce) {
@@ -1851,11 +1923,13 @@ Copyright (c) 2025 Valentyn Kolesnikov <0009-0003-9608-3364@orcid.org>
                             zombie.element.remove();
                             zombie.element = null;
                             gameState.zombiesDefeated++;
+                            SFX.play('zdie');
                             return;
                         }
                         
                         if (Date.now() - zombie.lastAttack > 1000) {
                             zombie.lastAttack = Date.now();
+                            SFX.play('eat');
                             const damage = getZombieDamage(zombieTypes[zombie.type].damage);
                             plant.health -= damage;
                             updatePlantHealth(plant);
@@ -1868,6 +1942,7 @@ Copyright (c) 2025 Valentyn Kolesnikov <0009-0003-9608-3364@orcid.org>
                             }, 300);
                             
                             if (plant.health <= 0) {
+                                SFX.play('plantdie');
                                 createParticleEffect(plant.element, '💥');
                                 plant.element.remove();
                                 plant.element = null;
@@ -1910,6 +1985,7 @@ Copyright (c) 2025 Valentyn Kolesnikov <0009-0003-9608-3364@orcid.org>
             const zombie = document.createElement('div');
             zombie.className = 'zombie';
             if (!applyArt(zombie, zombieType.emoji)) zombie.textContent = zombieType.emoji;
+            SFX.play('groan');
             
             const healthBar = document.createElement('div');
             healthBar.className = 'zombie-health-bar';
@@ -1977,6 +2053,7 @@ Copyright (c) 2025 Valentyn Kolesnikov <0009-0003-9608-3364@orcid.org>
         function spawnZombieWave() {
             if (gameState.isGameOver || gameState.isVictory) return;
             
+            SFX.play('wave');
             const zombieCount = Math.min(3 + Math.floor(gameState.wave / 2), 15);
             const spawnDelay = Math.max(3000 - gameState.wave * 100, 1000);
             
@@ -2052,6 +2129,7 @@ Copyright (c) 2025 Valentyn Kolesnikov <0009-0003-9608-3364@orcid.org>
 
         // Victory function
         function victory() {
+            SFX.play('win');
             gameState.isVictory = true;
             gameState.isGameOver = true;
             
@@ -2126,6 +2204,7 @@ Copyright (c) 2025 Valentyn Kolesnikov <0009-0003-9608-3364@orcid.org>
             
             sunElement.classList.add('collect-effect');
             gameState.sun += value;
+            SFX.play('sun');
             updateSunDisplay();
             
             addScore(10);
@@ -2265,6 +2344,7 @@ Copyright (c) 2025 Valentyn Kolesnikov <0009-0003-9608-3364@orcid.org>
 
         // Game Over - AUTO SAVE SCORE
         function gameOver() {
+            SFX.play('lose');
             if (gameState.isGameOver) return;
             
             gameState.isGameOver = true;

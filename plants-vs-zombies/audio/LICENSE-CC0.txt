@@ -1,0 +1,18 @@
+Sound effects in this folder are from Kenney's CC0 asset packs (public domain, no attribution required):
+
+- click.mp3            <- UI sound effects (buttons, switches, clicks)   https://kenney.nl/assets/ui-audio
+- sun.mp3              <- 50 RPG sound effects (handleCoins)            https://kenney.nl/assets/rpg-audio
+- place.mp3            <- 50 RPG sound effects (bookPlace1)
+- hit.mp3              <- 50 RPG sound effects (metalClick)
+- zombie_hurt.mp3      <- 50 RPG sound effects (metalPot1)
+- zombie_die.mp3       <- 50 RPG sound effects (doorClose_2)
+- zombie_groan.mp3     <- 50 RPG sound effects (creak2)
+- eat.mp3              <- 50 RPG sound effects (chop)
+- plant_die.mp3        <- 50 RPG sound effects (cloth3)
+- shoot.mp3            <- Digital sound effects (pepSound2)             https://kenney.nl/assets/digital-audio
+- wave.mp3             <- Digital sound effects (threeTone1)
+- win.mp3              <- Digital sound effects (powerUp1)
+- lose.mp3             <- Digital sound effects (phaserDown2)
+
+All packs are CC0 1.0 (public domain): https://creativecommons.org/publicdomain/zero/1.0/
+Audio taken from the mirrored packs on OpenGameArt (Kenney uploads), converted to mono 64 kbps MP3.

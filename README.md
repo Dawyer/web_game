@@ -4,7 +4,7 @@
 
 ## 游戏清单（当前 1 个）
 
-- [Plants vs Zombies：非官方粉丝塔防实现](./plants-vs-zombies/)：纯静态 HTML/CSS/JavaScript，美术为项目自有的原创卡通精灵图（`plants-vs-zombies/art/`）；代码采用 MIT 许可证。详见 [玩法与运行说明](./plants-vs-zombies/README.md)、[来源与改动](./plants-vs-zombies/ATTRIBUTION.md) 和 [许可证原文](./plants-vs-zombies/LICENSE)。
+- [Plants vs Zombies：非官方粉丝塔防实现](./plants-vs-zombies/)：纯静态 HTML/CSS/JavaScript，美术为项目自有的原创卡通精灵图（`plants-vs-zombies/art/`），音效为 CC0 公共领域素材（`plants-vs-zombies/audio/`）；代码采用 MIT 许可证。详见 [玩法与运行说明](./plants-vs-zombies/README.md)、[来源与改动](./plants-vs-zombies/ATTRIBUTION.md) 和 [许可证原文](./plants-vs-zombies/LICENSE)。
 
 ## 目录约定
 
