@@ -22,7 +22,7 @@
   .info h2 { margin: 0 0 8px; font-size: 15px; color: var(--accent); }
   .info ol, .info ul { margin: 0; padding-left: 20px; color: #cfdae2; font-size: 13.5px; }
   .info li { margin: 3px 0; }
-  .board { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; align-items: start; }
+  .board { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px; align-items: start; }
   .col { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 10px; }
   .col > header h2 { margin: 0; font-size: 14px; display: flex; align-items: center; gap: 8px; }
   .col > header p { margin: 2px 0 10px; font-size: 11.5px; color: var(--dim); }
@@ -68,30 +68,17 @@
 <header class="top">
   <h1>游戏开发板</h1>
   <div class="meta">web_game 项目 · 共 15 个在册游戏（验收通过 0） · 更新于 2026-11-12</div>
-  <p class="meta">先完成 PvZ 补验，再按原有 7 款队列逐项推进，Vol.165 新增 7 款追加其后；本轮仅入队，不授权开工，不自动修改当晚计划。</p>
+  <p class="meta">PvZ 已终止，保留历史文件但不继续修复。后续游戏按既有队列逐项确认；每款交付电脑网页与手机竖屏优先版本，本次标准更新不授权开工。</p>
 </header>
 <div class="wrap">
   <div class="info">
     <section><h2>排期流程</h2><ol><li>每晚 20:30 出当期计划（只排当前一个游戏）</li><li>用户在本对话确认 → 写 confirmed-&lt;日期&gt;.flag</li><li>23:30 才派工给 LOS（无 flag 不开工）</li><li>LOS 只做 HTTP/git/node --check 级自检，浏览器与手感验收由协调方在本机做</li><li>一个游戏通过全部验收，才开下一个游戏的排期</li></ol></section>
-    <section><h2>通用交付标准</h2><ul><li>每个游戏单独一个目录，根目录只放游戏列表页与总说明</li><li>素材原创或授权明确：不使用任何未授权的原版/第三方素材（含 ROM、提取素材、破解文件）</li><li>零 http(s) 外链、零内嵌图片：页面自包含或只引用本目录内的 art/ 与 audio/</li><li>无 console 报错；桌面 1280×720 与手机 375×760 各出一张验收截图</li><li>移动端触屏可玩（横屏提示沿用上游行为即可）</li><li>玩法机制可自由实现，但不得照抄原游戏的名称、美术与文字</li></ul></section>
+    <section><h2>通用交付标准</h2><ul><li>每个游戏单独一个目录，根目录只放游戏列表页与总说明</li><li>素材原创或授权明确：不使用任何未授权的原版/第三方素材（含 ROM、提取素材、破解文件）</li><li>零 http(s) 外链、零内嵌图片：页面自包含或只引用本目录内的 art/ 与 audio/</li><li>无 console 报错；桌面 1280×720 与手机 375×760 各出一张验收截图</li><li>玩法机制可自由实现，但不得照抄原游戏的名称、美术与文字</li><li>每款后续游戏交付电脑浏览器版与手机 H5 版，两种布局分别验收，共享规则和关卡</li><li>手机版优先竖屏直接可玩，不以横屏提示或缩小电脑画面替代适配</li><li>电脑端鼠标/适当键盘操作；手机端触控、按钮命中、安全区与横竖切换单独验证</li></ul></section>
   </div>
   <div class="board">
       <section class="col col-verifying">
-        <header><h2>待验收<span class="count">1</span></h2><p>只差协调方本机验收</p></header>
-      <article class="card">
-        <div class="chead">
-          <h3>植物大战僵尸（非官方粉丝重制）</h3>
-          <span class="diff" title="难度 4 / 5">★★★★☆</span>
-        </div>
-        <p class="pitch">5 行 9 列塔防：种植物挡住 20 波僵尸</p>
-        <div class="tags"><span class="tag">塔防</span><span class="tag">已上线·补验中</span></div>
-        <dl>
-          <dt>来源</dt><dd>MIT 上游引擎 plantsvszombiesjs + 本项目原创素材</dd>
-          <dt>素材</dt><dd>已完成：9 植物 / 5 僵尸 / 场景（房子+分道草坪+绿篱+人行道）/ 割草机 + 14 个 CC0 音效</dd>
-        </dl>
-        <div class="sec"><h4>验收要点</h4><ul><li>核心玩法实机可玩（种植、阳光、波次、割草机、胜负）</li><li>场景与格子对齐；音效加载完成且首次点击解锁</li><li>0 个 404、无 console 报错，干净克隆即可运行</li><li>Top 10 写入路径已验证</li></ul></div><div class="sec"><h4>已完成</h4><ul class="done"><li>第 1 期：移植 + emoji 版上线（24cfcc6）</li><li>第 2 期：原创精灵图 + 页面美术（96030b9）</li><li>第 3 期：CC0 音效 14 个 + 静音开关（22731d8）</li><li>第 4 期：左侧房子 / 分道草坪 / 每行割草机（77d69ae）</li></ul></div>
-        <p class="note">备注：2026-11-12 20:42 用户确认今晚只做 favicon 404 修复及完整波次/胜负/存档/移动输入补验；未全部验收通过不得启动下一款。完整 20 波与真机触屏仍须如实报告。</p>
-      </article>
+        <header><h2>待验收<span class="count">0</span></h2><p>只差协调方本机验收</p></header>
+<p class="empty">（暂无）</p>
       </section>
       <section class="col col-active">
         <header><h2>开发中<span class="count">0</span></h2><p>LOS 正在执行</p></header>
@@ -111,7 +98,7 @@
           <dt>素材</dt><dd>已完成 17 个原创素材文件：台面/木边（512² 无缝）、六色球（256²）、箭头/袋口/圆环/镜面/木箱/金星（320²）、面板/按钮、关卡选择背景 1920×1080；预览 sheets/mock-game.png</dd>
         </dl>
         <div class="sec"><h4>验收要点</h4><ul><li>≥16 关，node tools/validate_levels.js 证明每关可解并打印最短步数</li><li>反弹与进袋判定无死角（台边/障碍/球撞球 90°、异色出口当墙、镜面斜向、角袋、多球连锁）</li><li>撤销/重置/关卡选择/星级/localStorage 可用</li><li>素材与音效 0 个 404、无 console 报错、无外链</li><li>画质按规格第 4 节：DPR 画布、自转、拖尾、进袋吸入、粒子、绒布质感</li></ul></div>
-        <p class="note">备注：17 个素材已就绪但未启动实现；待 PvZ 完成收尾并通过验收后再排期，不占用今晚修复范围。规格 spec-pocket-bounce.md；模型 openai/gpt-6.1-sol-pro + xhigh。</p>
+        <p class="note">备注：17 个素材已就绪，实现未启动；作为下一候选按新计划确认后开工。交付电脑版与手机竖屏版；共用规则、关卡和星级标准。</p>
       </article>
       </section>
       <section class="col col-backlog">
@@ -303,6 +290,23 @@
         <header><h2>已上线<span class="count">0</span></h2><p>已通过验收</p></header>
 <p class="empty">（暂无）</p>
       </section>
+      <section class="col col-cancelled">
+        <header><h2>已终止<span class="count">1</span></h2><p>保留历史文件，不再制作</p></header>
+      <article class="card">
+        <div class="chead">
+          <h3>植物大战僵尸（非官方粉丝重制）</h3>
+          <span class="diff" title="难度 4 / 5">★★★★☆</span>
+        </div>
+        <p class="pitch">5 行 9 列塔防：种植物挡住 20 波僵尸</p>
+        <div class="tags"><span class="tag">塔防</span><span class="tag">已终止</span></div>
+        <dl>
+          <dt>来源</dt><dd>MIT 上游引擎 plantsvszombiesjs + 本项目原创素材</dd>
+          <dt>素材</dt><dd>已完成：9 植物 / 5 僵尸 / 场景（房子+分道草坪+绿篱+人行道）/ 割草机 + 14 个 CC0 音效</dd>
+        </dl>
+        <div class="sec"><h4>验收要点</h4><ul><li>核心玩法实机可玩（种植、阳光、波次、割草机、胜负）</li><li>场景与格子对齐；音效加载完成且首次点击解锁</li><li>0 个 404、无 console 报错，干净克隆即可运行</li><li>Top 10 写入路径已验证</li></ul></div><div class="sec"><h4>已完成</h4><ul class="done"><li>第 1 期：移植 + emoji 版上线（24cfcc6）</li><li>第 2 期：原创精灵图 + 页面美术（96030b9）</li><li>第 3 期：CC0 音效 14 个 + 静音开关（22731d8）</li><li>第 4 期：左侧房子 / 分道草坪 / 每行割草机（77d69ae）</li></ul></div>
+        <p class="note">备注：用户明确停做；不再修复或补验，不以未验收阻塞后续候选。现有仓库和线上文件保留，未经要求不删除。</p>
+      </article>
+      </section>
   </div>
   <div class="wide">
     <section><h2>候补：可以合法使用原版素材的老游戏</h2><div class="board" style="grid-template-columns:repeat(2,minmax(0,1fr))">      <article class="card cand">
@@ -332,6 +336,6 @@
     <section><h2>不做（授权不允许）</h2><ul><li>任天堂 / 世嘉 / Capcom / SE / Konami / Taito 等大厂 IP（马里奥、索尼克、宝可梦等）：不可用</li><li>植物大战僵尸原版素材（PopCap/EA）：不可用，本项目已改为原创素材</li><li>命令与征服 / 红警：EA 只开源代码，美术与过场未开放</li><li>Marathon 三部曲：官方允许免费下载但无正式授权文件，不入库</li><li>俄罗斯方块：商标与版权双重高压，回避</li></ul></section>
   </div>
 </div>
-<footer>本页由 <code>board.json</code> 生成，不引用任何外部资源；状态列为 shipped / verifying / active / planned / backlog。</footer>
+<footer>本页由 <code>board.json</code> 生成，不引用任何外部资源；状态列为 shipped / verifying / active / planned / backlog / cancelled。</footer>
 </body>
 </html>
