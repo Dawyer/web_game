@@ -1205,6 +1205,24 @@ Copyright (c) 2025 Valentyn Kolesnikov <0009-0003-9608-3364@orcid.org>
                 const a = p[p.idx];
                 try { a.currentTime = 0; const pr = a.play(); if (pr && pr.catch) pr.catch(() => {}); } catch (e) {}
             }
+            // Safari/iOS 不会预加载未播放过的 Audio，且要求媒体在用户手势中"解锁"。
+            // 首次触摸/点击时把每个音效静音播一下再复位：既强制预加载，又完成解锁。
+            let unlocked = false;
+            function unlock() {
+                if (unlocked) return;
+                unlocked = true;
+                for (const k in pools) {
+                    const a = pools[k][0];
+                    try {
+                        a.muted = true;
+                        const pr = a.play();
+                        if (pr && pr.then) {
+                            pr.then(() => { a.pause(); a.currentTime = 0; a.muted = false; })
+                              .catch(() => { a.muted = false; });
+                        } else { a.pause(); a.currentTime = 0; a.muted = false; }
+                    } catch (e) { a.muted = false; }
+                }
+            }
             function setMuted(m) {
                 muted = !!m;
                 try { localStorage.setItem('pvz_muted', muted ? '1' : '0'); } catch (e) {}
@@ -1219,8 +1237,15 @@ Copyright (c) 2025 Valentyn Kolesnikov <0009-0003-9608-3364@orcid.org>
                     b.addEventListener('click', () => play('click')));
                 document.querySelectorAll('.plantCard').forEach(c =>
                     c.addEventListener('click', () => play('click')));
+                document.addEventListener('pointerdown', unlock, { once: true });
+                document.addEventListener('keydown', unlock, { once: true });
             }
-            return { play: play, setMuted: setMuted, init: init };
+            function state() {
+                const rs = {};
+                for (const k in pools) rs[k] = [pools[k][0].readyState, pools[k][0].networkState, pools[k][0].error ? pools[k][0].error.code : 0];
+                return { unlocked: unlocked, muted: muted, media: rs };
+            }
+            return { play: play, setMuted: setMuted, init: init, state: state };
         })();
 
         // Reset game state to initial values
