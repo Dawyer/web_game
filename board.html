@@ -74,7 +74,7 @@
 <body>
 <header class="top">
   <h1>任务看板</h1>
-  <div class="meta">共 20 项任务（已完成 5） · 更新于 2026-11-14T02:09:57+08:00</div>
+  <div class="meta">共 20 项任务（已完成 5） · 更新于 2026-11-14T02:24:00+08:00</div>
   <p class="meta">弹球仍是中断的4关原型；11月13日晚计划待本轮新确认，无开发worker运行。PvZ保持终止；HW环境和迁移未执行。</p>
 </header>
 <div class="wrap">
@@ -85,27 +85,27 @@
   <div class="filters"><input id="search" aria-label="搜索任务" placeholder="搜索任务、负责人、进度"><select id="kind" aria-label="任务类型"><option value="">全部类型</option><option>游戏</option><option>运维</option><option>验证</option><option>工具</option></select></div>
   <div class="board" id="task-columns">
       <section class="col col-verifying">
-        <header><h2>待验收<span class="count">0</span></h2><p>只差协调方本机验收</p></header>
-<p class="empty">（暂无）</p>
-      </section>
-      <section class="col col-active">
-        <header><h2>进行中<span class="count">1</span></h2><p>已核实正在执行</p></header>
+        <header><h2>待验收<span class="count">1</span></h2><p>只差协调方本机验收</p></header>
       <article class="card task" data-task-id="pocket-bounce" data-kind="游戏">
         <div class="chead">
           <h3>Pocket Bounce《弹球入袋》（源：Roll Sort!）</h3>
           <span class="diff">游戏</span>
         </div>
         <p class="pitch">台球按箭头方向滚动，撞墙反弹，滚进同色袋口即消除</p>
-        <div class="tags"><span class="tag">逻辑解谜</span><span class="tag">4关原型</span><span class="tag">续做中</span></div>
+        <div class="tags"><span class="tag">逻辑解谜</span><span class="tag">10关原型</span><span class="tag">续做中</span></div>
         <dl>
-          <dt>负责</dt><dd>HW实现（额度受阻） / 协调方独立验收</dd>
-          <dt>更新</dt><dd>2026-11-14T02:12:00+08:00</dd>
+          <dt>负责</dt><dd>HW实现（cline单worker，本轮已正常收尾） / 协调方独立验收</dd>
+          <dt>更新</dt><dd>2026-11-14T02:24:00+08:00</dd>
           <dt>来源</dt><dd>一周游语 Vol.166 第 5 款；玩法机制自研实现</dd>
           <dt>素材</dt><dd>已完成 17 个原创素材文件：台面/木边（512² 无缝）、六色球（256²）、箭头/袋口/圆环/镜面/木箱/金星（320²）、面板/按钮、关卡选择背景 1920×1080；预览 sheets/mock-game.png</dd>
         </dl>
-        <p class="detail"><b>当前进度</b>：本轮 HW 单worker（cline/high）进行中；已完成规则基线冻结：本地提交 5bd748e（未推送）新增 tests/rules-baseline.test.mjs，13 个测试文件串行自检全绿（新增文件 7/7，原始日志 evidence/rules-baseline.test.mjs.attempt1|2.log）。4关候选版，不等于60关或三小时。</p><p class="detail"><b>下一步</b>：修站点 favicon 404 与干净检出 ENOENT、收尾边界/浏览器检查测试，再补加载重试/存档/计时与双端一致性门禁；产物由协调方独立复测后再发布。</p><div class="sec"><h4>核验记录</h4><ul><li>2026-11-14 02:10 本机提交 5bd748e（未推送）：RULES.md 六条规则冻结为基线，新增 rules-baseline 测试对 tools/reference.mjs 独立差分；逐文件原始日志 evidence/*.log 全绿（worker 自检，待协调方独立复测）。</li><li>2026-11-13 20:32：GitHub main=a0170b3，本机全新克隆核实2dd49dd/d098834/79d1c40均在远端历史；LOS HEAD仍79d1c40且保留2项未提交改动。</li><li>独立执行：远端已发布版9文件47/47，含恢复补丁副本10文件50/50；失败/取消/跳过均0。副本两项SHA-256与LOS相同；4关独立参考BFS最短一致。</li><li>本机真实Chrome：1280×720、1920×1080、360×800、390×844共16次通关，动画中刷新4次恢复；无横向溢出、JS异常0，但隐式图标404未过资源门禁。</li><li>证据：verification-2026-11-13-2030/{independent-tests.json,browser-audit.json,los-readonly.json}；手机仅模拟触控，真机/用户判图/三小时首次盲玩待验。</li><li>20:42核实：任务/5份标准/17份素材/222份继承文件哈希一致；唯一worker PID 186157、准确session有效租约和started admission已核对，模型Sol Pro/xhigh。</li><li>2026-11-13 22:19：HW 本机 commit 4349f2443882c4c17d6b11a5a04f6950fb874311（未推送）修复继承 experience 回归；实录 11 文件 55/55、失败/取消/跳过 0，4 关独立 BFS 最短一致；原始输出 evidence/hw-checkpoint-1/{tests.raw.log,levels.raw.log,summary.json}。该结果仍属 worker 自检，待协调方独立复测。</li><li>环境迁移单独验收完成；277现行文件一致、原50/50通过、5个继承红灯真实保留。</li><li>HW指定Sol Pro/xhigh单工人运行：冻结任务hash、进程启动身份、准确session、有效租约及started非terminal admission已核实，子会话0。</li><li>HW启动后再次独立复现5项experience失败，当前为修复阶段；工人尚未新增提交/推送，不能称已修复。</li><li>协调方在一次性副本独立复跑HW提交4349f24：11文件串行55/55通过、失败/取消/跳过0；未提交改动与新增脚本已原样归档（HW + 本机hw-rescue-*）。</li><li>该检查点已由协调方经既有授权传输正常合并进GitHub main（f97fbcd），并核验raw文件字节一致。</li><li>线上试玩版已从该检查点重新部署：桌面与手机尺寸真实浏览器加载，24个素材全部HTTP200，实际点击通关第1关（1步/1球入袋），无JS异常；favicon.ico缺失为已知项。</li><li>HW工人因账户级额度停止：session terminal/failed，client进程已退出，日志含plan sharing limit；非完成、非验收。</li><li>2026-11-13 23:31：夜间授权开工探测（HW，Sol Pro，单发一问一答）返回 exit 1「ChatGPT plan sharing limit reached」，未启动任何 worker；记录 dispatch-2026-11-13-hw-run2.json，实测无 hermes 进程；HW HEAD=4349f24，2 改 3 未跟踪改动原样保留。</li></ul></div><p><a href="pocket-bounce-preview/">打开未验收原型</a></p><div class="sec"><h4>验收要点</h4><ul><li>首轮按 6 章 60 关规划；发布关卡逐一证明可解，最短步数须有证明</li><li>先定稿方向/反射/连锁/停球/循环规则并做独立预期测试，再批量设计与求解关卡</li><li>撤销/重置/关卡选择/星级/localStorage 可用</li><li>素材与音效 0 个 404、无 console 报错、无外链</li><li>画质按规格第 4 节：DPR 画布、自转、拖尾、进袋吸入、粒子、绒布质感</li><li>主线至少三小时有效内容为目标；须真实首次试玩验证，无证据标待验证，不靠挂机/重复刷关凑数</li><li>记录累计有效游玩/首次主线通关/每关耗时及尝试次数；两端计时、存档、导出与暂停后台边界测试通过</li></ul></div><div class="sec"><h4>已完成</h4><ul class="done"><li>4个教学关与核心规则/求解器已形成原型。</li><li>选关、击球、提示、撤销、重试、星级、本地存档及计时已接线；不等于全部验收通过。</li><li>2026-11-13 13:36独立重跑50项测试通过、0失败（10个文件）。</li><li>2026-11-13 HW：环境迁移核验通过；本机检查点 4349f24 修复继承 5 项 experience 红灯，55/55 全绿（未推送）。</li><li>恢复检查点27368ab与候选断点4f48b49完整保留并迁至HW，未提交experience测试原文继承。</li></ul></div>
-        <p class="note">备注：2026-11-14 用户「开始」后，HW唯一cline实现工人已独立核实准确会话、任务哈希、有效lease及启动身份；从4349f24和继承改动续做规则与体验门禁，尚未完成验收。</p>
+        <p class="detail"><b>当前进度</b>：本轮 HW 唯一 cline 工人（cline-pass/deepseek-v4.1-flash / cline / high，单worker，500轮21600秒上限）已正常收尾：准确会话无有效租约、最近一次 admission=terminal/completed、client 进程退出、运行日志以工人总结结束（非额度中断）。自 4349f24 起 4 个本机提交（5bd748e 规则基线冻结、26451e7 继承改动接线与 favicon/ENOENT 修复、3502426 新增05–10关、a3863f5 文档计数），全部未推送。工人自检 13 测试文件 69/69 全绿、validate_levels 10 关 VERIFIED、真实无头 Chromium 四视口每端 10 关 3 星 0 脚本错误 0 个 ≥400 响应。仍为 10/60 关，第 5/6 章为空；10 关不等于独立可解或三小时。</p><p class="detail"><b>下一步</b>：协调方独立复测本轮 4 个本机提交后推送/部署（本机提交未推送）；继续扩第 5/6 章与更多非同构关卡；实体手机、用户画风认可、三小时真人首次主线仍待验证。</p><div class="sec"><h4>核验记录</h4><ul><li>2026-11-14 02:16 HW 本轮正常收尾：准确 session 无有效租约、最近 admission=terminal/completed、client PID 已退出、日志无额度/限制错误；本机 4 个提交 5bd748e→26451e7→3502426→a3863f5（未推送）。工人自检 13 文件 69/69、10 关独立 BFS VERIFIED、四视口浏览器 0 错误 0 个 ≥400；仍属自检，待协调方独立验收。</li><li>2026-11-14 02:21 核验员独立复测（一次性丢弃副本、串行、&lt;100 秒、不动工作树）：node tools/validate_levels.js → VERIFIED 10 levels，par 01:1/02:1/03:2/04:1/05:1/06:1/07:2/08:3/09:1/10:1；rules-baseline 测试 EXIT_CODE 0 / fail 0；src/levels.mjs 独立计数 10 关。未推送未部署。</li><li>2026-11-14 02:10 本机提交 5bd748e（未推送）：RULES.md 六条规则冻结为基线，新增 rules-baseline 测试对 tools/reference.mjs 独立差分；逐文件原始日志 evidence/*.log 全绿（worker 自检，待协调方独立复测）。</li><li>2026-11-13 20:32：GitHub main=a0170b3，本机全新克隆核实2dd49dd/d098834/79d1c40均在远端历史；LOS HEAD仍79d1c40且保留2项未提交改动。</li><li>独立执行：远端已发布版9文件47/47，含恢复补丁副本10文件50/50；失败/取消/跳过均0。副本两项SHA-256与LOS相同；4关独立参考BFS最短一致。</li><li>本机真实Chrome：1280×720、1920×1080、360×800、390×844共16次通关，动画中刷新4次恢复；无横向溢出、JS异常0，但隐式图标404未过资源门禁。</li><li>证据：verification-2026-11-13-2030/{independent-tests.json,browser-audit.json,los-readonly.json}；手机仅模拟触控，真机/用户判图/三小时首次盲玩待验。</li><li>20:42核实：任务/5份标准/17份素材/222份继承文件哈希一致；唯一worker PID 186157、准确session有效租约和started admission已核对，模型Sol Pro/xhigh。</li><li>2026-11-13 22:19：HW 本机 commit 4349f2443882c4c17d6b11a5a04f6950fb874311（未推送）修复继承 experience 回归；实录 11 文件 55/55、失败/取消/跳过 0，4 关独立 BFS 最短一致；原始输出 evidence/hw-checkpoint-1/{tests.raw.log,levels.raw.log,summary.json}。该结果仍属 worker 自检，待协调方独立复测。</li><li>环境迁移单独验收完成；277现行文件一致、原50/50通过、5个继承红灯真实保留。</li><li>HW指定Sol Pro/xhigh单工人运行：冻结任务hash、进程启动身份、准确session、有效租约及started非terminal admission已核实，子会话0。</li><li>HW启动后再次独立复现5项experience失败，当前为修复阶段；工人尚未新增提交/推送，不能称已修复。</li><li>协调方在一次性副本独立复跑HW提交4349f24：11文件串行55/55通过、失败/取消/跳过0；未提交改动与新增脚本已原样归档（HW + 本机hw-rescue-*）。</li><li>该检查点已由协调方经既有授权传输正常合并进GitHub main（f97fbcd），并核验raw文件字节一致。</li><li>线上试玩版已从该检查点重新部署：桌面与手机尺寸真实浏览器加载，24个素材全部HTTP200，实际点击通关第1关（1步/1球入袋），无JS异常；favicon.ico缺失为已知项。</li><li>HW工人因账户级额度停止：session terminal/failed，client进程已退出，日志含plan sharing limit；非完成、非验收。</li><li>2026-11-13 23:31：夜间授权开工探测（HW，Sol Pro，单发一问一答）返回 exit 1「ChatGPT plan sharing limit reached」，未启动任何 worker；记录 dispatch-2026-11-13-hw-run2.json，实测无 hermes 进程；HW HEAD=4349f24，2 改 3 未跟踪改动原样保留。</li></ul></div><p><a href="pocket-bounce-preview/">打开未验收原型</a></p><div class="sec"><h4>验收要点</h4><ul><li>首轮按 6 章 60 关规划；发布关卡逐一证明可解，最短步数须有证明</li><li>先定稿方向/反射/连锁/停球/循环规则并做独立预期测试，再批量设计与求解关卡</li><li>撤销/重置/关卡选择/星级/localStorage 可用</li><li>素材与音效 0 个 404、无 console 报错、无外链</li><li>画质按规格第 4 节：DPR 画布、自转、拖尾、进袋吸入、粒子、绒布质感</li><li>主线至少三小时有效内容为目标；须真实首次试玩验证，无证据标待验证，不靠挂机/重复刷关凑数</li><li>记录累计有效游玩/首次主线通关/每关耗时及尝试次数；两端计时、存档、导出与暂停后台边界测试通过</li></ul></div><div class="sec"><h4>已完成</h4><ul class="done"><li>4个教学关与核心规则/求解器已形成原型。</li><li>选关、击球、提示、撤销、重试、星级、本地存档及计时已接线；不等于全部验收通过。</li><li>2026-11-13 13:36独立重跑50项测试通过、0失败（10个文件）。</li><li>2026-11-13 HW：环境迁移核验通过；本机检查点 4349f24 修复继承 5 项 experience 红灯，55/55 全绿（未推送）。</li><li>恢复检查点27368ab与候选断点4f48b49完整保留并迁至HW，未提交experience测试原文继承。</li><li>2026-11-14 HW 本机 commit a3863f5（未推送）：规则基线冻结+继承改动接线+favicon/ENOENT 修复+扩至 10 关；13 文件 69/69、10 关独立 BFS 证明、四视口浏览器 0 错误。仍为 10/60。</li></ul></div>
+        <p class="note">备注：2026-11-14 用户「开始」后 HW 唯一 cline 工人已独立核实准确会话/任务哈希/启动身份，本轮已正常收尾；本机提交未推送，待协调方独立复测与部署。</p>
       </article>
+      </section>
+      <section class="col col-active">
+        <header><h2>进行中<span class="count">0</span></h2><p>已核实正在执行</p></header>
+<p class="empty">（暂无）</p>
       </section>
       <section class="col col-blocked">
         <header><h2>阻塞 / 暂停<span class="count">0</span></h2><p>显示原因与下一步，不冒称在运行</p></header>
