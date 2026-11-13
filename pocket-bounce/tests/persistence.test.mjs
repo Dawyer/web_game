@@ -111,8 +111,8 @@ test('schema, version, settings and progress enforce strict bounded allowlists',
 test('fresh schema-two save exports and imports detached without losing initialized stats', () => {
   assert.equal(typeof api?.createSave, 'function', 'persistence API must exist');
   const s = api.createSave();
-  assert.equal(api.GAME_VERSION, '0.1.0-candidate.1');
-  assert.equal(api.CONTENT_VERSION, '2026.11.12.1');
+  assert.equal(api.GAME_VERSION, '0.2.0-candidate.1');
+  assert.equal(api.CONTENT_VERSION, '2026.11.13.1');
   assert.equal(api.SAVE_KEY, 'pocket-bounce.save');
   assert.equal(s.schema, 2);
   assert.equal(s.gameVersion, api.GAME_VERSION);

@@ -1,4 +1,4 @@
-export const CONTENT_VERSION = '2026.11.12.1';
+export { CONTENT_VERSION } from './versions.mjs';
 export const CHAPTERS = [
   { id: 1, title: '初识球桌', description: '认箭头、数六拍，学会在稳定局面思考。' },
   { id: 2, title: '借力台边', description: '反向不等于退路，留心每一拍。' },

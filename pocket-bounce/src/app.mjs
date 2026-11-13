@@ -62,10 +62,11 @@ export async function boot(doc = document, win = window) {
     if (starting || runtime) return;
     starting = true; retry.hidden = true; loadError.textContent = ''; loadingTitle.textContent = '正在铺好球桌';
     try {
-      const [assets, engine, content, persistence, timing] = await Promise.all([
-        loadResources({ cache, onProgress: p => { loadingProgress.textContent = `读取本地原图 ${p.loaded} / ${p.total}${p.failed ? `，失败 ${p.failed}` : ''}`; } }),
-        import('./engine.mjs'), import('./levels.mjs'), import('./persistence.mjs'), import('./timing.mjs')
-      ]);
+      const assets = await loadResources({ cache, onProgress: p => { loadingProgress.textContent = `读取本地原图 ${p.loaded} / ${p.total}${p.failed ? `，失败 ${p.failed}` : ''}`; } });
+      const engine = await import('./engine.mjs');
+      const content = await import('./levels.mjs');
+      const persistence = await import('./persistence.mjs');
+      const timing = await import('./timing.mjs');
       const { solve } = await import('./solver.mjs');
       if (!Array.isArray(content.LEVELS) || content.LEVELS.length === 0 || content.CHAPTERS.length !== 6) throw new Error('关卡内容未准备完整，请重试。');
       runtime = await wire({ assets, engine, content, persistence, timing, solve });
@@ -97,8 +98,8 @@ export async function boot(doc = document, win = window) {
       // Optional local audio pack; failures are visible and never block the game.
       let player = audio.get(type);
       if (!player) {
-        player = new win.Audio(`./audio/${type}.ogg`); player.preload = 'none'; player.volume = type === 'roll' ? .18 : .45;
-        player.addEventListener('error', () => { if (!player.reported) { player.reported = true; notice(`本地音效 ${type}.ogg 未就绪，可继续静音游玩。`); errors.push({ type: 'audio', file: `${type}.ogg` }); } });
+        player = new win.Audio(`./audio/${type}.mp3`); player.preload = 'none'; player.volume = type === 'roll' ? .18 : .45;
+        player.addEventListener('error', () => { if (!player.reported) { player.reported = true; notice(`本地音效 ${type}.mp3 未就绪，可继续静音游玩。`); errors.push({ type: 'audio', file: `${type}.mp3` }); } });
         audio.set(type, player);
       }
       try { player.currentTime = 0; const playing = player.play(); playing?.catch(() => {}); } catch { /* Browser may still require a new trusted gesture. */ }
@@ -118,7 +119,7 @@ export async function boot(doc = document, win = window) {
     function event(type, detail) {
       const levelId = detail.levelId;
       if (type === 'attempt' || type === 'restart' || type === 'undo') clock.setContext({ mode: 'play', levelId, completed: !!save.progress[levelId]?.completed, owner });
-      clock.event(type, { ...detail, mainCompleted: type === 'complete' && levels.every(l => save.progress[l.id]?.completed) });
+      clock.event(type === 'replayComplete' ? 'complete' : type, { ...detail, mainCompleted: type === 'complete' && levels.every(l => save.progress[l.id]?.completed) });
     }
     function model() { return { save, levels, chapters, level: controller.level, state: controller.state, settings: save.settings, selected, gameVersion: p.GAME_VERSION, contentVersion: content.CONTENT_VERSION ?? p.CONTENT_VERSION, hint, pauseReason }; }
     function applyLayout() {
@@ -160,7 +161,14 @@ export async function boot(doc = document, win = window) {
       pauseReason = reason; view.cancel(); controller.pause(); dialog = 'pause'; paint();
     }
     function claim() {
+      const previousOwner = owner && lease.owns();
       owner = !doc.hidden && lease.claim();
+      if (owner && !previousOwner) {
+        const latest = p.loadSave(storage, levels);
+        save = latest.save; controller.save = save;
+        clock = new timing.PlayClock({ stats: save.stats, sessionId, automated, device: device() });
+        if (save.current) controller.restore(); else controller.menu();
+      }
       if (!owner) notice('另一标签页正在使用此存档，或本地存储不可用。请关闭另一页后再点继续。');
       return owner;
     }
@@ -324,10 +332,11 @@ export async function boot(doc = document, win = window) {
     if (loaded.warnings.length) notice(loaded.warnings.join('；'));
     if (!owner) notice('另一标签页正使用此存档，或本地存储不可用；请处理后显式继续。');
     paint();
-    return { controller, view, clock };
+    return { controller, view, get clock() { return clock; } };
   }
   retry.addEventListener('click', start);
   await start();
+  return runtime;
 }
 
 if (typeof window !== 'undefined' && typeof document !== 'undefined') {

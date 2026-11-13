@@ -17,7 +17,7 @@ export async function loadResources({ manifest = ART_MANIFEST, loadImage = brows
   if (entries.some(([, path]) => !/^\.\/art\/[\w-]+\.(png|jpg)$/.test(path))) throw new Error('只允许项目本地 art 资源。');
   let loaded = 0;
   onProgress({ loaded, total: entries.length });
-  await Promise.all(entries.map(async ([name, path]) => {
+  for (const [name, path] of entries) {
     let timer;
     try {
       const image = cache[path] ?? await Promise.race([
@@ -28,7 +28,7 @@ export async function loadResources({ manifest = ART_MANIFEST, loadImage = brows
       assets[name] = image; cache[path] = image; loaded++;
     } catch (error) { failures.push({ name, path, reason: error.message }); }
     finally { clearTimeout(timer); onProgress({ loaded, total: entries.length, name, failed: failures.length }); }
-  }));
+  }
   if (failures.length) {
     const error = new Error(`资源加载失败，请重试：${failures.map(f => `${f.path}（${f.reason}）`).join('；')}`);
     error.name = 'ResourceLoadError'; error.failures = failures; throw error;

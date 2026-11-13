@@ -1,9 +1,10 @@
+import { GAME_VERSION, CONTENT_VERSION } from './versions.mjs';
 const CATEGORIES = ['activeMs', 'firstMainMs', 'replayMs', 'pauseMs', 'hiddenMs', 'menuMs', 'loadingMs', 'resultMs', 'idleMs', 'sleepMs', 'nonOwnerMs'];
 function ledger() {
   return { ...Object.fromEntries(CATEGORIES.map(key => [key, 0])), levels: {}, mainCompleted: false, firstFinishMs: null };
 }
 export function createStats() {
-  return { schema: 1, gameVersion: '0.1.0-candidate.1', contentVersion: '2026.11.12.1',
+  return { schema: 1, gameVersion: GAME_VERSION, contentVersion: CONTENT_VERSION,
     ...ledger(), sessions: [], automated: ledger(), mainCompleted: false, firstFinishMs: null };
 }
 function levelRecord() {
@@ -50,7 +51,7 @@ export function validateStats(value, levelIds) {
     }
   };
   checkLedger(value, true);
-  if (value.schema !== 1 || value.gameVersion !== '0.1.0-candidate.1' || value.contentVersion !== '2026.11.12.1' ||
+  if (value.schema !== 1 || value.gameVersion !== GAME_VERSION || value.contentVersion !== CONTENT_VERSION ||
     !Array.isArray(value.sessions) || value.sessions.length > 10_000) fail();
   const ids = new Set();
   for (const s of value.sessions) {

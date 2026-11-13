@@ -78,7 +78,7 @@ export class GameController {
       const previous = this.save.progress[level.id];
       const stars = state.moves <= level.par ? 3 : state.moves <= level.par + 2 ? 2 : 1;
       this.save.progress[level.id] = { bestMoves: Math.min(previous?.bestMoves ?? Infinity, state.moves), stars: Math.max(previous?.stars ?? 0, stars), completed: true };
-      if (!previous?.completed) this.onEvent('complete', { levelId: level.id, moves: state.moves, stars });
+      this.onEvent(previous?.completed ? 'replayComplete' : 'complete', { levelId: level.id, moves: state.moves, stars });
     } else if (state.status === 'lost') this.onEvent('failure', { levelId: level.id, moves: state.moves });
   }
   async hint() {

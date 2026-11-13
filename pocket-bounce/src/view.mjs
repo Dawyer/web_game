@@ -33,7 +33,7 @@ export function animationFrame(before, events, elapsed, stepMs = 100, reduced = 
     if (!ball) continue;
     const raw = Math.min(1, (time - start) / stepMs), p = raw * raw * (3 - 2 * raw);
     const from = event.from ?? ball, to = event.to ?? from;
-    ball.dir = event.dir ?? ball.dir;
+    ball.dir = (event.type === 'transfer' ? event.reflectedDir : event.dir) ?? ball.dir;
     if (['move', 'mirror', 'pocket'].includes(event.type)) {
       ball.x = from.x + (to.x - from.x) * p; ball.y = from.y + (to.y - from.y) * p;
       ball.rotation += ((to.x - from.x) || (to.y - from.y)) * p * 2.3;

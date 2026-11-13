@@ -1,0 +1,22 @@
+Pocket Bounce sound pack: CC0 1.0 public domain.
+https://creativecommons.org/publicdomain/zero/1.0/
+
+Unmodified MP3 copies from this repository's existing licensed audio pack.
+The inherited license and source mapping are preserved in SOURCE-LICENSE.txt.
+Original creator: Kenney. Original mirror: Kenney uploads on OpenGameArt.
+Prior repository conversion: mono 44.1 kHz / 64 kbps MP3. No new conversion.
+
+Local file       copied from plants-vs-zombies/audio/  original Kenney pack/item
+click.mp3        click.mp3                             UI Audio, buttons/switches/clicks
+roll.mp3         place.mp3                             RPG Audio, bookPlace1
+bounce.mp3       hit.mp3                               RPG Audio, metalClick
+pocket.mp3       sun.mp3                               RPG Audio, handleCoins
+win.mp3          win.mp3                               Digital Audio, powerUp1
+lose.mp3         lose.mp3                              Digital Audio, phaserDown2
+undo.mp3         shoot.mp3                             Digital Audio, pepSound2
+
+https://kenney.nl/assets/ui-audio
+https://kenney.nl/assets/rpg-audio
+https://kenney.nl/assets/digital-audio
+
+No PopCap / EA or Roll Sort! audio is included.

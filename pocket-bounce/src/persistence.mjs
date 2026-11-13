@@ -1,6 +1,7 @@
 import { createStats, validateStats } from './timing.mjs';
-export const GAME_VERSION = '0.1.0-candidate.1';
-export const CONTENT_VERSION = '2026.11.12.1';
+import { strike } from './engine.mjs';
+import { GAME_VERSION, CONTENT_VERSION } from './versions.mjs';
+export { GAME_VERSION, CONTENT_VERSION } from './versions.mjs';
 export const SAVE_KEY = 'pocket-bounce.save';
 export function createSave() {
   return { schema: 2, gameVersion: GAME_VERSION, contentVersion: CONTENT_VERSION, progress: {}, current: null,
@@ -34,7 +35,7 @@ function validateState(state, level) {
     if (level) {
       const initial = level.balls.find(b => b.id === ball.id);
       requireThat(initial && initial.color === ball.color, 'ball identity/color');
-      requireThat(!(level.obstacles ?? []).some(o => o.x === ball.x && o.y === ball.y), 'ball on obstacle');
+      requireThat(!(level.blocks ?? level.obstacles ?? []).some(o => o.x === ball.x && o.y === ball.y), 'ball on obstacle');
     }
   }
   requireThat((state.status === 'won') === (state.balls.length === 0), 'won consistency');
@@ -54,6 +55,10 @@ function validateCurrent(current, byId) {
     requireThat(before.moves === i && before.status === 'playing', 'history sequence');
     requireThat(safeId(current.actions[i]) && before.balls.some(b => b.id === current.actions[i]), 'action id');
     requireThat(after.balls.every(b => before.balls.some(old => old.id === b.id && old.color === b.color)), 'history ball identity');
+    if (level?.blocks && level?.exits) {
+      const expected = strike(level, before, current.actions[i]).state;
+      requireThat(JSON.stringify(expected) === JSON.stringify(after), 'history transition');
+    }
   }
   if (level) {
     const first = current.history[0] ?? current.state;
@@ -78,9 +83,24 @@ export function validateSave(value, levels) {
   validateStats(value.stats, byId && new Set(byId.keys()));
   return value;
 }
+function migrateKnown(value, levels) {
+  // The only older real format is the inherited candidate. Keep its four exact
+  // teaching tables; never guess what an unknown future schema means.
+  if (value?.schema !== 2 || value.gameVersion !== '0.1.0-candidate.1' || value.contentVersion !== '2026.11.12.1') return value;
+  const next = structuredClone(value);
+  next.gameVersion = GAME_VERSION; next.contentVersion = CONTENT_VERSION;
+  next.stats.gameVersion = GAME_VERSION; next.stats.contentVersion = CONTENT_VERSION;
+  for (const s of next.stats.sessions ?? []) { s.gameVersion = GAME_VERSION; s.contentVersion = CONTENT_VERSION; }
+  if (levels) {
+    const byId = catalog(levels), known = new Set(['01', '02', '03', '04']);
+    for (const id of Object.keys(next.progress)) requireThat(known.has(id) && byId.has(id), 'migration unknown old level');
+    if (next.current) requireThat(known.has(next.current.levelId), 'migration unknown checkpoint');
+  }
+  return next;
+}
 export function importSave(text, levels) {
   requireThat(typeof text === 'string' && text.length <= MAX_TEXT, 'import size');
-  return validateSave(JSON.parse(text), levels);
+  return validateSave(migrateKnown(JSON.parse(text), levels), levels);
 }
 export function exportSave(save) { return JSON.stringify(validateSave(save), null, 2); }
 const message = error => error instanceof Error ? error.message : String(error);
@@ -102,6 +122,10 @@ export function loadSave(storage, levels) {
   try {
     raw = storage.getItem(SAVE_KEY);
     const save = raw === null ? createSave() : importSave(raw, levels);
+    if (raw !== null && JSON.parse(raw).gameVersion !== GAME_VERSION) {
+      protectedStores.set(storage, raw);
+      return { save, warnings: ['旧候选存档已迁移；首次写入前会保留原文备份。'] };
+    }
     protectedStores.delete(storage);
     return { save, warnings: [] };
   } catch (error) {

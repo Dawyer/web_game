@@ -6,4 +6,12 @@
 
 证据：evidence/*test.mjs*.log，规则/solver/继承controller/loader/timing/persistence，全部退出0、取消0。随后 integration.test.mjs 与 tools/validate_levels.js 另行执行。最新状态以外层 REPORT.md / RESULT.json 为准。
 
-剩余：音效及许可接线、应用实际DOM启动测试、存档迁移与严校验、完整60个非同构内容、HTTP资源检查、全流程回归；双端真实浏览器/真机/美术/60fps/新手盲测/三小时首次有效内容均未验证，交协调方。4关原型不得冒称60关/三小时。
+剩余：完整60个非同构内容、HTTP资源检查、全流程回归；双端真实浏览器/真机/美术/60fps/新手盲测/三小时首次有效内容均未验证，交协调方。4关原型不得冒称60关/三小时。
+
+## run2 检查点 2（2026-11-13）
+
+本次同模型调用已成功；未启动任何模型子进程、未循环探测。严格串行重跑 engine / solver / controller / loader / timing / persistence / integration，随后 migration / app，全部退出0、取消0；原始输出新增 evidence/*.attempt*.log，不覆盖 run1。DOM fixture 四种尺寸鼠标/模拟触控接线通过，不等于真实浏览器/真机。沿用未提交的应用/音效/迁移改动，7个本地许可音效及来源已保存。
+
+现场与输入说明有差异：初始 HEAD=2dd49dd，但旧 origin/main 仍是1a99645，fdd92ba 未在本地对象库；实际 fetch 后 origin/main=fdd92ba，与本地各领先1提交。将合并该协调方提交而非重写/覆盖 board。身份以命令级 -c 指定 Dawyer，不更改配置。
+
+接续：先保存推送此四关原型，再加固提示失效边界、音效和迁移测试；之后有界搜索复核内容，最后列出真实设备与盲测未验项。
