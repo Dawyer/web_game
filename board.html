@@ -74,7 +74,7 @@
 <body>
 <header class="top">
   <h1>任务看板</h1>
-  <div class="meta">共 19 项任务（已完成 3） · 更新于 2026-11-13T15:40:52+08:00</div>
+  <div class="meta">共 20 项任务（已完成 4） · 更新于 2026-11-13T17:32:53+08:00</div>
   <p class="meta">任务发布、完成均在当前QQ会话通知；游戏与运维统一登记。弹球目前为4关原型且开发中断，HW已连通但环境与迁移未执行。</p>
 </header>
 <div class="wrap">
@@ -342,7 +342,7 @@
       </article>
       </section>
       <section class="col col-shipped">
-        <header><h2>已完成<span class="count">3</span></h2><p>结果已核验，不等同仅生成文件</p></header>
+        <header><h2>已完成<span class="count">4</span></h2><p>结果已核验，不等同仅生成文件</p></header>
       <article class="card task" data-task-id="task-board-upgrade" data-kind="工具">
         <div class="chead">
           <h3>游戏开发看板升级为任务看板</h3>
@@ -390,6 +390,22 @@
         </dl>
         <div class="sec"><h4>核验记录</h4><ul><li>10:50实测报告：Luna与Sol Pro均23/23字段正确，0错误。</li><li>Luna与Sol Pro两份报告相同；测试真值更新为50项。</li></ul></div><div class="sec"><h4>已完成</h4><ul class="done"><li>机械活交给Luna；实现与判断仍用Sol Pro。</li></ul></div>
         <p class="note">备注：费用为会话估计值，不是订阅额度余额。</p>
+      </article>
+      <article class="card task" data-task-id="instabox-game-capability-audit" data-kind="验证">
+        <div class="chead">
+          <h3>Instabox 游戏作业环境实测</h3>
+          <span class="diff">验证</span>
+        </div>
+        <p class="pitch">检查免费沙箱能否承担网页游戏开发工具、自动化测试及桌面/手机模拟浏览器验收，不启动模型开发任务。</p>
+        <div class="tags"></div>
+        <dl>
+          <dt>负责</dt><dd>协调方 / Instabox</dd>
+          <dt>更新</dt><dd>2026-11-13T17:32:53+08:00</dd>
+          <dt>来源</dt><dd>—</dd>
+          <dt>素材</dt><dd>—</dd>
+        </dl>
+        <p class="detail"><b>当前进度</b>：环境实测完成：可做当前网页游戏测试与短时作业；独立模型开发工人尚未配置。</p><p class="detail"><b>下一步</b>：长时开发仍建议常驻主机；如改由沙箱实施，需另行配置 Hermes/模型授权与分段检查点。</p><div class="sec"><h4>核验记录</h4><ul><li>免费实例：4核、8GiB内存、20GiB持久数据盘；当前单次120分钟、空闲30分钟自动暂停。</li><li>GitHub e243dd6 已推送版：使用本地校验过的 Node 26.12.1，原测试脚本9文件47项全部通过。</li><li>真实Chromium四种视口：16次教学关通关、鼠标/模拟触控、刷新恢复通过；17图与7音效成功解码，JS及HTTP错误为0。</li><li>Hermes未装、Codex未登录；未迁移凭据、未启动模型任务，也不把本次测试当成游戏完整交付。</li></ul></div><div class="sec"><h4>验收要点</h4><ul><li>唤醒现有免费实例并核对实际资源及运行限制。</li><li>运行现有游戏自动测试和真实浏览器交互。</li><li>区分环境能力、模型工人就绪及游戏完整交付。</li></ul></div>
+        <p class="note">备注：—</p>
       </article>
       </section>
       <section class="col col-cancelled">
