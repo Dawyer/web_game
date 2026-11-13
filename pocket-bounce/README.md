@@ -27,10 +27,10 @@ HW 显式使用已验证的 Node，不依赖 runner 中继承的 LOS 默认路�
     NODE=/root/.local/bin/node python3 tools/run_tests.py
     /root/.local/bin/node --max-old-space-size=192 tools/validate_levels.js
 
-测试逐文件串行、192MB heap、单文件超时。关卡搜索逐关串行，状态和时间都有上限；超时不报通过。tools/reference.mjs 不导入引擎，独立 BFS 核对最短与路径上的所有可用动作。原始输出在 evidence/。DOM fixture 不是浏览器，不证明 CSS/真实触摸/音频解码通过。
+测试逐文件串行、192MB heap、单文件超时。关卡搜索逐关串行，状态和时间都有上限；超时不报通过。tools/reference.mjs 不导入引擎，独立 BFS 核对最短与路径上的所有可用动作。原始输出在 evidence/（该目录被 .gitignore 忽略；validate_levels.js 在干净检出缺少它时会自动创建，不再抛 ENOENT）。真实无头 Chromium 双端检查见 tools/browser-check.cjs。DOM fixture 不是浏览器，不证明 CSS/真实触摸/音频解码通过。
 
 ## 当前边界
-HW 恢复检查点：4 个教学关，原 50 项 + 继承 5 项 experience 回归全绿。六章 60 关仍在扩展，不能把空章节当已完成内容。独立浏览器双端验收、实体手机、用户判图、三小时真人首次盲测均待验证。自动回放不是真人时长。
+HW/cline 续做：4 个教学关；规则 v1 六个小节已冻结为唯一规则源，并新增 tests/rules-baseline.test.mjs 手写样例 + tools/reference.mjs 差分。串行测试 13 文件 / 69 项全绿（原始输出在 evidence/）。真实无头 Chromium 双端检查 tools/browser-check.cjs（1280/1920 桌面 + 360/390 竖屏）本地通过：每端 4 关 3 星、无脚本错误、无 4xx。六章 60 关仍在扩展，不能把空章节当已完成内容。实体手机、用户画风认可、三小时真人首次盲测、协调方独立验收仍未验证。自动回放不是真人时长。
 
 ## 版本回退
 先在设置导出完整 JSON，再复制本机浏览器数据备份。协调方以 Git 检查点恢复整套代码/素材，不单独替换引擎或关卡；不要把新版存档写给旧版。若需退回旧版本，使用对应版本导出的备份，在独立浏览器配置测试导入；保留新版原档。未经独立验收不部署。

@@ -79,7 +79,7 @@ export class PlayClock {
     if (!this.stats.sessions.some(s => s.id === sessionId)) this.stats.sessions.push({ id: sessionId, device, automated,
       gameVersion: this.stats.gameVersion, contentVersion: this.stats.contentVersion });
   }
-  setContext(context, { newAttempt = false } = {}) {
+  setContext(context, { newAttempt = false, resumeAttempt = true } = {}) {
     if (!context || Object.keys(context).some(k => !['mode', 'levelId', 'completed', 'owner', 'levelVersion'].includes(k))) throw new Error('Invalid context');
     const next = { ...this.context, ...context };
     if (!['play', 'pause', 'hidden', 'menu', 'loading', 'result', 'animation', 'idle'].includes(next.mode)) throw new Error('Invalid mode');
@@ -93,7 +93,7 @@ export class PlayClock {
     if (this.context.mode === 'play' && this.context.levelId && this.context.owner) {
       const record = this.target.levels[this.context.levelId] ??= levelRecord();
       if (context.levelVersion !== undefined) record.levelVersion = context.levelVersion;
-      if (newAttempt || !record.attemptOpen) { record.attemptOpen = true; record.attemptMs = 0; count(record, 'attempts'); }
+      if (newAttempt || resumeAttempt && !record.attemptOpen) { record.attemptOpen = true; record.attemptMs = 0; count(record, 'attempts'); }
     }
   }
   tick() {

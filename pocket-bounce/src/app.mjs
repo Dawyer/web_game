@@ -35,14 +35,16 @@ export function screenMarkup(screen, model) {
 }
 
 export function statsCSV(stats) {
-  const columns = ['levelId', 'activeMs', 'firstMainMs', 'replayMs', 'attempts', 'restarts', 'undos', 'hints', 'failures', 'completions', 'firstClearMs', 'successfulAttemptMs', 'firstAttempts', 'firstRestarts', 'firstUndos', 'firstHints', 'firstFailures', 'levelVersion'];
+  const columns = ['levelId', 'activeMs', 'firstMainMs', 'replayMs', 'attemptMs', 'attempts', 'restarts', 'undos', 'hints', 'hintTiers', 'failures', 'completions', 'firstClearMs', 'successfulAttemptMs', 'firstAttempts', 'firstRestarts', 'firstUndos', 'firstHints', 'firstHintTiers', 'firstFailures', 'cleared', 'attemptOpen', 'levelVersion'];
   const csv = value => /[",\r\n]/.test(String(value ?? '')) ? `"${String(value).replaceAll('"', '""')}"` : String(value ?? '');
   const rows = [columns.join(',')];
   for (const [id, record] of Object.entries(stats.levels || {})) rows.push(columns.map(key => csv(key === 'levelId' ? id : record[key])).join(','));
   rows.push('', 'category,ms');
   for (const key of ['activeMs', 'firstMainMs', 'replayMs', 'pauseMs', 'hiddenMs', 'menuMs', 'loadingMs', 'resultMs', 'animationMs', 'idleMs', 'sleepMs', 'nonOwnerMs', 'firstFinishMs']) rows.push(`${key},${csv(stats[key])}`);
-  rows.push('', 'automatedLevelId,activeMs,attempts,restarts,undos,hints');
-  for (const [id, r] of Object.entries(stats.automated?.levels || {})) rows.push([id, r.activeMs, r.attempts, r.restarts, r.undos, r.hints].map(csv).join(','));
+  rows.push('', ['automatedLevelId', ...columns.slice(1)].join(','));
+  for (const [id, r] of Object.entries(stats.automated?.levels || {})) rows.push(columns.map(key => csv(key === 'levelId' ? id : r[key])).join(','));
+  rows.push('', 'automatedCategory,ms');
+  for (const [key, value] of Object.entries(stats.automated || {})) if (typeof value === 'number' || key === 'firstFinishMs') rows.push(`${key},${csv(value)}`);
   rows.push('', 'sessionId,device,automated,gameVersion,contentVersion');
   for (const s of stats.sessions || []) rows.push([s.id, s.device, s.automated, s.gameVersion, s.contentVersion].map(csv).join(','));
   return '\uFEFF' + rows.join('\r\n');
@@ -106,7 +108,7 @@ export async function boot(doc = document, win = window) {
     }
     function context() {
       const currentLevel = controller.level;
-      const mode = doc.hidden ? 'hidden' : controller.mode === 'menu' ? (dialog ? 'pause' : 'menu') : idlePaused ? 'idle' : dialog || controller.mode === 'pause' ? 'pause' : controller.locked ? 'animation' : controller.state?.status !== 'playing' ? 'result' : 'play';
+      const mode = doc.hidden ? 'hidden' : controller.mode === 'menu' ? (dialog ? 'pause' : 'menu') : idlePaused ? 'idle' : dialog && ['result', 'main-result'].includes(dialog) ? 'result' : dialog || controller.mode === 'pause' ? 'pause' : controller.locked ? 'animation' : controller.state?.status !== 'playing' ? 'result' : 'play';
       clock.setContext({ mode, levelId: currentLevel?.id ?? null, completed: !!save.progress[currentLevel?.id]?.completed, owner });
     }
     function persist() {
@@ -118,7 +120,7 @@ export async function boot(doc = document, win = window) {
     }
     function event(type, detail) {
       const levelId = detail.levelId;
-      if (type === 'attempt' || type === 'restart' || type === 'undo') clock.setContext({ mode: 'play', levelId, completed: !!save.progress[levelId]?.completed, owner }, { newAttempt: type === 'attempt' });
+      if (type === 'attempt' || type === 'restart' || type === 'undo') clock.setContext({ mode: 'play', levelId, completed: !!save.progress[levelId]?.completed, owner }, { newAttempt: type === 'attempt', resumeAttempt: type !== 'restart' });
       clock.event(type === 'replayComplete' ? 'complete' : type, { ...detail, mainCompleted: type === 'complete' && levels.every(l => save.progress[l.id]?.completed) });
     }
     function model() { return { save, levels, chapters, level: controller.level, state: controller.state, settings: save.settings, selected, gameVersion: p.GAME_VERSION, contentVersion: content.CONTENT_VERSION ?? p.CONTENT_VERSION, hint, pauseReason }; }
@@ -154,7 +156,7 @@ export async function boot(doc = document, win = window) {
       if (dialog) $('#dialog').innerHTML = screenMarkup(dialog, model());
       context(); updateClock();
     }
-    function updateClock() { $('#clock-line').textContent = `有效 ${minutes(clock.stats.activeMs)} · 首次主线 ${minutes(clock.stats.firstMainMs)}${automated ? ' · 自动回放单列' : ''}`; }
+    function updateClock() { const ledger = automated ? clock.stats.automated : clock.stats; $('#clock-line').textContent = `有效 ${minutes(ledger.activeMs)} · 首次主线 ${minutes(ledger.firstMainMs)}${automated ? ' · 自动回放单列' : ''}`; }
     function showDialog(name) { dialog = name; paint(); $('#dialog').focus(); }
     function pause(reason = '', { idle = false } = {}) {
       if (controller.mode === 'menu') return;

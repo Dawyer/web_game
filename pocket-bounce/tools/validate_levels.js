@@ -4,7 +4,10 @@ import { initialState, strike, validateLevel } from '../src/engine.mjs';
 import { solve } from '../src/solver.mjs';
 import { referenceStrike, referenceSolve } from './reference.mjs';
 import { isDeepStrictEqual } from 'node:util';
-import { writeFileSync } from 'node:fs';
+import { mkdirSync, writeFileSync } from 'node:fs';
+const evidenceDir = new URL('../evidence/', import.meta.url);
+// A clean checkout may not contain the (git-ignored) evidence directory yet.
+mkdirSync(evidenceDir, { recursive: true });
 const results = [];
 for (const level of LEVELS) {
   validateLevel(level);
