@@ -74,7 +74,7 @@
 <body>
 <header class="top">
   <h1>任务看板</h1>
-  <div class="meta">共 20 项任务（已完成 4） · 更新于 2026-11-13T21:29:09+08:00</div>
+  <div class="meta">共 20 项任务（已完成 5） · 更新于 2026-11-13T22:23:33+08:00</div>
   <p class="meta">弹球仍是中断的4关原型；11月13日晚计划待本轮新确认，无开发worker运行。PvZ保持终止；HW环境和迁移未执行。</p>
 </header>
 <div class="wrap">
@@ -90,25 +90,6 @@
       </section>
       <section class="col col-active">
         <header><h2>进行中<span class="count">1</span></h2><p>已核实正在执行</p></header>
-      <article class="card task" data-task-id="hw-game-environment" data-kind="运维">
-        <div class="chead">
-          <h3>HW 游戏开发环境与迁移准备</h3>
-          <span class="diff">运维</span>
-        </div>
-        <p class="pitch">补齐Node、Hermes、浏览器和依赖，迁移代码、素材与未提交改动。</p>
-        <div class="tags"></div>
-        <dl>
-          <dt>负责</dt><dd>协调方 / HW</dd>
-          <dt>更新</dt><dd>2026-11-13T21:29:09+08:00</dd>
-          <dt>来源</dt><dd>—</dd>
-          <dt>素材</dt><dd>—</dd>
-        </dl>
-        <p class="detail"><b>当前进度</b>：HW已接收并逐项校验277份现行源码/素材/规格/报告，继承未提交体验测试；另1份历史备份留LOS。正在安装依赖与运行环境。</p><p class="detail"><b>阻塞原因</b>：云DNS故障已修复，内网域名正常；GitHub git直连受限，已改用准确官方源码包。Node/Hermes/浏览器和模型实际运行尚待通过。</p><p class="detail"><b>下一步</b>：实际跑基线与继承失败测试、启动浏览器及模型探测后，再启HW唯一worker。</p><div class="sec"><h4>验收要点</h4><ul><li>保存并校验LOS未提交改动和素材。</li><li>模型认证单独验证，不在看板公开凭证。</li><li>Node测试和浏览器能实际启动。</li><li>仅一个开发worker，LOS不重复开工。</li></ul></div>
-        <p class="note">备注：登记为待开始，不冒称已执行。</p>
-      </article>
-      </section>
-      <section class="col col-blocked">
-        <header><h2>阻塞 / 暂停<span class="count">1</span></h2><p>显示原因与下一步，不冒称在运行</p></header>
       <article class="card task" data-task-id="pocket-bounce" data-kind="游戏">
         <div class="chead">
           <h3>Pocket Bounce《弹球入袋》（源：Roll Sort!）</h3>
@@ -117,14 +98,18 @@
         <p class="pitch">台球按箭头方向滚动，撞墙反弹，滚进同色袋口即消除</p>
         <div class="tags"><span class="tag">逻辑解谜</span><span class="tag">4关原型</span><span class="tag">续做中</span></div>
         <dl>
-          <dt>负责</dt><dd>协调方迁移 / HW待恢复</dd>
-          <dt>更新</dt><dd>2026-11-13T21:03:13+08:00</dd>
+          <dt>负责</dt><dd>HW实现 / 协调方独立验收</dd>
+          <dt>更新</dt><dd>2026-11-13T22:23:33+08:00</dd>
           <dt>来源</dt><dd>一周游语 Vol.166 第 5 款；玩法机制自研实现</dd>
           <dt>素材</dt><dd>已完成 17 个原创素材文件：台面/木边（512² 无缝）、六色球（256²）、箭头/袋口/圆环/镜面/木箱/金星（320²）、面板/按钮、关卡选择背景 1920×1080；预览 sheets/mock-game.png</dd>
         </dl>
-        <p class="detail"><b>当前进度</b>：4关原型保持在线供试玩；LOS保存恢复检查点4f48b49，未提交体验回归测试完整归档，按用户新要求先迁环境。</p><p class="detail"><b>阻塞原因</b>：迁移HW进行中，环境/认证/基线通过前不启动游戏开发；LOS旧会话已interrupted，未重启。</p><p class="detail"><b>下一步</b>：先完成HW开发环境与代码/素材/未提交测试迁移核验，再在HW单worker继续。</p><div class="sec"><h4>核验记录</h4><ul><li>2026-11-13 20:32：GitHub main=a0170b3，本机全新克隆核实2dd49dd/d098834/79d1c40均在远端历史；LOS HEAD仍79d1c40且保留2项未提交改动。</li><li>独立执行：远端已发布版9文件47/47，含恢复补丁副本10文件50/50；失败/取消/跳过均0。副本两项SHA-256与LOS相同；4关独立参考BFS最短一致。</li><li>本机真实Chrome：1280×720、1920×1080、360×800、390×844共16次通关，动画中刷新4次恢复；无横向溢出、JS异常0，但隐式图标404未过资源门禁。</li><li>证据：verification-2026-11-13-2030/{independent-tests.json,browser-audit.json,los-readonly.json}；手机仅模拟触控，真机/用户判图/三小时首次盲玩待验。</li><li>20:42核实：任务/5份标准/17份素材/222份继承文件哈希一致；唯一worker PID 186157、准确session有效租约和started admission已核对，模型Sol Pro/xhigh。</li></ul></div><p><a href="pocket-bounce-preview/">打开未验收原型</a></p><div class="sec"><h4>验收要点</h4><ul><li>首轮按 6 章 60 关规划；发布关卡逐一证明可解，最短步数须有证明</li><li>先定稿方向/反射/连锁/停球/循环规则并做独立预期测试，再批量设计与求解关卡</li><li>撤销/重置/关卡选择/星级/localStorage 可用</li><li>素材与音效 0 个 404、无 console 报错、无外链</li><li>画质按规格第 4 节：DPR 画布、自转、拖尾、进袋吸入、粒子、绒布质感</li><li>主线至少三小时有效内容为目标；须真实首次试玩验证，无证据标待验证，不靠挂机/重复刷关凑数</li><li>记录累计有效游玩/首次主线通关/每关耗时及尝试次数；两端计时、存档、导出与暂停后台边界测试通过</li></ul></div><div class="sec"><h4>已完成</h4><ul class="done"><li>4个教学关与核心规则/求解器已形成原型。</li><li>选关、击球、提示、撤销、重试、星级、本地存档及计时已接线；不等于全部验收通过。</li><li>检查点79d1c40已推送；另有应用恢复逻辑与恢复测试未提交且保留。</li><li>2026-11-13 13:36独立重跑50项测试通过、0失败（10个文件）。</li></ul></div>
-        <p class="note">备注：用户已明确继续昨天的游戏；20:42在LOS独立新目录从原断点恢复唯一worker。旧工作区与日志已归档，未迁移到临时沙箱。</p>
+        <p class="detail"><b>当前进度</b>：先迁环境的门禁已通过，HW单worker接续原断点；原4关试玩入口保持不变。已独立重现5项遗留体验红灯，优先修实现并建立新旧测试全绿检查点。</p><p class="detail"><b>阻塞原因</b>：游戏尚未交付：继承5项体验测试待修；60关差异内容/独立证明、实体手机、用户判图与三小时真人首次主线仍待验。</p><p class="detail"><b>下一步</b>：先修5项继承失败（不删测试），全套串行回归后保存本机提交；协调方再独立复测、正常推送和发布。</p><div class="sec"><h4>核验记录</h4><ul><li>2026-11-13 20:32：GitHub main=a0170b3，本机全新克隆核实2dd49dd/d098834/79d1c40均在远端历史；LOS HEAD仍79d1c40且保留2项未提交改动。</li><li>独立执行：远端已发布版9文件47/47，含恢复补丁副本10文件50/50；失败/取消/跳过均0。副本两项SHA-256与LOS相同；4关独立参考BFS最短一致。</li><li>本机真实Chrome：1280×720、1920×1080、360×800、390×844共16次通关，动画中刷新4次恢复；无横向溢出、JS异常0，但隐式图标404未过资源门禁。</li><li>证据：verification-2026-11-13-2030/{independent-tests.json,browser-audit.json,los-readonly.json}；手机仅模拟触控，真机/用户判图/三小时首次盲玩待验。</li><li>20:42核实：任务/5份标准/17份素材/222份继承文件哈希一致；唯一worker PID 186157、准确session有效租约和started admission已核对，模型Sol Pro/xhigh。</li><li>2026-11-13 22:19：HW 本机 commit 4349f2443882c4c17d6b11a5a04f6950fb874311（未推送）修复继承 experience 回归；实录 11 文件 55/55、失败/取消/跳过 0，4 关独立 BFS 最短一致；原始输出 evidence/hw-checkpoint-1/{tests.raw.log,levels.raw.log,summary.json}。该结果仍属 worker 自检，待协调方独立复测。</li><li>环境迁移单独验收完成；277现行文件一致、原50/50通过、5个继承红灯真实保留。</li><li>HW指定Sol Pro/xhigh单工人运行：冻结任务hash、进程启动身份、准确session、有效租约及started非terminal admission已核实，子会话0。</li><li>HW启动后再次独立复现5项experience失败，当前为修复阶段；工人尚未新增提交/推送，不能称已修复。</li></ul></div><p><a href="pocket-bounce-preview/">打开未验收原型</a></p><div class="sec"><h4>验收要点</h4><ul><li>首轮按 6 章 60 关规划；发布关卡逐一证明可解，最短步数须有证明</li><li>先定稿方向/反射/连锁/停球/循环规则并做独立预期测试，再批量设计与求解关卡</li><li>撤销/重置/关卡选择/星级/localStorage 可用</li><li>素材与音效 0 个 404、无 console 报错、无外链</li><li>画质按规格第 4 节：DPR 画布、自转、拖尾、进袋吸入、粒子、绒布质感</li><li>主线至少三小时有效内容为目标；须真实首次试玩验证，无证据标待验证，不靠挂机/重复刷关凑数</li><li>记录累计有效游玩/首次主线通关/每关耗时及尝试次数；两端计时、存档、导出与暂停后台边界测试通过</li></ul></div><div class="sec"><h4>已完成</h4><ul class="done"><li>4个教学关与核心规则/求解器已形成原型。</li><li>选关、击球、提示、撤销、重试、星级、本地存档及计时已接线；不等于全部验收通过。</li><li>2026-11-13 13:36独立重跑50项测试通过、0失败（10个文件）。</li><li>2026-11-13 HW：环境迁移核验通过；本机检查点 4349f24 修复继承 5 项 experience 红灯，55/55 全绿（未推送）。</li><li>恢复检查点27368ab与候选断点4f48b49完整保留并迁至HW，未提交experience测试原文继承。</li></ul></div>
+        <p class="note">备注：用户要求先迁环境再继续；HW 环境/代码/素材/继承测试已核验，LOS 旧 worker 已终止未重启，HW 唯一 worker 续做中。本机提交未推送，由协调方独立验收后合并。</p>
       </article>
+      </section>
+      <section class="col col-blocked">
+        <header><h2>阻塞 / 暂停<span class="count">0</span></h2><p>显示原因与下一步，不冒称在运行</p></header>
+<p class="empty">（暂无）</p>
       </section>
       <section class="col col-planned">
         <header><h2>待开始<span class="count">0</span></h2><p>已登记，未执行</p></header>
@@ -342,7 +327,7 @@
       </article>
       </section>
       <section class="col col-shipped">
-        <header><h2>已完成<span class="count">4</span></h2><p>结果已核验，不等同仅生成文件</p></header>
+        <header><h2>已完成<span class="count">5</span></h2><p>结果已核验，不等同仅生成文件</p></header>
       <article class="card task" data-task-id="task-board-upgrade" data-kind="工具">
         <div class="chead">
           <h3>游戏开发看板升级为任务看板</h3>
@@ -374,6 +359,22 @@
         </dl>
         <div class="sec"><h4>核验记录</h4><ul><li>SSH严格主机密钥校验通过，远端id/hostname/资源信息已读回。</li></ul></div><div class="sec"><h4>已完成</h4><ul class="done"><li>已验证root身份、主机与系统资源；仅检查，未安装或迁移。</li></ul></div>
         <p class="note">备注：Tailscale网络承载普通SSH；不对外开放新端口。</p>
+      </article>
+      <article class="card task" data-task-id="hw-game-environment" data-kind="运维">
+        <div class="chead">
+          <h3>HW 游戏开发环境与迁移准备</h3>
+          <span class="diff">运维</span>
+        </div>
+        <p class="pitch">补齐Node、Hermes、浏览器和依赖，迁移代码、素材与未提交改动。</p>
+        <div class="tags"></div>
+        <dl>
+          <dt>负责</dt><dd>协调方 / HW</dd>
+          <dt>更新</dt><dd>2026-11-13T22:23:33+08:00</dd>
+          <dt>来源</dt><dd>—</dd>
+          <dt>素材</dt><dd>—</dd>
+        </dl>
+        <p class="detail"><b>当前进度</b>：环境迁移已独立核验通过，HW已接手继续开发；不是游戏交付。</p><p class="detail"><b>下一步</b>：保留LOS原快照与历史备份；后续游戏实现、独立验收在HW流程继续。</p><div class="sec"><h4>核验记录</h4><ul><li>环境收据 environment-receipt.json 与迁移收据已留存；源码固定bf0203a，Python 3.14.9 / Node 26.12.1 / OpenAI SDK 2.24.0。</li><li>HW独立串行执行原50测试：50通过，失败/取消/跳过0；5项继承experience失败真实复现并保留待修。</li><li>真实Chrome 158加载桌面1366×900、移动390×844，入口均HTTP200、各17张素材加载，JS异常/错误响应/请求失败均0，无横向溢出。只属环境冒烟，不是真机/完整游戏验收。</li><li>指定Sol Pro模型一发认证探测返回HWREADY且退出0；HW唯一新会话与准确backend租约/started admission已核对，无子会话。</li></ul></div><div class="sec"><h4>验收要点</h4><ul><li>保存并校验LOS未提交改动和素材。</li><li>模型认证单独验证，不在看板公开凭证。</li><li>Node测试和浏览器能实际启动。</li><li>仅一个开发worker，LOS不重复开工。</li></ul></div><div class="sec"><h4>已完成</h4><ul class="done"><li>277份现行源码/素材/规格/报告SHA256逐项一致，未提交体验测试完整保留；1份历史归档仍保存在LOS及协调方。</li><li>原HEAD与完整可达Git历史保持，缺失对象0，git fsck --full --strict通过。</li><li>Node、Hermes运行依赖、浏览器与模型认证实测可用。</li></ul></div>
+        <p class="note">备注：登记为待开始，不冒称已执行。</p>
       </article>
       <article class="card task" data-task-id="los-mechanical-model-ab" data-kind="验证">
         <div class="chead">
