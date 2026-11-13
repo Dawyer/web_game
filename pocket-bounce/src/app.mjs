@@ -40,7 +40,7 @@ export function statsCSV(stats) {
   const rows = [columns.join(',')];
   for (const [id, record] of Object.entries(stats.levels || {})) rows.push(columns.map(key => csv(key === 'levelId' ? id : record[key])).join(','));
   rows.push('', 'category,ms');
-  for (const key of ['activeMs', 'firstMainMs', 'replayMs', 'pauseMs', 'hiddenMs', 'menuMs', 'loadingMs', 'resultMs', 'idleMs', 'sleepMs', 'nonOwnerMs', 'firstFinishMs']) rows.push(`${key},${csv(stats[key])}`);
+  for (const key of ['activeMs', 'firstMainMs', 'replayMs', 'pauseMs', 'hiddenMs', 'menuMs', 'loadingMs', 'resultMs', 'animationMs', 'idleMs', 'sleepMs', 'nonOwnerMs', 'firstFinishMs']) rows.push(`${key},${csv(stats[key])}`);
   rows.push('', 'automatedLevelId,activeMs,attempts,restarts,undos,hints');
   for (const [id, r] of Object.entries(stats.automated?.levels || {})) rows.push([id, r.activeMs, r.attempts, r.restarts, r.undos, r.hints].map(csv).join(','));
   rows.push('', 'sessionId,device,automated,gameVersion,contentVersion');
@@ -88,7 +88,7 @@ export async function boot(doc = document, win = window) {
     const lease = new OwnerLease({ storage, id: sessionId }); let owner = !doc.hidden && lease.claim();
     let clock = new timing.PlayClock({ stats: save.stats, sessionId, automated, device: device() });
     let screen = 'home', dialog = null, selected = null, hint = null, pendingImport = null, pauseReason = '', returnDialog = null, refreshCount = 0;
-    let lastActivityPaint = 0, lastSaveError = '', audioStarted = false, hintRequest = 0;
+    let lastActivityPaint = 0, lastSaveError = '', audioStarted = false, hintRequest = 0, idlePaused = false;
     const audio = new Map();
     const view = new CanvasView($('#board'), assets, { onSound: sound });
     const controller = new GameController({ levels, engine, save, solve, onSave: persist, onEvent: event });
@@ -106,7 +106,7 @@ export async function boot(doc = document, win = window) {
     }
     function context() {
       const currentLevel = controller.level;
-      const mode = doc.hidden ? 'hidden' : dialog || controller.mode === 'pause' ? 'pause' : controller.mode === 'menu' ? 'menu' : controller.state?.status !== 'playing' ? 'result' : 'play';
+      const mode = doc.hidden ? 'hidden' : controller.mode === 'menu' ? (dialog ? 'pause' : 'menu') : idlePaused ? 'idle' : dialog || controller.mode === 'pause' ? 'pause' : controller.locked ? 'animation' : controller.state?.status !== 'playing' ? 'result' : 'play';
       clock.setContext({ mode, levelId: currentLevel?.id ?? null, completed: !!save.progress[currentLevel?.id]?.completed, owner });
     }
     function persist() {
@@ -118,7 +118,7 @@ export async function boot(doc = document, win = window) {
     }
     function event(type, detail) {
       const levelId = detail.levelId;
-      if (type === 'attempt' || type === 'restart' || type === 'undo') clock.setContext({ mode: 'play', levelId, completed: !!save.progress[levelId]?.completed, owner });
+      if (type === 'attempt' || type === 'restart' || type === 'undo') clock.setContext({ mode: 'play', levelId, completed: !!save.progress[levelId]?.completed, owner }, { newAttempt: type === 'attempt' });
       clock.event(type === 'replayComplete' ? 'complete' : type, { ...detail, mainCompleted: type === 'complete' && levels.every(l => save.progress[l.id]?.completed) });
     }
     function model() { return { save, levels, chapters, level: controller.level, state: controller.state, settings: save.settings, selected, gameVersion: p.GAME_VERSION, contentVersion: content.CONTENT_VERSION ?? p.CONTENT_VERSION, hint, pauseReason }; }
@@ -156,9 +156,9 @@ export async function boot(doc = document, win = window) {
     }
     function updateClock() { $('#clock-line').textContent = `有效 ${minutes(clock.stats.activeMs)} · 首次主线 ${minutes(clock.stats.firstMainMs)}${automated ? ' · 自动回放单列' : ''}`; }
     function showDialog(name) { dialog = name; paint(); $('#dialog').focus(); }
-    function pause(reason = '') {
+    function pause(reason = '', { idle = false } = {}) {
       if (controller.mode === 'menu') return;
-      pauseReason = reason; view.cancel(); controller.pause(); dialog = 'pause'; paint();
+      idlePaused = idle; pauseReason = reason; view.cancel(); controller.pause(); dialog = 'pause'; paint();
     }
     function claim() {
       const previousOwner = owner && lease.owns();
@@ -174,11 +174,12 @@ export async function boot(doc = document, win = window) {
     }
     function openLevel(id) {
       if (!claim()) return;
-      dialog = null; screen = 'home'; view.cancel(); controller.open(id); selected = controller.state.balls[0]?.id ?? null; hint = null; clock.activity();
+      idlePaused = false; dialog = null; screen = 'home'; view.cancel(); controller.open(id); selected = controller.state.balls[0]?.id ?? null; hint = null; clock.activity();
       paint();
       if (controller.level.tutorial) { pauseReason = controller.level.tutorial; controller.pause(); showDialog('tutorial'); }
     }
     async function strike(id = selected) {
+      if (dialog) return;
       if (!owner || !lease.owns()) { owner = false; pause('此标签页已失去计时与存档使用权，请显式继续。'); return; }
       const result = controller.strike(id);
       if (!result.accepted) { if (!controller.locked) notice('请点一颗静止球；暂停或结算时不能击球。'); return; }
@@ -231,7 +232,7 @@ export async function boot(doc = document, win = window) {
         case 'levels': view.cancel(); controller.menu(); dialog = null; screen = 'levels'; break;
         case 'level': return openLevel(target.dataset.level);
         case 'continue':
-        case 'resume': if (!claim()) return; if (save.current) { view.cancel(); controller.restore(); controller.resume(); dialog = null; clock.activity(); } break;
+        case 'resume': if (!claim()) return; if (save.current) { view.cancel(); controller.restore(); controller.resume(); idlePaused = false; dialog = null; clock.activity(); } break;
         case 'pause': return pause();
         case 'settings': returnDialog = dialog || (controller.mode === 'play' ? 'pause' : null); if (controller.mode === 'play') { view.cancel(); controller.pause(); } return showDialog('settings');
         case 'tutorial': if (controller.mode === 'play') { view.cancel(); controller.pause(); } return showDialog('tutorial');
@@ -273,7 +274,7 @@ export async function boot(doc = document, win = window) {
       action(target.dataset.action, target).catch(fail);
     });
     $('#board').addEventListener('pointerdown', event => {
-      event.preventDefault(); if (event.button !== 0 && event.pointerType === 'mouse') return;
+      event.preventDefault(); if (dialog || controller.mode !== 'play' || controller.locked || event.button !== 0 && event.pointerType === 'mouse') return;
       audioStarted = event.isTrusted || audioStarted; if (event.isTrusted) clock.activity();
       const box = $('#board').getBoundingClientRect(), ball = view.hit(event.clientX - box.left, event.clientY - box.top);
       if (ball) { selected = ball.id; strike(ball.id).catch(fail); } else notice('这里没有静止球。请点带箭头的球。');
@@ -325,7 +326,7 @@ export async function boot(doc = document, win = window) {
       if (owner && !lease.renew()) { owner = false; pause('本机使用权已过期，请继续以重新获取。'); }
       context(); clock.tick(); updateClock();
       const idle = win.performance.now() - clock.lastActivity;
-      if (controller.mode === 'play' && !dialog && idle >= 300000) pause('超过 5 分钟无输入，已标记疑似挂机。点击继续恢复计时。');
+      if (controller.mode === 'play' && !dialog && idle >= 300000) pause('超过 5 分钟无输入，已标记疑似挂机。点击继续恢复计时。', { idle: true });
       if (++refreshCount % 5 === 0) persist();
       if (win.performance.now() - lastActivityPaint > 1000) lastActivityPaint = win.performance.now();
     }, 1000);

@@ -1,5 +1,5 @@
 import { GAME_VERSION, CONTENT_VERSION } from './versions.mjs';
-const CATEGORIES = ['activeMs', 'firstMainMs', 'replayMs', 'pauseMs', 'hiddenMs', 'menuMs', 'loadingMs', 'resultMs', 'idleMs', 'sleepMs', 'nonOwnerMs'];
+const CATEGORIES = ['activeMs', 'firstMainMs', 'replayMs', 'pauseMs', 'hiddenMs', 'menuMs', 'loadingMs', 'resultMs', 'animationMs', 'idleMs', 'sleepMs', 'nonOwnerMs'];
 function ledger() {
   return { ...Object.fromEntries(CATEGORIES.map(key => [key, 0])), levels: {}, mainCompleted: false, firstFinishMs: null };
 }
@@ -79,10 +79,10 @@ export class PlayClock {
     if (!this.stats.sessions.some(s => s.id === sessionId)) this.stats.sessions.push({ id: sessionId, device, automated,
       gameVersion: this.stats.gameVersion, contentVersion: this.stats.contentVersion });
   }
-  setContext(context) {
+  setContext(context, { newAttempt = false } = {}) {
     if (!context || Object.keys(context).some(k => !['mode', 'levelId', 'completed', 'owner', 'levelVersion'].includes(k))) throw new Error('Invalid context');
     const next = { ...this.context, ...context };
-    if (!['play', 'pause', 'hidden', 'menu', 'loading', 'result'].includes(next.mode)) throw new Error('Invalid mode');
+    if (!['play', 'pause', 'hidden', 'menu', 'loading', 'result', 'animation', 'idle'].includes(next.mode)) throw new Error('Invalid mode');
     if (next.mode === 'play' && !safeId(next.levelId) || next.levelId !== null && !safeId(next.levelId)) throw new Error('Invalid levelId');
     if (typeof next.completed !== 'boolean' || typeof next.owner !== 'boolean') throw new Error('Invalid context flags');
     if (context.levelVersion !== undefined && !safeId(context.levelVersion)) throw new Error('Invalid levelVersion');
@@ -93,7 +93,7 @@ export class PlayClock {
     if (this.context.mode === 'play' && this.context.levelId && this.context.owner) {
       const record = this.target.levels[this.context.levelId] ??= levelRecord();
       if (context.levelVersion !== undefined) record.levelVersion = context.levelVersion;
-      if (!record.attemptOpen) { record.attemptOpen = true; record.attemptMs = 0; count(record, 'attempts'); }
+      if (newAttempt || !record.attemptOpen) { record.attemptOpen = true; record.attemptMs = 0; count(record, 'attempts'); }
     }
   }
   tick() {

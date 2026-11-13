@@ -84,10 +84,23 @@ export function validateSave(value, levels) {
   return value;
 }
 function migrateKnown(value, levels) {
+  // Validate provenance BEFORE changing versions, including every session. An
+  // envelope from an older release cannot launder unknown nested versions.
+  const inherited = value?.schema === 2 && value.gameVersion === '0.1.0-candidate.1' && value.contentVersion === '2026.11.12.1';
+  const current = value?.schema === 2 && value.gameVersion === GAME_VERSION && value.contentVersion === CONTENT_VERSION;
+  if (!inherited && !current) return value;
+  requireThat(value.stats?.gameVersion === value.gameVersion && value.stats?.contentVersion === value.contentVersion && Array.isArray(value.stats.sessions), 'nested version incompatible');
+  for (const session of value.stats.sessions) requireThat(session?.gameVersion === value.gameVersion && session?.contentVersion === value.contentVersion, 'session version incompatible');
+  const next = structuredClone(value);
+  // Both real prior candidates predate animation accounting. This one additive
+  // migration never changes existing totals or accepts any unknown field.
+  for (const ledger of [next.stats, next.stats.automated]) {
+    requireThat(ledger && Object.getPrototypeOf(ledger) === Object.prototype, 'stats ledger');
+    if (!Object.hasOwn(ledger, 'animationMs')) ledger.animationMs = 0;
+  }
+  if (current) return next;
   // The only older real format is the inherited candidate. Keep its four exact
   // teaching tables; never guess what an unknown future schema means.
-  if (value?.schema !== 2 || value.gameVersion !== '0.1.0-candidate.1' || value.contentVersion !== '2026.11.12.1') return value;
-  const next = structuredClone(value);
   next.gameVersion = GAME_VERSION; next.contentVersion = CONTENT_VERSION;
   next.stats.gameVersion = GAME_VERSION; next.stats.contentVersion = CONTENT_VERSION;
   for (const s of next.stats.sessions ?? []) { s.gameVersion = GAME_VERSION; s.contentVersion = CONTENT_VERSION; }
