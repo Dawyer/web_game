@@ -74,7 +74,7 @@
 <body>
 <header class="top">
   <h1>任务看板</h1>
-  <div class="meta">共 20 项任务（已完成 4） · 更新于 2026-11-13T20:45:41+08:00</div>
+  <div class="meta">共 20 项任务（已完成 4） · 更新于 2026-11-13T21:29:09+08:00</div>
   <p class="meta">弹球仍是中断的4关原型；11月13日晚计划待本轮新确认，无开发worker运行。PvZ保持终止；HW环境和迁移未执行。</p>
 </header>
 <div class="wrap">
@@ -90,29 +90,6 @@
       </section>
       <section class="col col-active">
         <header><h2>进行中<span class="count">1</span></h2><p>已核实正在执行</p></header>
-      <article class="card task" data-task-id="pocket-bounce" data-kind="游戏">
-        <div class="chead">
-          <h3>Pocket Bounce《弹球入袋》（源：Roll Sort!）</h3>
-          <span class="diff">游戏</span>
-        </div>
-        <p class="pitch">台球按箭头方向滚动，撞墙反弹，滚进同色袋口即消除</p>
-        <div class="tags"><span class="tag">逻辑解谜</span><span class="tag">4关原型</span><span class="tag">续做中</span></div>
-        <dl>
-          <dt>负责</dt><dd>LOS 单worker实现 / 协调方独立验收</dd>
-          <dt>更新</dt><dd>2026-11-13T20:45:41+08:00</dd>
-          <dt>来源</dt><dd>一周游语 Vol.166 第 5 款；玩法机制自研实现</dd>
-          <dt>素材</dt><dd>已完成 17 个原创素材文件：台面/木边（512² 无缝）、六色球（256²）、箭头/袋口/圆环/镜面/木箱/金星（320²）、面板/按钮、关卡选择背景 1920×1080；预览 sheets/mock-game.png</dd>
-        </dl>
-        <p class="detail"><b>当前进度</b>：从4/60关原型继续开发；既有50项测试为历史基线，本轮正重跑并补齐恢复、真实素材渲染与内容。</p><p class="detail"><b>阻塞原因</b>：无启动阻塞；60关、双端成品、用户画风、真机及三小时主线仍未全部验收。</p><p class="detail"><b>下一步</b>：保存恢复逻辑检查点、安全同步main；完善完整体验和真实素材渲染，再扩展并独立校验6章60关。</p><div class="sec"><h4>核验记录</h4><ul><li>2026-11-13 20:32：GitHub main=a0170b3，本机全新克隆核实2dd49dd/d098834/79d1c40均在远端历史；LOS HEAD仍79d1c40且保留2项未提交改动。</li><li>独立执行：远端已发布版9文件47/47，含恢复补丁副本10文件50/50；失败/取消/跳过均0。副本两项SHA-256与LOS相同；4关独立参考BFS最短一致。</li><li>本机真实Chrome：1280×720、1920×1080、360×800、390×844共16次通关，动画中刷新4次恢复；无横向溢出、JS异常0，但隐式图标404未过资源门禁。</li><li>证据：verification-2026-11-13-2030/{independent-tests.json,browser-audit.json,los-readonly.json}；手机仅模拟触控，真机/用户判图/三小时首次盲玩待验。</li><li>20:42核实：任务/5份标准/17份素材/222份继承文件哈希一致；唯一worker PID 186157、准确session有效租约和started admission已核对，模型Sol Pro/xhigh。</li></ul></div><p><a href="pocket-bounce-preview/">打开未验收原型</a></p><div class="sec"><h4>验收要点</h4><ul><li>首轮按 6 章 60 关规划；发布关卡逐一证明可解，最短步数须有证明</li><li>先定稿方向/反射/连锁/停球/循环规则并做独立预期测试，再批量设计与求解关卡</li><li>撤销/重置/关卡选择/星级/localStorage 可用</li><li>素材与音效 0 个 404、无 console 报错、无外链</li><li>画质按规格第 4 节：DPR 画布、自转、拖尾、进袋吸入、粒子、绒布质感</li><li>主线至少三小时有效内容为目标；须真实首次试玩验证，无证据标待验证，不靠挂机/重复刷关凑数</li><li>记录累计有效游玩/首次主线通关/每关耗时及尝试次数；两端计时、存档、导出与暂停后台边界测试通过</li></ul></div><div class="sec"><h4>已完成</h4><ul class="done"><li>4个教学关与核心规则/求解器已形成原型。</li><li>选关、击球、提示、撤销、重试、星级、本地存档及计时已接线；不等于全部验收通过。</li><li>检查点79d1c40已推送；另有应用恢复逻辑与恢复测试未提交且保留。</li><li>2026-11-13 13:36独立重跑50项测试通过、0失败（10个文件）。</li></ul></div>
-        <p class="note">备注：用户已明确继续昨天的游戏；20:42在LOS独立新目录从原断点恢复唯一worker。旧工作区与日志已归档，未迁移到临时沙箱。</p>
-      </article>
-      </section>
-      <section class="col col-blocked">
-        <header><h2>阻塞 / 暂停<span class="count">0</span></h2><p>显示原因与下一步，不冒称在运行</p></header>
-<p class="empty">（暂无）</p>
-      </section>
-      <section class="col col-planned">
-        <header><h2>待开始<span class="count">1</span></h2><p>已登记，未执行</p></header>
       <article class="card task" data-task-id="hw-game-environment" data-kind="运维">
         <div class="chead">
           <h3>HW 游戏开发环境与迁移准备</h3>
@@ -122,13 +99,36 @@
         <div class="tags"></div>
         <dl>
           <dt>负责</dt><dd>协调方 / HW</dd>
-          <dt>更新</dt><dd>2026-11-13T15:36:30+08:00</dd>
+          <dt>更新</dt><dd>2026-11-13T21:29:09+08:00</dd>
           <dt>来源</dt><dd>—</dd>
           <dt>素材</dt><dd>—</dd>
         </dl>
-        <p class="detail"><b>当前进度</b>：仅完成连接检查；已有Git、Python；尚未安装Node、Hermes或浏览器，尚未迁移。</p><p class="detail"><b>下一步</b>：按用户授权准备环境，核对模型认证与迁移备份后再派工。</p><div class="sec"><h4>验收要点</h4><ul><li>保存并校验LOS未提交改动和素材。</li><li>模型认证单独验证，不在看板公开凭证。</li><li>Node测试和浏览器能实际启动。</li><li>仅一个开发worker，LOS不重复开工。</li></ul></div>
+        <p class="detail"><b>当前进度</b>：HW已接收并逐项校验277份现行源码/素材/规格/报告，继承未提交体验测试；另1份历史备份留LOS。正在安装依赖与运行环境。</p><p class="detail"><b>阻塞原因</b>：云DNS故障已修复，内网域名正常；GitHub git直连受限，已改用准确官方源码包。Node/Hermes/浏览器和模型实际运行尚待通过。</p><p class="detail"><b>下一步</b>：实际跑基线与继承失败测试、启动浏览器及模型探测后，再启HW唯一worker。</p><div class="sec"><h4>验收要点</h4><ul><li>保存并校验LOS未提交改动和素材。</li><li>模型认证单独验证，不在看板公开凭证。</li><li>Node测试和浏览器能实际启动。</li><li>仅一个开发worker，LOS不重复开工。</li></ul></div>
         <p class="note">备注：登记为待开始，不冒称已执行。</p>
       </article>
+      </section>
+      <section class="col col-blocked">
+        <header><h2>阻塞 / 暂停<span class="count">1</span></h2><p>显示原因与下一步，不冒称在运行</p></header>
+      <article class="card task" data-task-id="pocket-bounce" data-kind="游戏">
+        <div class="chead">
+          <h3>Pocket Bounce《弹球入袋》（源：Roll Sort!）</h3>
+          <span class="diff">游戏</span>
+        </div>
+        <p class="pitch">台球按箭头方向滚动，撞墙反弹，滚进同色袋口即消除</p>
+        <div class="tags"><span class="tag">逻辑解谜</span><span class="tag">4关原型</span><span class="tag">续做中</span></div>
+        <dl>
+          <dt>负责</dt><dd>协调方迁移 / HW待恢复</dd>
+          <dt>更新</dt><dd>2026-11-13T21:03:13+08:00</dd>
+          <dt>来源</dt><dd>一周游语 Vol.166 第 5 款；玩法机制自研实现</dd>
+          <dt>素材</dt><dd>已完成 17 个原创素材文件：台面/木边（512² 无缝）、六色球（256²）、箭头/袋口/圆环/镜面/木箱/金星（320²）、面板/按钮、关卡选择背景 1920×1080；预览 sheets/mock-game.png</dd>
+        </dl>
+        <p class="detail"><b>当前进度</b>：4关原型保持在线供试玩；LOS保存恢复检查点4f48b49，未提交体验回归测试完整归档，按用户新要求先迁环境。</p><p class="detail"><b>阻塞原因</b>：迁移HW进行中，环境/认证/基线通过前不启动游戏开发；LOS旧会话已interrupted，未重启。</p><p class="detail"><b>下一步</b>：先完成HW开发环境与代码/素材/未提交测试迁移核验，再在HW单worker继续。</p><div class="sec"><h4>核验记录</h4><ul><li>2026-11-13 20:32：GitHub main=a0170b3，本机全新克隆核实2dd49dd/d098834/79d1c40均在远端历史；LOS HEAD仍79d1c40且保留2项未提交改动。</li><li>独立执行：远端已发布版9文件47/47，含恢复补丁副本10文件50/50；失败/取消/跳过均0。副本两项SHA-256与LOS相同；4关独立参考BFS最短一致。</li><li>本机真实Chrome：1280×720、1920×1080、360×800、390×844共16次通关，动画中刷新4次恢复；无横向溢出、JS异常0，但隐式图标404未过资源门禁。</li><li>证据：verification-2026-11-13-2030/{independent-tests.json,browser-audit.json,los-readonly.json}；手机仅模拟触控，真机/用户判图/三小时首次盲玩待验。</li><li>20:42核实：任务/5份标准/17份素材/222份继承文件哈希一致；唯一worker PID 186157、准确session有效租约和started admission已核对，模型Sol Pro/xhigh。</li></ul></div><p><a href="pocket-bounce-preview/">打开未验收原型</a></p><div class="sec"><h4>验收要点</h4><ul><li>首轮按 6 章 60 关规划；发布关卡逐一证明可解，最短步数须有证明</li><li>先定稿方向/反射/连锁/停球/循环规则并做独立预期测试，再批量设计与求解关卡</li><li>撤销/重置/关卡选择/星级/localStorage 可用</li><li>素材与音效 0 个 404、无 console 报错、无外链</li><li>画质按规格第 4 节：DPR 画布、自转、拖尾、进袋吸入、粒子、绒布质感</li><li>主线至少三小时有效内容为目标；须真实首次试玩验证，无证据标待验证，不靠挂机/重复刷关凑数</li><li>记录累计有效游玩/首次主线通关/每关耗时及尝试次数；两端计时、存档、导出与暂停后台边界测试通过</li></ul></div><div class="sec"><h4>已完成</h4><ul class="done"><li>4个教学关与核心规则/求解器已形成原型。</li><li>选关、击球、提示、撤销、重试、星级、本地存档及计时已接线；不等于全部验收通过。</li><li>检查点79d1c40已推送；另有应用恢复逻辑与恢复测试未提交且保留。</li><li>2026-11-13 13:36独立重跑50项测试通过、0失败（10个文件）。</li></ul></div>
+        <p class="note">备注：用户已明确继续昨天的游戏；20:42在LOS独立新目录从原断点恢复唯一worker。旧工作区与日志已归档，未迁移到临时沙箱。</p>
+      </article>
+      </section>
+      <section class="col col-planned">
+        <header><h2>待开始<span class="count">0</span></h2><p>已登记，未执行</p></header>
+<p class="empty">（暂无）</p>
       </section>
       <section class="col col-backlog">
         <header><h2>待排期<span class="count">13</span></h2><p>按难度从低到高</p></header>
