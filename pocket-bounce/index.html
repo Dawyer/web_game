@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="zh-CN" data-layout="mobile">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#153b33">
+  <title>Pocket Bounce · 弹球入袋 · 候选版</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div id="app">
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="Pocket Bounce 首页">POCKET <b>BOUNCE</b><small>弹球入袋 · 候选版</small></a>
+      <div class="top-actions"><button data-action="levels">选关</button><button data-action="settings">设置</button></div>
+    </header>
+    <main class="game-shell" id="game-shell" hidden>
+      <section class="hud panel" aria-label="对局目标">
+        <div><span class="eyebrow" id="chapter-label">每击六拍</span><h1 id="level-title">弹球入袋</h1></div>
+        <div class="counters"><span>步数 <b id="moves">0 / 0</b></span><span>三星 <b id="par">0 步</b></span><span>剩余 <b id="remaining">0 球</b></span></div>
+        <p id="intent" class="intent"></p>
+      </section>
+      <section class="board-wrap" aria-label="棋盘区域">
+        <canvas id="board" tabindex="0" aria-label="弹球棋盘：点球按箭头击出，每击六拍。所有操作也可使用下方按钮。"></canvas>
+        <div id="board-state" class="board-state" hidden></div>
+      </section>
+      <aside class="tools panel" aria-label="对局操作">
+        <p id="selected-ball" class="selected-label">点一颗球，按箭头击出</p>
+        <div class="ball-controls"><button data-action="select">换一颗</button><button data-action="strike">击出选中球</button></div>
+        <div class="tool-grid"><button data-action="undo">撤销</button><button data-action="restart">重试</button><button data-action="hint">提示</button><button data-action="pause">暂停</button></div>
+        <p class="help-line">每击六拍 · 同色入袋 · 清空即胜</p>
+        <button class="subtle" data-action="tutorial">操作教学</button>
+        <p class="keyboard-help">方向键选球，Enter / 空格击球<br>Z 撤销 · R 重试 · Esc 暂停</p>
+        <p class="clock-line" id="clock-line">有效游玩 00:00</p>
+      </aside>
+    </main>
+    <section class="menu-area" id="menu-area" hidden></section>
+    <section class="loading panel" id="loading" aria-live="polite">
+      <p class="eyebrow">POCKET BOUNCE · 候选版</p><h1 id="loading-title">正在铺好球桌</h1>
+      <p id="loading-progress">读取本地资源 0 / 17</p><p id="loading-error" class="error-text"></p>
+      <button id="load-retry" data-action="load-retry" hidden>重试加载</button>
+    </section>
+    <p id="notice" class="notice" role="status" aria-live="polite"></p>
+    <footer id="version">候选版 · 双端与三小时真人盲测待验收</footer>
+  </div>
+  <div id="overlay" class="overlay" hidden><section id="dialog" class="dialog panel" role="dialog" aria-modal="true" aria-labelledby="dialog-title" tabindex="-1"></section></div>
+  <input id="import-file" type="file" accept="application/json,.json" hidden aria-label="选择本地存档 JSON 文件">
+  <noscript><div class="panel">需要启用 JavaScript 才能游玩本地弹球谜题。</div></noscript>
+  <script type="module" src="./src/app.mjs"></script>
+</body>
+</html>
