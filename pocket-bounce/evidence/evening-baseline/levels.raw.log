@@ -1,0 +1,5 @@
+{"id":"01","par":1,"solution":["a"],"visited":1,"referenceVisited":1,"elapsedMs":0.3526719999999983,"transfers":0,"mirrors":0,"bounces":0}
+{"id":"02","par":1,"solution":["a"],"visited":1,"referenceVisited":1,"elapsedMs":0.05306099999999958,"transfers":0,"mirrors":0,"bounces":1}
+{"id":"03","par":2,"solution":["a","a"],"visited":2,"referenceVisited":2,"elapsedMs":7.894497999999999,"transfers":1,"mirrors":0,"bounces":0}
+{"id":"04","par":1,"solution":["a"],"visited":1,"referenceVisited":1,"elapsedMs":0.067738999999996,"transfers":0,"mirrors":1,"bounces":0}
+VERIFIED 4 levels; shortest pars independently matched. Browser/human tests NOT performed.

@@ -88,7 +88,7 @@ export async function boot(doc = document, win = window) {
     const lease = new OwnerLease({ storage, id: sessionId }); let owner = !doc.hidden && lease.claim();
     let clock = new timing.PlayClock({ stats: save.stats, sessionId, automated, device: device() });
     let screen = 'home', dialog = null, selected = null, hint = null, pendingImport = null, pauseReason = '', returnDialog = null, refreshCount = 0;
-    let lastActivityPaint = 0, lastSaveError = '', audioStarted = false;
+    let lastActivityPaint = 0, lastSaveError = '', audioStarted = false, hintRequest = 0;
     const audio = new Map();
     const view = new CanvasView($('#board'), assets, { onSound: sound });
     const controller = new GameController({ levels, engine, save, solve, onSave: persist, onEvent: event });
@@ -191,9 +191,11 @@ export async function boot(doc = document, win = window) {
     async function requestHint() {
       if (controller.mode === 'pause') { dialog = null; controller.resume(); }
       if (controller.mode !== 'play' || controller.locked || !owner) return;
+      const request = ++hintRequest, token = controller.token;
       hint = null;
       // Paint a message before the bounded synchronous solver gets its turn.
       notice('正在分析当前局面……'); await new Promise(resolve => win.setTimeout(resolve, 16));
+      if (request !== hintRequest || token !== controller.token || controller.mode !== 'play' || dialog || !owner) return;
       const result = await controller.hint();
       if (result.status === 'stale' || result.status === 'blocked') { notice(result.text); return; }
       hint = result; controller.pause(); showDialog('hint'); notice('提示不会自动替你操作。');
@@ -306,10 +308,10 @@ export async function boot(doc = document, win = window) {
       if (doc.hidden) {
         view.cancel(); if (controller.mode !== 'menu') { controller.pause(); dialog = 'pause'; pauseReason = '离开页面后已暂停；离开时间不计有效游玩。'; }
         clock.setContext({ mode: 'hidden', owner }); persist(); lease.release(); owner = false;
-      } else { owner = lease.claim(); clock.setContext({ mode: controller.mode === 'menu' ? 'menu' : 'pause', owner }); paint(); }
+      } else { claim(); clock.setContext({ mode: controller.mode === 'menu' ? 'menu' : 'pause', owner }); paint(); }
     });
     win.addEventListener('pagehide', () => { view.cancel(); clock.setContext({ mode: 'hidden', owner }); persist(); lease.release(); owner = false; });
-    win.addEventListener('pageshow', event => { if (event.persisted) { owner = lease.claim(); if (controller.state) pause('页面已恢复，请继续稳定棋盘。'); } });
+    win.addEventListener('pageshow', event => { if (event.persisted) { claim(); if (controller.state) pause('页面已恢复，请继续稳定棋盘。'); } });
     win.addEventListener('storage', event => {
       if (event.key === lease.key && owner && !lease.owns()) { owner = false; pause('另一标签页获得了使用权；此页已暂停，不会重复累计。'); }
       if (event.key === p.SAVE_KEY && !owner) {

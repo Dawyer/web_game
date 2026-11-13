@@ -1,0 +1,1504 @@
+{
+  "checks": [
+    {
+      "file": "plan.md",
+      "expected": "51a99a842ac8f34e14c444a21c619736fbde5a84826d3f697a47c5481480f691",
+      "actual": "51a99a842ac8f34e14c444a21c619736fbde5a84826d3f697a47c5481480f691",
+      "ok": true
+    },
+    {
+      "file": "task.md",
+      "expected": "f8eebdf71754fcc483dad92bf53a6e350ab6d608519b0ad5cb8339b39750a998",
+      "actual": "f8eebdf71754fcc483dad92bf53a6e350ab6d608519b0ad5cb8339b39750a998",
+      "ok": true
+    },
+    {
+      "file": "inputs-manifest.json",
+      "expected": "16fbadbe9fe61826d6beb5f8138a4c5c25cce5e937a87d86397f674ca078d3aa",
+      "actual": "16fbadbe9fe61826d6beb5f8138a4c5c25cce5e937a87d86397f674ca078d3aa",
+      "ok": true
+    },
+    {
+      "file": "inheritance.json",
+      "expected": "2e10b214f6eb63a66167f6fa7ef7f9467a8c7fd5ce3b4c25002c1f50b1e0e5b2",
+      "actual": "2e10b214f6eb63a66167f6fa7ef7f9467a8c7fd5ce3b4c25002c1f50b1e0e5b2",
+      "ok": true
+    },
+    {
+      "file": "inputs/spec-pocket-bounce.md",
+      "expected": "4c92f0aa1d8916e1a0610d77240fa02d013041111d015af7ee14bf68fd6b3593",
+      "actual": "4c92f0aa1d8916e1a0610d77240fa02d013041111d015af7ee14bf68fd6b3593",
+      "ok": true
+    },
+    {
+      "file": "inputs/game-dual-target-standard.md",
+      "expected": "c772fd365ea18fb4a5854f9cc4a6fc54a0e6d9b36a41893af5502dbb60543bb9",
+      "actual": "c772fd365ea18fb4a5854f9cc4a6fc54a0e6d9b36a41893af5502dbb60543bb9",
+      "ok": true
+    },
+    {
+      "file": "inputs/playtime-three-hour-standard.md",
+      "expected": "75d727a66b677c335ea8343bf508175d85e780758eab22f117c046cf292f319c",
+      "actual": "75d727a66b677c335ea8343bf508175d85e780758eab22f117c046cf292f319c",
+      "ok": true
+    },
+    {
+      "file": "inputs/game-visual-completeness-standard.md",
+      "expected": "e4753a888552fabdb202cd3b85fe09d9f53792fb7166f886f7585f0f5a5afdf8",
+      "actual": "e4753a888552fabdb202cd3b85fe09d9f53792fb7166f886f7585f0f5a5afdf8",
+      "ok": true
+    },
+    {
+      "file": "inputs/game-product-completeness-standard.md",
+      "expected": "590ae933b4f32f965573e162e53c80e4718ea90fa03cb32c8741f89428739110",
+      "actual": "590ae933b4f32f965573e162e53c80e4718ea90fa03cb32c8741f89428739110",
+      "ok": true
+    },
+    {
+      "file": "assets/art/mirror.png",
+      "expected": "f9eeeb07f5e64149765ebae85e7122055e5fe1f7272fa4540e99ed72ac64b6fd",
+      "actual": "f9eeeb07f5e64149765ebae85e7122055e5fe1f7272fa4540e99ed72ac64b6fd",
+      "ok": true
+    },
+    {
+      "file": "assets/art/ball_blue.png",
+      "expected": "1197bcb79d1a18140807b998225796e561057e43300ca4398f9a53f7fa309cc8",
+      "actual": "1197bcb79d1a18140807b998225796e561057e43300ca4398f9a53f7fa309cc8",
+      "ok": true
+    },
+    {
+      "file": "assets/art/star.png",
+      "expected": "e13406be2a63a1ba99155a59bf6512ef8910375fb58edb287102ebd417ad7c26",
+      "actual": "e13406be2a63a1ba99155a59bf6512ef8910375fb58edb287102ebd417ad7c26",
+      "ok": true
+    },
+    {
+      "file": "assets/art/arrow.png",
+      "expected": "7ee738a083bb3b0893f7a57d8dccf46446957db566b0869d4dfe615d3c994f93",
+      "actual": "7ee738a083bb3b0893f7a57d8dccf46446957db566b0869d4dfe615d3c994f93",
+      "ok": true
+    },
+    {
+      "file": "assets/art/ring.png",
+      "expected": "fbf7b47335fc01a76a0fce9e3a574af6e1ac53133579ee1996425815a5d033f6",
+      "actual": "fbf7b47335fc01a76a0fce9e3a574af6e1ac53133579ee1996425815a5d033f6",
+      "ok": true
+    },
+    {
+      "file": "assets/art/ball_purple.png",
+      "expected": "795d7f61098779d498938e59bacf66d8ef67b6eb5dae42a7b322d8779ab6dd43",
+      "actual": "795d7f61098779d498938e59bacf66d8ef67b6eb5dae42a7b322d8779ab6dd43",
+      "ok": true
+    },
+    {
+      "file": "assets/art/pocket.png",
+      "expected": "6bb2fa69b065abc5b2158a95ecd4d9041ddd9c7f9de328926755561c474fd9ac",
+      "actual": "6bb2fa69b065abc5b2158a95ecd4d9041ddd9c7f9de328926755561c474fd9ac",
+      "ok": true
+    },
+    {
+      "file": "assets/art/felt.png",
+      "expected": "d44a3dd331fd7fbb9a638cc1322efd49488699d1095ea3e63553b37abc2a0e51",
+      "actual": "d44a3dd331fd7fbb9a638cc1322efd49488699d1095ea3e63553b37abc2a0e51",
+      "ok": true
+    },
+    {
+      "file": "assets/art/wood.png",
+      "expected": "5f6fffd1788fcc5f2e73ed565a6aeda0e5f5d54948d2fbf77aa46a199872554a",
+      "actual": "5f6fffd1788fcc5f2e73ed565a6aeda0e5f5d54948d2fbf77aa46a199872554a",
+      "ok": true
+    },
+    {
+      "file": "assets/art/ball_yellow.png",
+      "expected": "a4f81dd944dd1e3c0dbabb3b8a44a7e54329eb0f9cfe0421e075649074119304",
+      "actual": "a4f81dd944dd1e3c0dbabb3b8a44a7e54329eb0f9cfe0421e075649074119304",
+      "ok": true
+    },
+    {
+      "file": "assets/art/bg_levelselect.jpg",
+      "expected": "f430e9141b679d024f448692d0fa70ef622a4d982ac1988ad2c352fb9d128d9c",
+      "actual": "f430e9141b679d024f448692d0fa70ef622a4d982ac1988ad2c352fb9d128d9c",
+      "ok": true
+    },
+    {
+      "file": "assets/art/ball_orange.png",
+      "expected": "f4e7f2b8095a54fe14478f84c4e5e1b1285b62b827f5997bdff4a2dcc9981a35",
+      "actual": "f4e7f2b8095a54fe14478f84c4e5e1b1285b62b827f5997bdff4a2dcc9981a35",
+      "ok": true
+    },
+    {
+      "file": "assets/art/ball_red.png",
+      "expected": "28ea427bc6999d63d6f230ed5af1a1c11c4a387f7f5b5833c4fb05aef5926a9e",
+      "actual": "28ea427bc6999d63d6f230ed5af1a1c11c4a387f7f5b5833c4fb05aef5926a9e",
+      "ok": true
+    },
+    {
+      "file": "assets/art/button.png",
+      "expected": "538fb45eb1d77a684256521ab71d7bf81da72c484d0d7d9fbe484c646ea64bae",
+      "actual": "538fb45eb1d77a684256521ab71d7bf81da72c484d0d7d9fbe484c646ea64bae",
+      "ok": true
+    },
+    {
+      "file": "assets/art/ball_green.png",
+      "expected": "3b73cee5b356309591e4646e23fb0eb0c31596306a174ac5a5e9c5c82522234f",
+      "actual": "3b73cee5b356309591e4646e23fb0eb0c31596306a174ac5a5e9c5c82522234f",
+      "ok": true
+    },
+    {
+      "file": "assets/art/block.png",
+      "expected": "bb6b23aebe23b6b17ab46fa719c20adbe16793a09beb2c9ba7cc6d7a1dbcd624",
+      "actual": "bb6b23aebe23b6b17ab46fa719c20adbe16793a09beb2c9ba7cc6d7a1dbcd624",
+      "ok": true
+    },
+    {
+      "file": "assets/art/panel.png",
+      "expected": "88086dd69b9e83e4e54746488fd57ac3e6c1e2042856431dc28715f5d1533d00",
+      "actual": "88086dd69b9e83e4e54746488fd57ac3e6c1e2042856431dc28715f5d1533d00",
+      "ok": true
+    },
+    {
+      "file": "repo/README.md",
+      "expected": "f1d80b87165280190c72be754e7228faed6974b59135d87b7127c54c34d5f98d",
+      "actual": "f1d80b87165280190c72be754e7228faed6974b59135d87b7127c54c34d5f98d",
+      "ok": true
+    },
+    {
+      "file": "repo/board.html",
+      "expected": "45b80f184152b392b0a321f4faeed6fada5104e3451bccfb3e25d4dd483b144c",
+      "actual": "45b80f184152b392b0a321f4faeed6fada5104e3451bccfb3e25d4dd483b144c",
+      "ok": true
+    },
+    {
+      "file": "repo/index.html",
+      "expected": "a750e46d0ec6619778d137e6459310b8d510ed142abe31d6cdf99360f176b3e2",
+      "actual": "a750e46d0ec6619778d137e6459310b8d510ed142abe31d6cdf99360f176b3e2",
+      "ok": true
+    },
+    {
+      "file": "repo/.gitignore",
+      "expected": "02a6d1581f250be791c930028d7488632b10024faf2fb59d77482fe12845a293",
+      "actual": "02a6d1581f250be791c930028d7488632b10024faf2fb59d77482fe12845a293",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/RULES.md",
+      "expected": "88c8ae2e186b2edb7a293bec0dc0dee4b37036a1ee3550bc4867de9609197ea9",
+      "actual": "88c8ae2e186b2edb7a293bec0dc0dee4b37036a1ee3550bc4867de9609197ea9",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/PROGRESS.md",
+      "expected": "3ace6fe043cb8c94a17bcca523d4f3e2275d5ece40f97bbc24d7103ac39f0250",
+      "actual": "3ace6fe043cb8c94a17bcca523d4f3e2275d5ece40f97bbc24d7103ac39f0250",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/ATTRIBUTION.md",
+      "expected": "818d6adb935437a385a69fa6aad0069155a0410aae18fafcef2b9664719cbcda",
+      "actual": "818d6adb935437a385a69fa6aad0069155a0410aae18fafcef2b9664719cbcda",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/index.html",
+      "expected": "f340aae86ce955d7bf3244ebc3161c97db929636660c3815a3bc46f69831f5fb",
+      "actual": "f340aae86ce955d7bf3244ebc3161c97db929636660c3815a3bc46f69831f5fb",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/style.css",
+      "expected": "c9e49138861de39b1a38186d258c3445b9c173b9ac849d0f0b221cbbfc7860ee",
+      "actual": "c9e49138861de39b1a38186d258c3445b9c173b9ac849d0f0b221cbbfc7860ee",
+      "ok": true
+    },
+    {
+      "file": "repo/plants-vs-zombies/README.md",
+      "expected": "2a4b8646eb6b4a9ed6ffe7a1d831ee0679e1928acef4394aef57d32e0428a4cb",
+      "actual": "2a4b8646eb6b4a9ed6ffe7a1d831ee0679e1928acef4394aef57d32e0428a4cb",
+      "ok": true
+    },
+    {
+      "file": "repo/plants-vs-zombies/ATTRIBUTION.md",
+      "expected": "eb30951f5e9ce6ba70e107ee8ef1f694f8a8c9644fbd01a1534d07dfc9616089",
+      "actual": "eb30951f5e9ce6ba70e107ee8ef1f694f8a8c9644fbd01a1534d07dfc9616089",
+      "ok": true
+    },
+    {
+      "file": "repo/plants-vs-zombies/LICENSE",
+      "expected": "b72e59ddb375f39277ac9326b397488d84a6be4adb59e2f48a562a9ae7eab216",
+      "actual": "b72e59ddb375f39277ac9326b397488d84a6be4adb59e2f48a562a9ae7eab216",
+      "ok": true
+    },
+    {
+      "file": "repo/plants-vs-zombies/index.html",
+      "expected": "56aa5a4ef95be092bb1e90a121e0fe1ce5382aec3e9dbce9212b98dd8967c7eb",
+      "actual": "56aa5a4ef95be092bb1e90a121e0fe1ce5382aec3e9dbce9212b98dd8967c7eb",
+      "ok": true
+    },
+    {
+      "file": "repo/plants-vs-zombies/audio/sun.mp3",
+      "expected": "b2f6b6aeb4815fc44eafab06a15978d13fb790af6bfdc8786b50fd20184e7222",
+      "actual": "b2f6b6aeb4815fc44eafab06a15978d13fb790af6bfdc8786b50fd20184e7222",
+      "ok": true
+    },
+    {
+      "file": "repo/plants-vs-zombies/audio/zombie_groan.mp3",
+      "expected": "fe979ea2e7a32e2705d7daf87cd69f08ddf2825fb409b4495682dd3a00cd3006",
+      "actual": "fe979ea2e7a32e2705d7daf87cd69f08ddf2825fb409b4495682dd3a00cd3006",
+      "ok": true
+    },
+    {
+      "file": "repo/plants-vs-zombies/audio/LICENSE-CC0.txt",
+      "expected": "efd37f10391081654f5552353d8c50a6cfd53d7e25d17172a720c5fd253099db",
+      "actual": "efd37f10391081654f5552353d8c50a6cfd53d7e25d17172a720c5fd253099db",
+      "ok": true
+    },
+    {
+      "file": "repo/plants-vs-zombies/audio/click.mp3",
+      "expected": "f4c4a0033171166a89f720899e7c647abfe3ecda314ce5fb33a4aecf48ba70c2",
+      "actual": "f4c4a0033171166a89f720899e7c647abfe3ecda314ce5fb33a4aecf48ba70c2",
+      "ok": true
+    },
+    {
+      "file": "repo/plants-vs-zombies/audio/plant_die.mp3",
+      "expected": "dcd3d1c2555fa789a4d3a3c42b3863321f8524f23dbcd785c89d6468a66a71ed",
+      "actual": "dcd3d1c2555fa789a4d3a3c42b3863321f8524f23dbcd785c89d6468a66a71ed",
+      "ok": true
+    },
+    {
+      "file": "repo/plants-vs-zombies/audio/mower.mp3",
+      "expected": "cb8869ab4dfa5aa52a2f83d3bef6203347b5527c4d00212b731aff42a2953d02",
+      "actual": "cb8869ab4dfa5aa52a2f83d3bef6203347b5527c4d00212b731aff42a2953d02",
+      "ok": true
+    },
+    {
+      "file": "repo/plants-vs-zombies/audio/zombie_die.mp3",
+      "expected": "6cb0f00b74113bac1bd1abc69c823aa291606501d90df600ec1d0ce2eea3a00a",
+      "actual": "6cb0f00b74113bac1bd1abc69c823aa291606501d90df600ec1d0ce2eea3a00a",
+      "ok": true
+    },
+    {
+      "file": "repo/plants-vs-zombies/audio/zombie_hurt.mp3",
+      "expected": "6b6ffd3252cdacb86aeeb2d0b1cca447b5ea27daa841b549c69ec08c2a126c29",
+      "actual": "6b6ffd3252cdacb86aeeb2d0b1cca447b5ea27daa841b549c69ec08c2a126c29",
+      "ok": true
+    },
+    {
+      "file": "repo/plants-vs-zombies/audio/hit.mp3",
+      "expected": "9c8dd37bd99a1062a236afe562c5da5bbcb612a20caca5a9950d106f4b7bf69f",
+      "actual": "9c8dd37bd99a1062a236afe562c5da5bbcb612a20caca5a9950d106f4b7bf69f",
+      "ok": true
+    },
+    {
+      "file": "repo/plants-vs-zombies/audio/wave.mp3",
+      "expected": "6c445e118f43daa2a9e14252ec8fa773f22c80368a4ddf2a9860ff25f802b05d",
+      "actual": "6c445e118f43daa2a9e14252ec8fa773f22c80368a4ddf2a9860ff25f802b05d",
+      "ok": true
+    },
+    {
+      "file": "repo/plants-vs-zombies/audio/eat.mp3",
+      "expected": "085cb75e495fa8f1d22a12d102d71c01dfa88730de6b6eb09c600026d8007cef",
+      "actual": "085cb75e495fa8f1d22a12d102d71c01dfa88730de6b6eb09c600026d8007cef",
+      "ok": true
+    },
+    {
+      "file": "repo/plants-vs-zombies/audio/lose.mp3",
+      "expected": "33da496d3d93e33d0618671303ec4cac647156d46083ae684e21f00898f79a06",
+      "actual": "33da496d3d93e33d0618671303ec4cac647156d46083ae684e21f00898f79a06",
+      "ok": true
+    },
+    {
+      "file": "repo/plants-vs-zombies/audio/shoot.mp3",
+      "expected": "bff279c8dc33286e405dd3e394aba6abc6573363bead43579e050d31fa5c2eee",
+      "actual": "bff279c8dc33286e405dd3e394aba6abc6573363bead43579e050d31fa5c2eee",
+      "ok": true
+    },
+    {
+      "file": "repo/plants-vs-zombies/audio/place.mp3",
+      "expected": "e7e6a77bfc45876493eb70e9bc2f7367775d8f483879057c61c334fc86f96ae6",
+      "actual": "e7e6a77bfc45876493eb70e9bc2f7367775d8f483879057c61c334fc86f96ae6",
+      "ok": true
+    },
+    {
+      "file": "repo/plants-vs-zombies/audio/win.mp3",
+      "expected": "faf0b0faf1e8ada1751663995abf33816dc6389bf1a5b8398e35249fc4d2cf77",
+      "actual": "faf0b0faf1e8ada1751663995abf33816dc6389bf1a5b8398e35249fc4d2cf77",
+      "ok": true
+    },
+    {
+      "file": "repo/plants-vs-zombies/art/plant_firepea.png",
+      "expected": "528b3468014dc36d6a19ecd392ae82ff12c7399e38384795ccea8d36957b2a7c",
+      "actual": "528b3468014dc36d6a19ecd392ae82ff12c7399e38384795ccea8d36957b2a7c",
+      "ok": true
+    },
+    {
+      "file": "repo/plants-vs-zombies/art/plant_repeater.png",
+      "expected": "f82d2f405355aa9390d5e06e3411dbfb291f11c1e7791628865a21869f24c3d5",
+      "actual": "f82d2f405355aa9390d5e06e3411dbfb291f11c1e7791628865a21869f24c3d5",
+      "ok": true
+    },
+    {
+      "file": "repo/plants-vs-zombies/art/plant_wallnut.png",
+      "expected": "007e503da8d913fe8c9471c836b37d4514d4dc78fe5eb3a35eeb959fd0bed461",
+      "actual": "007e503da8d913fe8c9471c836b37d4514d4dc78fe5eb3a35eeb959fd0bed461",
+      "ok": true
+    },
+    {
+      "file": "repo/plants-vs-zombies/art/plant_snowpea.png",
+      "expected": "ded970204dbee0f0d4650e0d3beec3c46a5ac9f340f1cddb0e138af26dc11aa4",
+      "actual": "ded970204dbee0f0d4650e0d3beec3c46a5ac9f340f1cddb0e138af26dc11aa4",
+      "ok": true
+    },
+    {
+      "file": "repo/plants-vs-zombies/art/zombie_bucket.png",
+      "expected": "e599fd54b566c2dc687c95afe931be1e34604569b5d7afca22c143897dbae07c",
+      "actual": "e599fd54b566c2dc687c95afe931be1e34604569b5d7afca22c143897dbae07c",
+      "ok": true
+    },
+    {
+      "file": "repo/plants-vs-zombies/art/item_sun.png",
+      "expected": "00cb73e7295521693ee591a46e9a60b62e38d6becbebcbd493ac6003cae0aa02",
+      "actual": "00cb73e7295521693ee591a46e9a60b62e38d6becbebcbd493ac6003cae0aa02",
+      "ok": true
+    },
+    {
+      "file": "repo/plants-vs-zombies/art/zombie_normal.png",
+      "expected": "4b6be1170f1a1380547d12599ab1adc586e10ad3c3c90d26e0e1c4f4c529edf6",
+      "actual": "4b6be1170f1a1380547d12599ab1adc586e10ad3c3c90d26e0e1c4f4c529edf6",
+      "ok": true
+    },
+    {
+      "file": "repo/plants-vs-zombies/art/bg_hedge.png",
+      "expected": "795d56dac29853db73b2122d95aa96950312b3e02ff12659c8a3e70bb2d6913d",
+      "actual": "795d56dac29853db73b2122d95aa96950312b3e02ff12659c8a3e70bb2d6913d",
+      "ok": true
+    },
+    {
+      "file": "repo/plants-vs-zombies/art/zombie_fast.png",
+      "expected": "1e6d4f2f51d97b2f7c13ff6e5abbc1167f21a45052619870f56a1f55ea296d57",
+      "actual": "1e6d4f2f51d97b2f7c13ff6e5abbc1167f21a45052619870f56a1f55ea296d57",
+      "ok": true
+    },
+    {
+      "file": "repo/plants-vs-zombies/art/bg_scene.jpg",
+      "expected": "702ca28473198453827c8554e25244ec15595f390b284735ff45cf6258d3d0df",
+      "actual": "702ca28473198453827c8554e25244ec15595f390b284735ff45cf6258d3d0df",
+      "ok": true
+    },
+    {
+      "file": "repo/plants-vs-zombies/art/item_mower.png",
+      "expected": "f75e4403445716eb5a0404f7e7d146637e994df3d98a25998c7d04658cfd5551",
+      "actual": "f75e4403445716eb5a0404f7e7d146637e994df3d98a25998c7d04658cfd5551",
+      "ok": true
+    },
+    {
+      "file": "repo/plants-vs-zombies/art/plant_threepeater.png",
+      "expected": "5507389face23f6e9c7b971735c0d072077dc88ae5c612df716459fb0e6256a8",
+      "actual": "5507389face23f6e9c7b971735c0d072077dc88ae5c612df716459fb0e6256a8",
+      "ok": true
+    },
+    {
+      "file": "repo/plants-vs-zombies/art/bg_lawn_v2.jpg",
+      "expected": "a8642f4e2de72a87ff9b2069a84c860287d43fabca4e0f2f91b35c379ef82824",
+      "actual": "a8642f4e2de72a87ff9b2069a84c860287d43fabca4e0f2f91b35c379ef82824",
+      "ok": true
+    },
+    {
+      "file": "repo/plants-vs-zombies/art/item_pea.png",
+      "expected": "76f85344ddbac93be60c2718f7e929177bb62c6eec3b1067921607fca5da0618",
+      "actual": "76f85344ddbac93be60c2718f7e929177bb62c6eec3b1067921607fca5da0618",
+      "ok": true
+    },
+    {
+      "file": "repo/plants-vs-zombies/art/zombie_strong.png",
+      "expected": "8d620104d849b09f698c614457b5057494c02558ea2cae1755e610b8f1f50dee",
+      "actual": "8d620104d849b09f698c614457b5057494c02558ea2cae1755e610b8f1f50dee",
+      "ok": true
+    },
+    {
+      "file": "repo/plants-vs-zombies/art/bg_house.png",
+      "expected": "b93f24042429a0a73e7c82bb787d796c3be56442a5ad17745e4f02f3de74291c",
+      "actual": "b93f24042429a0a73e7c82bb787d796c3be56442a5ad17745e4f02f3de74291c",
+      "ok": true
+    },
+    {
+      "file": "repo/plants-vs-zombies/art/zombie_cone.png",
+      "expected": "1dfce216a56b618103f63c4913e0bb0149c9c555b3427829379c971f3c12ce9d",
+      "actual": "1dfce216a56b618103f63c4913e0bb0149c9c555b3427829379c971f3c12ce9d",
+      "ok": true
+    },
+    {
+      "file": "repo/plants-vs-zombies/art/plant_cactus.png",
+      "expected": "53682db7989c0499cb049ab19e7e4ab13abee6b56ba4502e6ac1e70ed7d550f4",
+      "actual": "53682db7989c0499cb049ab19e7e4ab13abee6b56ba4502e6ac1e70ed7d550f4",
+      "ok": true
+    },
+    {
+      "file": "repo/plants-vs-zombies/art/plant_peashooter.png",
+      "expected": "80ec085397c4ceb5fae47c277344457cd672221cf9e56a89ff32b2cd1eac35d2",
+      "actual": "80ec085397c4ceb5fae47c277344457cd672221cf9e56a89ff32b2cd1eac35d2",
+      "ok": true
+    },
+    {
+      "file": "repo/plants-vs-zombies/art/plant_sunflower.png",
+      "expected": "5a274ad0fc80aae45e0277407f1a49bbd1a5122f44cdb98a4b42dc2ef07cdcb5",
+      "actual": "5a274ad0fc80aae45e0277407f1a49bbd1a5122f44cdb98a4b42dc2ef07cdcb5",
+      "ok": true
+    },
+    {
+      "file": "repo/plants-vs-zombies/art/plant_chomper.png",
+      "expected": "9522e7942fb602355fcd79f1901537fbc1f99461d7c587ec5dcb95b351cb8e41",
+      "actual": "9522e7942fb602355fcd79f1901537fbc1f99461d7c587ec5dcb95b351cb8e41",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/tools/reference.mjs",
+      "expected": "517945120178b928fa892d38b3212745bb662a996dbf0dcf0ef1050e84c86156",
+      "actual": "517945120178b928fa892d38b3212745bb662a996dbf0dcf0ef1050e84c86156",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/tools/validate_levels.js",
+      "expected": "31a80828731d048fff17c11d4a2103b1c193dc149ffce8157fb426be5e866703",
+      "actual": "31a80828731d048fff17c11d4a2103b1c193dc149ffce8157fb426be5e866703",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/tools/run_tests.py",
+      "expected": "c66923dc4156a67e9d38c365e4129abf12dbeeb84c93be0a645f91e4773a3f1d",
+      "actual": "c66923dc4156a67e9d38c365e4129abf12dbeeb84c93be0a645f91e4773a3f1d",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/src/view.mjs",
+      "expected": "4df53d5a553ed8c95a80e9a73df5300635c15fc935d635ad13f91b79fbf0534f",
+      "actual": "4df53d5a553ed8c95a80e9a73df5300635c15fc935d635ad13f91b79fbf0534f",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/src/app.mjs",
+      "expected": "605d3eab9f29b3249d08cc2e109e57b82ab9dd4744a1c1f1b36d6d28446e8943",
+      "actual": "605d3eab9f29b3249d08cc2e109e57b82ab9dd4744a1c1f1b36d6d28446e8943",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/src/loader.mjs",
+      "expected": "9467c8e607341a8551a40cf02e7f9ebc4f642e92c42a5bfd1eecefd9db70f127",
+      "actual": "9467c8e607341a8551a40cf02e7f9ebc4f642e92c42a5bfd1eecefd9db70f127",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/src/timing.mjs",
+      "expected": "5b91f677e55809a0db0b2f6c6d74a557738c3e21bec95283bc7620a261682b4d",
+      "actual": "5b91f677e55809a0db0b2f6c6d74a557738c3e21bec95283bc7620a261682b4d",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/src/versions.mjs",
+      "expected": "aac46b7a342592a537a37ac54e959c4e118e1e7c28abed3d1e1a17aa79ebdf2c",
+      "actual": "aac46b7a342592a537a37ac54e959c4e118e1e7c28abed3d1e1a17aa79ebdf2c",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/src/controller.mjs",
+      "expected": "98138946001702e77e7665404e47f52c11a2f115d2e1f4a7fc1b9e5edc98f510",
+      "actual": "98138946001702e77e7665404e47f52c11a2f115d2e1f4a7fc1b9e5edc98f510",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/src/engine.mjs",
+      "expected": "b873f9def7a35ef02c0646be1b2d1453a10c8f54c89cee7181f28eb87736f526",
+      "actual": "b873f9def7a35ef02c0646be1b2d1453a10c8f54c89cee7181f28eb87736f526",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/src/persistence.mjs",
+      "expected": "57e0364a354c706445bbe9d524d12198730c389919d8c89d9f743ad37ee388fe",
+      "actual": "57e0364a354c706445bbe9d524d12198730c389919d8c89d9f743ad37ee388fe",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/src/levels.mjs",
+      "expected": "fd9f3c408bb7cc851daa6b6af0e86b75ffd875e2d90d6e8199b80635dbb2abb4",
+      "actual": "fd9f3c408bb7cc851daa6b6af0e86b75ffd875e2d90d6e8199b80635dbb2abb4",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/src/solver.mjs",
+      "expected": "71673cc615bfd2efd2dc112d51ab55102356bcc793c06fbf7777ee7da801ae68",
+      "actual": "71673cc615bfd2efd2dc112d51ab55102356bcc793c06fbf7777ee7da801ae68",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/tests/migration.test.mjs",
+      "expected": "190dee020be2fc1622d8e73134ef9d15a96f98fe230243838c7634addbeee4e4",
+      "actual": "190dee020be2fc1622d8e73134ef9d15a96f98fe230243838c7634addbeee4e4",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/tests/controller.test.mjs",
+      "expected": "d33d4bd594cf5a8aef699566793fb7e6f6b52d10a383183c997186e9f2f2ad10",
+      "actual": "d33d4bd594cf5a8aef699566793fb7e6f6b52d10a383183c997186e9f2f2ad10",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/tests/engine.test.mjs",
+      "expected": "b3bc78ca59db63e413bcc520a668b2382053c5feebbf381df83b9846bc5e3434",
+      "actual": "b3bc78ca59db63e413bcc520a668b2382053c5feebbf381df83b9846bc5e3434",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/tests/dom-fixture.mjs",
+      "expected": "e65a7a2be710680d7105a8c577407da86cfef33f67f90d963ef0f7b9c2e33d06",
+      "actual": "e65a7a2be710680d7105a8c577407da86cfef33f67f90d963ef0f7b9c2e33d06",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/tests/timing.test.mjs",
+      "expected": "fc79a0cbd6d90ba14e3461bf2c62544e664be3c7fd8af9918907dab2f8d1a0ab",
+      "actual": "fc79a0cbd6d90ba14e3461bf2c62544e664be3c7fd8af9918907dab2f8d1a0ab",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/tests/loader.test.mjs",
+      "expected": "f3f6dcc0a9b4691a8c8980fdc3320caa3c0509e19fb4a4e14c976581fe412099",
+      "actual": "f3f6dcc0a9b4691a8c8980fdc3320caa3c0509e19fb4a4e14c976581fe412099",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/tests/recovery.test.mjs",
+      "expected": "eda9795d9e5d5c97fb024d22229e0e8b8377050569b9e8c3dd57ff31fd8652ff",
+      "actual": "eda9795d9e5d5c97fb024d22229e0e8b8377050569b9e8c3dd57ff31fd8652ff",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/tests/solver.test.mjs",
+      "expected": "6da9a0dba98939a87ea9baac7aa6cecea0dc0339bcc38edd894b0697280a5c71",
+      "actual": "6da9a0dba98939a87ea9baac7aa6cecea0dc0339bcc38edd894b0697280a5c71",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/tests/app.test.mjs",
+      "expected": "262f2601a5b5ed07b090e68d3b048fe363e74ce8f351a83f47aca5c96fd10cf5",
+      "actual": "262f2601a5b5ed07b090e68d3b048fe363e74ce8f351a83f47aca5c96fd10cf5",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/tests/integration.test.mjs",
+      "expected": "c67077d1c30003befc10f8f046803f9e631c67dfab1562e7daa2a2a5b7b67355",
+      "actual": "c67077d1c30003befc10f8f046803f9e631c67dfab1562e7daa2a2a5b7b67355",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/tests/persistence.test.mjs",
+      "expected": "a43d208673b998268f255ba0d257a6ae1448561bcfea6909996fafe322dca972",
+      "actual": "a43d208673b998268f255ba0d257a6ae1448561bcfea6909996fafe322dca972",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/loader.test.mjs.attempt6.log",
+      "expected": "3a8e53f81e691256acf7fc53c9be9fa8eb8f61c923de60f377811f666819fc7a",
+      "actual": "3a8e53f81e691256acf7fc53c9be9fa8eb8f61c923de60f377811f666819fc7a",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/engine.test.mjs.log",
+      "expected": "dba8fd9724298e1850e0c23978fc66b69547774b2eb0fa5b61fc2d47acb9a432",
+      "actual": "dba8fd9724298e1850e0c23978fc66b69547774b2eb0fa5b61fc2d47acb9a432",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/controller.test.mjs.attempt5.log",
+      "expected": "4f14cdd360b35636eb6fe1f723cfeec554e5b7507ae0930a6bf8013bfe2c5626",
+      "actual": "4f14cdd360b35636eb6fe1f723cfeec554e5b7507ae0930a6bf8013bfe2c5626",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/timing.test.mjs.attempt9.log",
+      "expected": "4ac142532dfa229188ac901f7c2349959bd0463b3af949d7572d540fccbf154a",
+      "actual": "4ac142532dfa229188ac901f7c2349959bd0463b3af949d7572d540fccbf154a",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/validate-checkpoint1.log",
+      "expected": "3fa25510b4e10a98e62d4a57b6f71b107a9db38bd4e63aeb86b3f07f973c217c",
+      "actual": "3fa25510b4e10a98e62d4a57b6f71b107a9db38bd4e63aeb86b3f07f973c217c",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/recovery.test.mjs.attempt5.log",
+      "expected": "b77094ebe692f57dc82f952f07b11659a925baffb7adea3cfddf5d4c77c2d786",
+      "actual": "b77094ebe692f57dc82f952f07b11659a925baffb7adea3cfddf5d4c77c2d786",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/solver.test.mjs.attempt5.log",
+      "expected": "77f65fec7dd7bed03cd52ce8015f72f77a6ff85bd70e12fd09f97f6519f1254e",
+      "actual": "77f65fec7dd7bed03cd52ce8015f72f77a6ff85bd70e12fd09f97f6519f1254e",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/loader.test.mjs.attempt9.log",
+      "expected": "8761092ee066405aa181a7e98d76347bdf68018d352a0931812eaafe45474f2a",
+      "actual": "8761092ee066405aa181a7e98d76347bdf68018d352a0931812eaafe45474f2a",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/timing.test.mjs.attempt12.log",
+      "expected": "7ff3bc831832497e864810b30ed192baebc418134bf00970fa4d79055ea0bd35",
+      "actual": "7ff3bc831832497e864810b30ed192baebc418134bf00970fa4d79055ea0bd35",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/solver.test.mjs.attempt3.log",
+      "expected": "dd6d267222b41bbcd94d3b746c61a73ac195a99ad01d6aebeb041e239169978c",
+      "actual": "dd6d267222b41bbcd94d3b746c61a73ac195a99ad01d6aebeb041e239169978c",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/persistence.test.mjs.attempt12.log",
+      "expected": "706903bd87f082e50d86f97f80f8163ff273a8aa5ea4a0fb6188d48f63e2603f",
+      "actual": "706903bd87f082e50d86f97f80f8163ff273a8aa5ea4a0fb6188d48f63e2603f",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/migration.test.mjs.attempt2.log",
+      "expected": "f57cf95e5a969dddc1d60a3039647e32afdb359098eb91caf0e7f01de0490744",
+      "actual": "f57cf95e5a969dddc1d60a3039647e32afdb359098eb91caf0e7f01de0490744",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/controller.test.mjs.attempt6.log",
+      "expected": "6541a47e862899efa93a96c358da49cf5fefe0d6d63f24122bc5f87cd14adef4",
+      "actual": "6541a47e862899efa93a96c358da49cf5fefe0d6d63f24122bc5f87cd14adef4",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/loader.test.mjs.attempt11.log",
+      "expected": "6613eecec1ce8fe678d82598377cd036cdaaf9213e6e3130b480c7375d1bffeb",
+      "actual": "6613eecec1ce8fe678d82598377cd036cdaaf9213e6e3130b480c7375d1bffeb",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/app.test.mjs.attempt8.log",
+      "expected": "ea141765b91cf2982f7d46a41745815dfb5ef949411a6162e37e47edc726e2b1",
+      "actual": "ea141765b91cf2982f7d46a41745815dfb5ef949411a6162e37e47edc726e2b1",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/migration.test.mjs.attempt11.log",
+      "expected": "2e676450d07b96948f0bb893a9c08bc196955bc581875c498e6742ba2ccae1a0",
+      "actual": "2e676450d07b96948f0bb893a9c08bc196955bc581875c498e6742ba2ccae1a0",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/loader.test.mjs.attempt3.log",
+      "expected": "ebe6dcb3aa9bd64c61eb8324937576315feee6bb460012332ce0773b292c28fe",
+      "actual": "ebe6dcb3aa9bd64c61eb8324937576315feee6bb460012332ce0773b292c28fe",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/engine.test.mjs.attempt10.log",
+      "expected": "ec3a40774c8e41d93372d4379af9e808bfae5d9bc82e0e1f278ef28ee99ff419",
+      "actual": "ec3a40774c8e41d93372d4379af9e808bfae5d9bc82e0e1f278ef28ee99ff419",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/controller.test.mjs.attempt10.log",
+      "expected": "30e581aace771b887451f45f2b0f044c12581a9dbba2810b826f4419b86bc580",
+      "actual": "30e581aace771b887451f45f2b0f044c12581a9dbba2810b826f4419b86bc580",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/loader.test.mjs.attempt8.log",
+      "expected": "93e8d0f14bbe68bb73eabafa32f079bcc761a2130bea78942725b75a4ee2b506",
+      "actual": "93e8d0f14bbe68bb73eabafa32f079bcc761a2130bea78942725b75a4ee2b506",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/migration.test.mjs.attempt4.log",
+      "expected": "f49e7ae1e830e78badc21e64ef8633ae54399f44d2177dd3f1ae9d9a967cebaf",
+      "actual": "f49e7ae1e830e78badc21e64ef8633ae54399f44d2177dd3f1ae9d9a967cebaf",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/persistence.test.mjs.attempt9.log",
+      "expected": "632b9abf323c6ccd3b1849eb79399110de1f2e3b245fb60bafacbe55f6f7499d",
+      "actual": "632b9abf323c6ccd3b1849eb79399110de1f2e3b245fb60bafacbe55f6f7499d",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/migration.test.mjs.attempt7.log",
+      "expected": "555ff919dca6e1175b49911355b7c6c8d53003fb2f4573d6bb389fc7ff031584",
+      "actual": "555ff919dca6e1175b49911355b7c6c8d53003fb2f4573d6bb389fc7ff031584",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/engine.test.mjs.attempt11.log",
+      "expected": "04123df36883071eb9fb9796c8b4c605bc96fced97e234c58533310f7ee4db7a",
+      "actual": "04123df36883071eb9fb9796c8b4c605bc96fced97e234c58533310f7ee4db7a",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/integration.test.mjs.attempt5.log",
+      "expected": "2b0199fc40ac67c56f01d3189150f0a7fc13682c2af125fd3d4a52c8d022fc76",
+      "actual": "2b0199fc40ac67c56f01d3189150f0a7fc13682c2af125fd3d4a52c8d022fc76",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/app.test.mjs.attempt5.log",
+      "expected": "f23753186f44e6c356b19f1c0882e52cb354cc29fda885d631235c66ba2d0b1d",
+      "actual": "f23753186f44e6c356b19f1c0882e52cb354cc29fda885d631235c66ba2d0b1d",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/app.test.mjs.attempt9.log",
+      "expected": "3ee28dde5461f99b792a584c23ce092a3d839348160e23c22e4289e55b1b4382",
+      "actual": "3ee28dde5461f99b792a584c23ce092a3d839348160e23c22e4289e55b1b4382",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/integration.test.mjs.attempt1.log",
+      "expected": "4176dea71f3dbf28b57d63173c1d4d33f4e00ff841f07c412d70222ad2347bb3",
+      "actual": "4176dea71f3dbf28b57d63173c1d4d33f4e00ff841f07c412d70222ad2347bb3",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/app.test.mjs.attempt3.log",
+      "expected": "ef1a122061de0bc9d0432e2180668d611bcf4642ba17cf2444c4870d1b5e4618",
+      "actual": "ef1a122061de0bc9d0432e2180668d611bcf4642ba17cf2444c4870d1b5e4618",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/app.test.mjs.attempt11.log",
+      "expected": "bad91b454be5a069937278bbde7c51abfd81a81d1bc0169122285a14011519bf",
+      "actual": "bad91b454be5a069937278bbde7c51abfd81a81d1bc0169122285a14011519bf",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/solver.test.mjs.attempt2.log",
+      "expected": "a2da2af1756b15acf210615331d418ce3390118a5a60d08b570b2429285a010f",
+      "actual": "a2da2af1756b15acf210615331d418ce3390118a5a60d08b570b2429285a010f",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/timing.test.mjs.attempt7.log",
+      "expected": "238382c1c1f334c13f2e9eed2e2803d950ea70a3eaaafe21fb91bee85a8a5d5d",
+      "actual": "238382c1c1f334c13f2e9eed2e2803d950ea70a3eaaafe21fb91bee85a8a5d5d",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/engine.test.mjs.attempt3.log",
+      "expected": "18b6f5579372e33cc7c8428f79b6ce6842da7fb94d8161624457ed29bcfcd186",
+      "actual": "18b6f5579372e33cc7c8428f79b6ce6842da7fb94d8161624457ed29bcfcd186",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/integration.test.mjs.attempt3.log",
+      "expected": "9758941226d601d78591b01df8243a84400c52a64696c9a1abd472c28b77cafb",
+      "actual": "9758941226d601d78591b01df8243a84400c52a64696c9a1abd472c28b77cafb",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/solver.test.mjs.attempt9.log",
+      "expected": "643aedfd9e519f8f275f7bb90826317cde617824a254c23e7721d928b36ca7a8",
+      "actual": "643aedfd9e519f8f275f7bb90826317cde617824a254c23e7721d928b36ca7a8",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/controller.test.mjs.attempt9.log",
+      "expected": "108c5b0080827d94c603c545f8b97552ff047614eb5a9abf0c496fbd16af89e1",
+      "actual": "108c5b0080827d94c603c545f8b97552ff047614eb5a9abf0c496fbd16af89e1",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/persistence.test.mjs.attempt5.log",
+      "expected": "cd233f9b1af663a143152d7a72caa1f6393300820f88add533da189e00c5fe40",
+      "actual": "cd233f9b1af663a143152d7a72caa1f6393300820f88add533da189e00c5fe40",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/integration.test.mjs.attempt6.log",
+      "expected": "7bf6865c3de391fb26594606db7cc44cb43f4216bf667e39fb4b5d6951e10be8",
+      "actual": "7bf6865c3de391fb26594606db7cc44cb43f4216bf667e39fb4b5d6951e10be8",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/recovery.test.mjs.attempt2.log",
+      "expected": "8facf3a98cc3a0ee60b0d57e20ac3cfc82c5c017aac9c1e0994752d847c963b1",
+      "actual": "8facf3a98cc3a0ee60b0d57e20ac3cfc82c5c017aac9c1e0994752d847c963b1",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/app.test.mjs.attempt12.log",
+      "expected": "79de521528079c4e28db8f1e6d51b292f1e35dd5e22ab44c608eac5535978dd7",
+      "actual": "79de521528079c4e28db8f1e6d51b292f1e35dd5e22ab44c608eac5535978dd7",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/controller.test.mjs.attempt11.log",
+      "expected": "1a20f6c7c4252b518cb6a471b80efe5abec9fdb418114edc85221178132a0172",
+      "actual": "1a20f6c7c4252b518cb6a471b80efe5abec9fdb418114edc85221178132a0172",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/controller.test.mjs.log",
+      "expected": "4f544741db28461e6624f74465aa8bfcd0b7002b5549f8d683e1f6cc866baed2",
+      "actual": "4f544741db28461e6624f74465aa8bfcd0b7002b5549f8d683e1f6cc866baed2",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/persistence.test.mjs.attempt8.log",
+      "expected": "4999a3f67f42519d38d4ed47102ece123ed26a3504ed9900840039a72873cef1",
+      "actual": "4999a3f67f42519d38d4ed47102ece123ed26a3504ed9900840039a72873cef1",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/engine.test.mjs.attempt1.log",
+      "expected": "da7254b77986bce783baca9c190edd1e177319b3886dd97fbfe2624fb82d6087",
+      "actual": "da7254b77986bce783baca9c190edd1e177319b3886dd97fbfe2624fb82d6087",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/migration.test.mjs.log",
+      "expected": "634689756637075443a989a923884bf0759a439bf3c698e8dea61031a1305226",
+      "actual": "634689756637075443a989a923884bf0759a439bf3c698e8dea61031a1305226",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/integration.test.mjs.attempt7.log",
+      "expected": "f01dd3c1fc7bb3d96c555e3b3728e308e348e8c93f2e6c8b09ed183c3f22ef6d",
+      "actual": "f01dd3c1fc7bb3d96c555e3b3728e308e348e8c93f2e6c8b09ed183c3f22ef6d",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/controller.test.mjs.attempt1.log",
+      "expected": "a08e7453ad9ac3d0d4f3983993597672648f3646fe4bdc976973682c09f98852",
+      "actual": "a08e7453ad9ac3d0d4f3983993597672648f3646fe4bdc976973682c09f98852",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/loader.test.mjs.attempt2.log",
+      "expected": "21013b5ed41ce6e1bb848e3668abf29e7a2a8356415fc5953ef477823dc694fb",
+      "actual": "21013b5ed41ce6e1bb848e3668abf29e7a2a8356415fc5953ef477823dc694fb",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/migration.test.mjs.attempt10.log",
+      "expected": "92e78a7b554225a75f195a682a8bc29b06eb3774023d4ca4374883a8e016dc73",
+      "actual": "92e78a7b554225a75f195a682a8bc29b06eb3774023d4ca4374883a8e016dc73",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/solver.test.mjs.attempt8.log",
+      "expected": "0679fd5a7d54389403bf7d64bcb9ef344478f74f71a2f73307241cdc872cd81b",
+      "actual": "0679fd5a7d54389403bf7d64bcb9ef344478f74f71a2f73307241cdc872cd81b",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/app.test.mjs.attempt2.log",
+      "expected": "7eb6c24700749a66aa638ef5fd29e4682f3916b0bbb87ecf24614dcf94d98e5f",
+      "actual": "7eb6c24700749a66aa638ef5fd29e4682f3916b0bbb87ecf24614dcf94d98e5f",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/timing.test.mjs.log",
+      "expected": "341e6ea945edd64d051663624e31dacbfeef83e2233361d84c05280950c825d3",
+      "actual": "341e6ea945edd64d051663624e31dacbfeef83e2233361d84c05280950c825d3",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/integration.test.mjs.attempt9.log",
+      "expected": "754b42c2b414a5c960e2a5cb2965f1335235071fd6af3c572c0817cbc8a97d84",
+      "actual": "754b42c2b414a5c960e2a5cb2965f1335235071fd6af3c572c0817cbc8a97d84",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/persistence.test.mjs.attempt7.log",
+      "expected": "dc9085aff4737517731b5ba41494034f530418a76df33bc4dfbd00eef034b6c8",
+      "actual": "dc9085aff4737517731b5ba41494034f530418a76df33bc4dfbd00eef034b6c8",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/integration.test.mjs.attempt10.log",
+      "expected": "0ca56be42790cda621d4a185ffda950c06a5845365b3e6ad429225db8f4d9175",
+      "actual": "0ca56be42790cda621d4a185ffda950c06a5845365b3e6ad429225db8f4d9175",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/recovery.test.mjs.log",
+      "expected": "1554c2ff95f34f0ed5783824871907896002fe5d8df7e846ca32429addf6f1c4",
+      "actual": "1554c2ff95f34f0ed5783824871907896002fe5d8df7e846ca32429addf6f1c4",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/timing.test.mjs.attempt2.log",
+      "expected": "b56393b1fdcc074d1e51ea2b93b371435117551aadf5258ad782e383c34305b4",
+      "actual": "b56393b1fdcc074d1e51ea2b93b371435117551aadf5258ad782e383c34305b4",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/persistence.test.mjs.attempt3.log",
+      "expected": "d4439ac51aa7a70ab2fd9b91c0f74ac12eec75650a7562ba1e043cf65a1c6b48",
+      "actual": "d4439ac51aa7a70ab2fd9b91c0f74ac12eec75650a7562ba1e043cf65a1c6b48",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/engine.test.mjs.attempt6.log",
+      "expected": "abe25f5e3c0624de98642a44be96526c8bdad0a7cec63e1e064a374910023bd9",
+      "actual": "abe25f5e3c0624de98642a44be96526c8bdad0a7cec63e1e064a374910023bd9",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/app.test.mjs.attempt6.log",
+      "expected": "d31aed616d1665470c034b8993c588a1c12568ee75ab25e6ebb1eb42080e2880",
+      "actual": "d31aed616d1665470c034b8993c588a1c12568ee75ab25e6ebb1eb42080e2880",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/persistence.test.mjs.attempt2.log",
+      "expected": "bc9cd7326d48bb8799d37ec1e74a9c6661ba17a32fafe594d0053243ebcb8ee0",
+      "actual": "bc9cd7326d48bb8799d37ec1e74a9c6661ba17a32fafe594d0053243ebcb8ee0",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/engine.test.mjs.attempt8.log",
+      "expected": "2a690345da549f6177245b5a80c6e1511ec7e9d065a296d6350808b6cb96d31d",
+      "actual": "2a690345da549f6177245b5a80c6e1511ec7e9d065a296d6350808b6cb96d31d",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/persistence.test.mjs.attempt1.log",
+      "expected": "c6372f9e3104d72125508edb57142ac90beb74d18c2d907bd9f6c7f90ff4ad5d",
+      "actual": "c6372f9e3104d72125508edb57142ac90beb74d18c2d907bd9f6c7f90ff4ad5d",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/timing.test.mjs.attempt11.log",
+      "expected": "d5f603b0ba5d5f27c0152e5887debe791b37fec29ff7d546923f64efdf4a3e56",
+      "actual": "d5f603b0ba5d5f27c0152e5887debe791b37fec29ff7d546923f64efdf4a3e56",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/integration.test.mjs.attempt12.log",
+      "expected": "3f0fd33334402c8978f49dba2cd0a4115009f36cf84775e814531725b8155872",
+      "actual": "3f0fd33334402c8978f49dba2cd0a4115009f36cf84775e814531725b8155872",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/app.test.mjs.attempt1.log",
+      "expected": "1ae0b1eee71debd21bde43b76cb8f374f53f3fb5de55332ae7eaba36623df8e9",
+      "actual": "1ae0b1eee71debd21bde43b76cb8f374f53f3fb5de55332ae7eaba36623df8e9",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/solver.test.mjs.log",
+      "expected": "8b324d9dead81d6003c706ff326d9efff2a0ec475af3ef1231a2a14c4ad7bdd5",
+      "actual": "8b324d9dead81d6003c706ff326d9efff2a0ec475af3ef1231a2a14c4ad7bdd5",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/timing.test.mjs.attempt1.log",
+      "expected": "f9079281b71b8c50b0795c03040ab7403eb2878396b7e8b685adc2c42ee6e3d9",
+      "actual": "f9079281b71b8c50b0795c03040ab7403eb2878396b7e8b685adc2c42ee6e3d9",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/recovery.test.mjs.attempt1.log",
+      "expected": "3a8deece38650e116a251aa044b76186471b105ab72e943fae205ff91c94d27a",
+      "actual": "3a8deece38650e116a251aa044b76186471b105ab72e943fae205ff91c94d27a",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/migration.test.mjs.attempt3.log",
+      "expected": "a27f05fbdff236dbf6bec82801e86a46fcc01440c5f6edcdce31a14e1fe2026b",
+      "actual": "a27f05fbdff236dbf6bec82801e86a46fcc01440c5f6edcdce31a14e1fe2026b",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/integration.test.mjs.attempt4.log",
+      "expected": "8710aa6aefff8681cad9bc519684c0508868792619b9b0f2d3e5ec6ffd033a4b",
+      "actual": "8710aa6aefff8681cad9bc519684c0508868792619b9b0f2d3e5ec6ffd033a4b",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/solver.test.mjs.attempt11.log",
+      "expected": "92ebf36551f39b3544ab148d8641476172b2b6ed517d66f56ddb79794c3a7151",
+      "actual": "92ebf36551f39b3544ab148d8641476172b2b6ed517d66f56ddb79794c3a7151",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/solver.test.mjs.attempt6.log",
+      "expected": "aa157bf74cbb93595b3831294c21dc0d6d3bca2cd874783a91edb98b9346ed84",
+      "actual": "aa157bf74cbb93595b3831294c21dc0d6d3bca2cd874783a91edb98b9346ed84",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/solver.test.mjs.attempt10.log",
+      "expected": "1272e598132bab79cbffad81108b9418112069919e38f3293610c3fbf0fbb93e",
+      "actual": "1272e598132bab79cbffad81108b9418112069919e38f3293610c3fbf0fbb93e",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/integration.test.mjs.attempt8.log",
+      "expected": "bf77b372ccc230e253a860d99a7b2e4e843a57129ccf077d42e28d18c19b1e35",
+      "actual": "bf77b372ccc230e253a860d99a7b2e4e843a57129ccf077d42e28d18c19b1e35",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/loader.test.mjs.attempt1.log",
+      "expected": "e46e71b5b3976bbaac984cd006f60c4d58427c4bf68f50f1f61b21765ac741bf",
+      "actual": "e46e71b5b3976bbaac984cd006f60c4d58427c4bf68f50f1f61b21765ac741bf",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/loader.test.mjs.attempt10.log",
+      "expected": "9b65f8de680426f06a49cc5545b08cd3c15f8853e38acd5f7c6abe90bf834d2c",
+      "actual": "9b65f8de680426f06a49cc5545b08cd3c15f8853e38acd5f7c6abe90bf834d2c",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/loader.test.mjs.log",
+      "expected": "69d6e5fe37de2ff46dc3fdcf579929fceeae9fdd608d16c3144faec0a38b4980",
+      "actual": "69d6e5fe37de2ff46dc3fdcf579929fceeae9fdd608d16c3144faec0a38b4980",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/timing.test.mjs.attempt3.log",
+      "expected": "56364810c3a49e19f72ada400c748d17034f3ffde92e554b52a233c2a378749a",
+      "actual": "56364810c3a49e19f72ada400c748d17034f3ffde92e554b52a233c2a378749a",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/persistence.test.mjs.attempt10.log",
+      "expected": "ec5a986a18ac4c4752a204b0edd9df38e4c04f1bea8bdcd5fdee31e2509a7968",
+      "actual": "ec5a986a18ac4c4752a204b0edd9df38e4c04f1bea8bdcd5fdee31e2509a7968",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/migration.test.mjs.attempt5.log",
+      "expected": "7615b68e299dd2afb8d7700404e422700f90b3b1eb68e9102738a2090e7e762b",
+      "actual": "7615b68e299dd2afb8d7700404e422700f90b3b1eb68e9102738a2090e7e762b",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/engine.test.mjs.attempt9.log",
+      "expected": "9198f3c50317c18b38beefb1e93c4ece82b4b469c536697f0ce7bfb274d2357d",
+      "actual": "9198f3c50317c18b38beefb1e93c4ece82b4b469c536697f0ce7bfb274d2357d",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/solver.test.mjs.attempt4.log",
+      "expected": "e266649ffac9d8b20d3a7ed30eeb58e0b835ace9475ced689bee8b385931d3f5",
+      "actual": "e266649ffac9d8b20d3a7ed30eeb58e0b835ace9475ced689bee8b385931d3f5",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/recovery.test.mjs.attempt3.log",
+      "expected": "c689c9e483cc6b2970cd415ef17d2ea274694041e8125ae3aa3c4a51f5b412cc",
+      "actual": "c689c9e483cc6b2970cd415ef17d2ea274694041e8125ae3aa3c4a51f5b412cc",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/migration.test.mjs.attempt1.log",
+      "expected": "4156eb493cb528eab2d7d59a13b4937d3b8246d48374b4e340d048e64b1cddd1",
+      "actual": "4156eb493cb528eab2d7d59a13b4937d3b8246d48374b4e340d048e64b1cddd1",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/controller.test.mjs.attempt2.log",
+      "expected": "3a25e8f55738d913b9ebe585288879c9e9b6c9587084456bf40688f4ce99544c",
+      "actual": "3a25e8f55738d913b9ebe585288879c9e9b6c9587084456bf40688f4ce99544c",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/engine.test.mjs.attempt2.log",
+      "expected": "5c899231e984355bd5580c9761d76d20724e79b6875e3ed52184d80463333095",
+      "actual": "5c899231e984355bd5580c9761d76d20724e79b6875e3ed52184d80463333095",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/levels.json",
+      "expected": "81ad3a9dd6f35a03fdc65c2087ef924504ac92693c4275f678fb5120b6816e85",
+      "actual": "81ad3a9dd6f35a03fdc65c2087ef924504ac92693c4275f678fb5120b6816e85",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/loader.test.mjs.attempt5.log",
+      "expected": "6237781811da2b4565a4051825deaba838b30e3b83d7ea8a1aec2420f229d825",
+      "actual": "6237781811da2b4565a4051825deaba838b30e3b83d7ea8a1aec2420f229d825",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/loader.test.mjs.attempt4.log",
+      "expected": "613229d391a98e2121d61ab59888feed1fc9f7a5ef6c2ffa94420d80c1479263",
+      "actual": "613229d391a98e2121d61ab59888feed1fc9f7a5ef6c2ffa94420d80c1479263",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/app.test.mjs.attempt7.log",
+      "expected": "019a0fbef6e1f4ea7c27065be2a2a5848bdecbbf09512267753efe418e32045f",
+      "actual": "019a0fbef6e1f4ea7c27065be2a2a5848bdecbbf09512267753efe418e32045f",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/loader.test.mjs.attempt12.log",
+      "expected": "86f1febfcdb369994023f9679517e8ea72c24dcd636fe5976c3db4d386a8d518",
+      "actual": "86f1febfcdb369994023f9679517e8ea72c24dcd636fe5976c3db4d386a8d518",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/controller.test.mjs.attempt4.log",
+      "expected": "93b81f6ef0b5ab1b53e6ab30c100641a32789b28aebe57a38982615d8118acd4",
+      "actual": "93b81f6ef0b5ab1b53e6ab30c100641a32789b28aebe57a38982615d8118acd4",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/engine.test.mjs.attempt5.log",
+      "expected": "50dcb8e5e078ad80bbcb03baea27d032a32956feb40e516c99b99ed56c6e8abc",
+      "actual": "50dcb8e5e078ad80bbcb03baea27d032a32956feb40e516c99b99ed56c6e8abc",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/solver.test.mjs.attempt1.log",
+      "expected": "94333b040e0557e2172e0071a371345a90e20c3591591dc758cd6c83b8fce562",
+      "actual": "94333b040e0557e2172e0071a371345a90e20c3591591dc758cd6c83b8fce562",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/persistence.test.mjs.attempt4.log",
+      "expected": "e807cc999d0c9e40f2029adbe930beb747ada442733710a8d96ff4334968655f",
+      "actual": "e807cc999d0c9e40f2029adbe930beb747ada442733710a8d96ff4334968655f",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/controller.test.mjs.attempt3.log",
+      "expected": "9d0adfc3a48e094675181c009443536b97547634bf498b0ff448d30328ffceae",
+      "actual": "9d0adfc3a48e094675181c009443536b97547634bf498b0ff448d30328ffceae",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/controller.test.mjs.attempt7.log",
+      "expected": "c471f1cc24d5304aa5192ab944c7257ef762874af5a405c7f71af2ed1c7e8bee",
+      "actual": "c471f1cc24d5304aa5192ab944c7257ef762874af5a405c7f71af2ed1c7e8bee",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/timing.test.mjs.attempt10.log",
+      "expected": "1b482b108500c2cdf632f253b44f69182143ccfe6877474c4369c350f8145253",
+      "actual": "1b482b108500c2cdf632f253b44f69182143ccfe6877474c4369c350f8145253",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/migration.test.mjs.attempt9.log",
+      "expected": "3a4e001753b553a3520b0c541760d044af8b76cc69fc04e1870e0c7c824b8cb1",
+      "actual": "3a4e001753b553a3520b0c541760d044af8b76cc69fc04e1870e0c7c824b8cb1",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/timing.test.mjs.attempt6.log",
+      "expected": "5947ec60208cda061d5cb67671dc8ed754bfcc404adaf133badfb5c863017354",
+      "actual": "5947ec60208cda061d5cb67671dc8ed754bfcc404adaf133badfb5c863017354",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/app.test.mjs.attempt4.log",
+      "expected": "162fd242599c8b75b568df960ab43be61e343d8544ec8d01e4c74e170892c078",
+      "actual": "162fd242599c8b75b568df960ab43be61e343d8544ec8d01e4c74e170892c078",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/persistence.test.mjs.log",
+      "expected": "de427d9436134001a1274ce77b7d30127f8efe74bdb05ce84dcfb20cb85f798d",
+      "actual": "de427d9436134001a1274ce77b7d30127f8efe74bdb05ce84dcfb20cb85f798d",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/engine.test.mjs.attempt12.log",
+      "expected": "aab64a5c8e3f02fc703446c68704a3b520fb3eb79b47cdc7af99a8712f282681",
+      "actual": "aab64a5c8e3f02fc703446c68704a3b520fb3eb79b47cdc7af99a8712f282681",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/integration.test.mjs.attempt11.log",
+      "expected": "c5e80b85d00d2b40572f801aa2ace8ae3758cdf18bb7e3ff12dd38f5605a05cd",
+      "actual": "c5e80b85d00d2b40572f801aa2ace8ae3758cdf18bb7e3ff12dd38f5605a05cd",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/app.test.mjs.attempt10.log",
+      "expected": "085645ddead3d8b31a10b70d3de26184fa44fc2f813bd0693f24bd1e53e848c1",
+      "actual": "085645ddead3d8b31a10b70d3de26184fa44fc2f813bd0693f24bd1e53e848c1",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/recovery.test.mjs.attempt4.log",
+      "expected": "e98185a8dab8972ce02f8311dd461ec441348b0a031971430535c3e07a6b5a69",
+      "actual": "e98185a8dab8972ce02f8311dd461ec441348b0a031971430535c3e07a6b5a69",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/controller.test.mjs.attempt12.log",
+      "expected": "dde75001b19c6603636bca6b36495e7572370dc10abd059bbd432a145df8ac15",
+      "actual": "dde75001b19c6603636bca6b36495e7572370dc10abd059bbd432a145df8ac15",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/timing.test.mjs.attempt5.log",
+      "expected": "c31fd2f9ac291bd42326820f010b51a2610fb40a09768b012c3d0ca2e1f0b44a",
+      "actual": "c31fd2f9ac291bd42326820f010b51a2610fb40a09768b012c3d0ca2e1f0b44a",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/loader.test.mjs.attempt7.log",
+      "expected": "be161e6a85b718cc7d965e03412504a817e182c8ef50e12586c07afaa8477eca",
+      "actual": "be161e6a85b718cc7d965e03412504a817e182c8ef50e12586c07afaa8477eca",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/app.test.mjs.log",
+      "expected": "82dfe2a09a57222a91a6d18020b6236f0b5ef201a700775b75c8fa2cce4ede28",
+      "actual": "82dfe2a09a57222a91a6d18020b6236f0b5ef201a700775b75c8fa2cce4ede28",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/solver.test.mjs.attempt7.log",
+      "expected": "9ce24b19d78d35538e29d8dbb05bf71da6f451f913a0eea259c7dbf4083a57d1",
+      "actual": "9ce24b19d78d35538e29d8dbb05bf71da6f451f913a0eea259c7dbf4083a57d1",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/persistence.test.mjs.attempt6.log",
+      "expected": "1f4081b2796a5b362739576218b16231dbfddc29c26a859770280c221a0a84ee",
+      "actual": "1f4081b2796a5b362739576218b16231dbfddc29c26a859770280c221a0a84ee",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/timing.test.mjs.attempt8.log",
+      "expected": "9b3b0e2b0cb62fe11d10ca07b72f5be0fd39ecd5af4a857d18d4ea99a03dd328",
+      "actual": "9b3b0e2b0cb62fe11d10ca07b72f5be0fd39ecd5af4a857d18d4ea99a03dd328",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/persistence.test.mjs.attempt11.log",
+      "expected": "a8291e56d32e630b491a4687bccbc20ef14f90bfb324f95a8b9a04cdb97b24fa",
+      "actual": "a8291e56d32e630b491a4687bccbc20ef14f90bfb324f95a8b9a04cdb97b24fa",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/timing.test.mjs.attempt4.log",
+      "expected": "e03119e840b8202e20ad5e97c3815c5b1bcde3432debe6965f4215fd348dfbec",
+      "actual": "e03119e840b8202e20ad5e97c3815c5b1bcde3432debe6965f4215fd348dfbec",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/migration.test.mjs.attempt8.log",
+      "expected": "530c41c182c1dd046dc2b78280f185773de31a9b7f2ba5da2910de5307c824be",
+      "actual": "530c41c182c1dd046dc2b78280f185773de31a9b7f2ba5da2910de5307c824be",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/integration.test.mjs.log",
+      "expected": "5d2c793e3915c0191ab965f5533d3bb2193404fa16b0b4ba77169d0e9bf81570",
+      "actual": "5d2c793e3915c0191ab965f5533d3bb2193404fa16b0b4ba77169d0e9bf81570",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/controller.test.mjs.attempt8.log",
+      "expected": "b90a0ad9e56e24b40816699ebcf3ba1e7b948684323399f54476627ccf471d44",
+      "actual": "b90a0ad9e56e24b40816699ebcf3ba1e7b948684323399f54476627ccf471d44",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/engine.test.mjs.attempt7.log",
+      "expected": "1e9764661e1ab40f520e86d0bb5a80d2dba66fff0395d59d2ff9e0bb0f803376",
+      "actual": "1e9764661e1ab40f520e86d0bb5a80d2dba66fff0395d59d2ff9e0bb0f803376",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/migration.test.mjs.attempt6.log",
+      "expected": "cac7a43a837b7489adadc2b67287f9bafb8be7ee236fdb04a7885c693a2f0ccb",
+      "actual": "cac7a43a837b7489adadc2b67287f9bafb8be7ee236fdb04a7885c693a2f0ccb",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/integration.test.mjs.attempt2.log",
+      "expected": "42b7eb649601c6013336f302522224d94c51c9a10e66ce2a73713a7c70f9e6cc",
+      "actual": "42b7eb649601c6013336f302522224d94c51c9a10e66ce2a73713a7c70f9e6cc",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/evidence/engine.test.mjs.attempt4.log",
+      "expected": "f96d925c487f12c0ac107db9b68a106ab612466ad45b6c58e403edc6a3f888ef",
+      "actual": "f96d925c487f12c0ac107db9b68a106ab612466ad45b6c58e403edc6a3f888ef",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/audio/bounce.mp3",
+      "expected": "9c8dd37bd99a1062a236afe562c5da5bbcb612a20caca5a9950d106f4b7bf69f",
+      "actual": "9c8dd37bd99a1062a236afe562c5da5bbcb612a20caca5a9950d106f4b7bf69f",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/audio/LICENSE-CC0.txt",
+      "expected": "cbcf1b9a77f5c891672ec04d08dd585c42bd86b7d5b340fa6630380d441e0917",
+      "actual": "cbcf1b9a77f5c891672ec04d08dd585c42bd86b7d5b340fa6630380d441e0917",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/audio/click.mp3",
+      "expected": "f4c4a0033171166a89f720899e7c647abfe3ecda314ce5fb33a4aecf48ba70c2",
+      "actual": "f4c4a0033171166a89f720899e7c647abfe3ecda314ce5fb33a4aecf48ba70c2",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/audio/undo.mp3",
+      "expected": "bff279c8dc33286e405dd3e394aba6abc6573363bead43579e050d31fa5c2eee",
+      "actual": "bff279c8dc33286e405dd3e394aba6abc6573363bead43579e050d31fa5c2eee",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/audio/SOURCE-LICENSE.txt",
+      "expected": "efd37f10391081654f5552353d8c50a6cfd53d7e25d17172a720c5fd253099db",
+      "actual": "efd37f10391081654f5552353d8c50a6cfd53d7e25d17172a720c5fd253099db",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/audio/lose.mp3",
+      "expected": "33da496d3d93e33d0618671303ec4cac647156d46083ae684e21f00898f79a06",
+      "actual": "33da496d3d93e33d0618671303ec4cac647156d46083ae684e21f00898f79a06",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/audio/pocket.mp3",
+      "expected": "b2f6b6aeb4815fc44eafab06a15978d13fb790af6bfdc8786b50fd20184e7222",
+      "actual": "b2f6b6aeb4815fc44eafab06a15978d13fb790af6bfdc8786b50fd20184e7222",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/audio/roll.mp3",
+      "expected": "e7e6a77bfc45876493eb70e9bc2f7367775d8f483879057c61c334fc86f96ae6",
+      "actual": "e7e6a77bfc45876493eb70e9bc2f7367775d8f483879057c61c334fc86f96ae6",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/audio/win.mp3",
+      "expected": "faf0b0faf1e8ada1751663995abf33816dc6389bf1a5b8398e35249fc4d2cf77",
+      "actual": "faf0b0faf1e8ada1751663995abf33816dc6389bf1a5b8398e35249fc4d2cf77",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/art/mirror.png",
+      "expected": "f9eeeb07f5e64149765ebae85e7122055e5fe1f7272fa4540e99ed72ac64b6fd",
+      "actual": "f9eeeb07f5e64149765ebae85e7122055e5fe1f7272fa4540e99ed72ac64b6fd",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/art/ball_blue.png",
+      "expected": "1197bcb79d1a18140807b998225796e561057e43300ca4398f9a53f7fa309cc8",
+      "actual": "1197bcb79d1a18140807b998225796e561057e43300ca4398f9a53f7fa309cc8",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/art/star.png",
+      "expected": "e13406be2a63a1ba99155a59bf6512ef8910375fb58edb287102ebd417ad7c26",
+      "actual": "e13406be2a63a1ba99155a59bf6512ef8910375fb58edb287102ebd417ad7c26",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/art/arrow.png",
+      "expected": "7ee738a083bb3b0893f7a57d8dccf46446957db566b0869d4dfe615d3c994f93",
+      "actual": "7ee738a083bb3b0893f7a57d8dccf46446957db566b0869d4dfe615d3c994f93",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/art/ring.png",
+      "expected": "fbf7b47335fc01a76a0fce9e3a574af6e1ac53133579ee1996425815a5d033f6",
+      "actual": "fbf7b47335fc01a76a0fce9e3a574af6e1ac53133579ee1996425815a5d033f6",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/art/ball_purple.png",
+      "expected": "795d7f61098779d498938e59bacf66d8ef67b6eb5dae42a7b322d8779ab6dd43",
+      "actual": "795d7f61098779d498938e59bacf66d8ef67b6eb5dae42a7b322d8779ab6dd43",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/art/pocket.png",
+      "expected": "6bb2fa69b065abc5b2158a95ecd4d9041ddd9c7f9de328926755561c474fd9ac",
+      "actual": "6bb2fa69b065abc5b2158a95ecd4d9041ddd9c7f9de328926755561c474fd9ac",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/art/felt.png",
+      "expected": "d44a3dd331fd7fbb9a638cc1322efd49488699d1095ea3e63553b37abc2a0e51",
+      "actual": "d44a3dd331fd7fbb9a638cc1322efd49488699d1095ea3e63553b37abc2a0e51",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/art/wood.png",
+      "expected": "5f6fffd1788fcc5f2e73ed565a6aeda0e5f5d54948d2fbf77aa46a199872554a",
+      "actual": "5f6fffd1788fcc5f2e73ed565a6aeda0e5f5d54948d2fbf77aa46a199872554a",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/art/ball_yellow.png",
+      "expected": "a4f81dd944dd1e3c0dbabb3b8a44a7e54329eb0f9cfe0421e075649074119304",
+      "actual": "a4f81dd944dd1e3c0dbabb3b8a44a7e54329eb0f9cfe0421e075649074119304",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/art/bg_levelselect.jpg",
+      "expected": "f430e9141b679d024f448692d0fa70ef622a4d982ac1988ad2c352fb9d128d9c",
+      "actual": "f430e9141b679d024f448692d0fa70ef622a4d982ac1988ad2c352fb9d128d9c",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/art/ball_orange.png",
+      "expected": "f4e7f2b8095a54fe14478f84c4e5e1b1285b62b827f5997bdff4a2dcc9981a35",
+      "actual": "f4e7f2b8095a54fe14478f84c4e5e1b1285b62b827f5997bdff4a2dcc9981a35",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/art/ball_red.png",
+      "expected": "28ea427bc6999d63d6f230ed5af1a1c11c4a387f7f5b5833c4fb05aef5926a9e",
+      "actual": "28ea427bc6999d63d6f230ed5af1a1c11c4a387f7f5b5833c4fb05aef5926a9e",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/art/button.png",
+      "expected": "538fb45eb1d77a684256521ab71d7bf81da72c484d0d7d9fbe484c646ea64bae",
+      "actual": "538fb45eb1d77a684256521ab71d7bf81da72c484d0d7d9fbe484c646ea64bae",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/art/ball_green.png",
+      "expected": "3b73cee5b356309591e4646e23fb0eb0c31596306a174ac5a5e9c5c82522234f",
+      "actual": "3b73cee5b356309591e4646e23fb0eb0c31596306a174ac5a5e9c5c82522234f",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/art/block.png",
+      "expected": "bb6b23aebe23b6b17ab46fa719c20adbe16793a09beb2c9ba7cc6d7a1dbcd624",
+      "actual": "bb6b23aebe23b6b17ab46fa719c20adbe16793a09beb2c9ba7cc6d7a1dbcd624",
+      "ok": true
+    },
+    {
+      "file": "repo/pocket-bounce/art/panel.png",
+      "expected": "88086dd69b9e83e4e54746488fd57ac3e6c1e2042856431dc28715f5d1533d00",
+      "actual": "88086dd69b9e83e4e54746488fd57ac3e6c1e2042856431dc28715f5d1533d00",
+      "ok": true
+    },
+    {
+      "file": "archive",
+      "expected": "10a75c940a7fdaec5f46a36816a5517b00ff150bf0d5b79c04cd4cbae852d847",
+      "actual": "10a75c940a7fdaec5f46a36816a5517b00ff150bf0d5b79c04cd4cbae852d847",
+      "ok": true
+    }
+  ],
+  "checked_files": 249,
+  "mismatches": [],
+  "head": "79d1c40a981bdaead27fc4cd9f7df44fb78eecaf",
+  "head_ok": true,
+  "asset_count": 17,
+  "asset_bytes": 2754694
+}
