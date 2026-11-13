@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>游戏开发板 · web_game</title>
+<title>任务看板 · 项目与进度</title>
 <style>
   :root {
     --bg: #0f1418; --panel: #161d23; --panel2: #1b242c; --line: #263039;
@@ -22,7 +22,7 @@
   .info h2 { margin: 0 0 8px; font-size: 15px; color: var(--accent); }
   .info ol, .info ul { margin: 0; padding-left: 20px; color: #cfdae2; font-size: 13.5px; }
   .info li { margin: 3px 0; }
-  .board { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px; align-items: start; }
+  .board { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; align-items: start; }
   .col { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 10px; }
   .col > header h2 { margin: 0; font-size: 14px; display: flex; align-items: center; gap: 8px; }
   .col > header p { margin: 2px 0 10px; font-size: 11.5px; color: var(--dim); }
@@ -39,6 +39,13 @@
   .card .chead { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
   .card h3 { margin: 0; font-size: 13.5px; }
   .diff { color: var(--warn); font-size: 11px; letter-spacing: 1px; white-space: nowrap; }
+  .detail { font-size:13px; color:#cbd6de; }
+  .filters { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:16px; }
+  .filters input, .filters select { border:1px solid var(--line); border-radius:8px; padding:12px; background:var(--panel); color:var(--fg); font:inherit; min-width:0; }
+  .filters input { flex:1; }
+  [hidden] { display:none !important; }
+  .col-blocked > header h2 { color:var(--pink); }
+  .col-blocked .card { border-left-color:var(--pink); }
   .pitch { margin: 6px 0 8px; font-size: 12.5px; color: #cbd6de; }
   .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 8px; }
   .tag { font-size: 11px; color: #b8d8c4; background: #1d2c24; border: 1px solid #2c4034; border-radius: 999px; padding: 1px 8px; }
@@ -66,219 +73,267 @@
 </head>
 <body>
 <header class="top">
-  <h1>游戏开发板</h1>
-  <div class="meta">web_game 项目 · 共 15 个在册游戏（验收通过 0） · 更新于 2026-11-13</div>
-  <p class="meta">Pocket Bounce已获2026-11-13新授权，以单worker串行续做，不降低双端/画风/三小时标准。PvZ继续终止，其他游戏不启动。</p>
+  <h1>任务看板</h1>
+  <div class="meta">共 20 项任务（已完成 4） · 更新于 2026-11-13T20:39:11+08:00</div>
+  <p class="meta">弹球仍是中断的4关原型；11月13日晚计划待本轮新确认，无开发worker运行。PvZ保持终止；HW环境和迁移未执行。</p>
 </header>
 <div class="wrap">
   <div class="info">
-    <section><h2>排期流程</h2><ol><li>每晚 20:30 出当期计划（只排当前一个游戏）</li><li>用户在本对话确认 → 写 confirmed-&lt;日期&gt;.flag</li><li>23:30 才派工给 LOS（无 flag 不开工）</li><li>LOS 只做 HTTP/git/node --check 级自检，浏览器与手感验收由协调方在本机做</li><li>一个游戏通过全部验收，才开下一个游戏的排期</li></ol></section>
+    <section><h2>任务发布与通知</h2><p class="detail">发布任务发一条；验收完成发一条；阶段成果和重大阻塞另报。无变化不刷屏。登记不等于开工，原有授权门禁保留。</p><h2>工作流程</h2><ol><li>任务统一登记，明确范围、负责人、验收条件和当前状态。</li><li>任务发布通知一条；登记/计划不等于自动开工，原有确认门禁保留。</li><li>执行中同步可验证阶段成果与重大阻塞；不编造完成百分比。</li><li>完成须核验实际产物与测试/远端状态，再发完成通知。</li><li>游戏制作仍串行，一个通过全部验收后才做下一个；已终止项目不恢复。</li></ol></section>
     <section><h2>通用交付标准</h2><ul><li>每个游戏单独一个目录，根目录只放游戏列表页与总说明</li><li>素材原创或授权明确：不使用任何未授权的原版/第三方素材（含 ROM、提取素材、破解文件）</li><li>零 http(s) 外链、零内嵌图片：页面自包含或只引用本目录内的 art/ 与 audio/</li><li>无 console 报错；桌面 1280×720 与手机 375×760 各出一张验收截图</li><li>玩法机制可自由实现，但不得照抄原游戏的名称、美术与文字</li><li>每款后续游戏交付电脑浏览器版与手机 H5 版，两种布局分别验收，共享规则和关卡</li><li>手机版优先竖屏直接可玩，不以横屏提示或缩小电脑画面替代适配</li><li>电脑端鼠标/适当键盘操作；手机端触控、按钮命中、安全区与横竖切换单独验证</li><li>两端统计有效游玩与逐关时间并持久化；暂停/后台/挂机不计入，重玩与首次通关分开</li><li>画面可简洁但必须完整：人物（如有）、物体、背景、界面、动效不能缺件或以占位冒充成品</li><li>同一游戏的色彩、视角、比例、光照、材质、描边与UI高度统一，电脑/手机保持同一画风</li><li>规则先定稿；教学与分层提示、关卡节奏、当前局恢复/版本迁移、可读性反馈、加载重试/版本定位/回退都需验收，首作不加账号/联网排行/付费/复杂养成</li><li>当前全部只做单机，无账号或付费；道具和广告以后再定，当前不开发、不接SDK、不预留接口和占位入口。</li></ul></section>
   </div>
-  <div class="board">
+  <div class="filters"><input id="search" aria-label="搜索任务" placeholder="搜索任务、负责人、进度"><select id="kind" aria-label="任务类型"><option value="">全部类型</option><option>游戏</option><option>运维</option><option>验证</option><option>工具</option></select></div>
+  <div class="board" id="task-columns">
       <section class="col col-verifying">
         <header><h2>待验收<span class="count">0</span></h2><p>只差协调方本机验收</p></header>
 <p class="empty">（暂无）</p>
       </section>
       <section class="col col-active">
-        <header><h2>开发中<span class="count">1</span></h2><p>LOS 正在执行</p></header>
-      <article class="card">
+        <header><h2>进行中<span class="count">0</span></h2><p>已核实正在执行</p></header>
+<p class="empty">（暂无）</p>
+      </section>
+      <section class="col col-blocked">
+        <header><h2>阻塞 / 暂停<span class="count">1</span></h2><p>显示原因与下一步，不冒称在运行</p></header>
+      <article class="card task" data-task-id="pocket-bounce" data-kind="游戏">
         <div class="chead">
           <h3>Pocket Bounce《弹球入袋》（源：Roll Sort!）</h3>
-          <span class="diff" title="难度 2 / 5">★★☆☆☆</span>
+          <span class="diff">游戏</span>
         </div>
         <p class="pitch">台球按箭头方向滚动，撞墙反弹，滚进同色袋口即消除</p>
-        <div class="tags"><span class="tag">逻辑解谜</span><span class="tag">串行续做</span></div>
+        <div class="tags"><span class="tag">逻辑解谜</span><span class="tag">4关原型</span><span class="tag">开发中断</span></div>
         <dl>
+          <dt>负责</dt><dd>LOS 实现（待本轮新确认） / 协调方独立验收</dd>
+          <dt>更新</dt><dd>2026-11-13T20:39:11+08:00</dd>
           <dt>来源</dt><dd>一周游语 Vol.166 第 5 款；玩法机制自研实现</dd>
           <dt>素材</dt><dd>已完成 17 个原创素材文件：台面/木边（512² 无缝）、六色球（256²）、箭头/袋口/圆环/镜面/木箱/金星（320²）、面板/按钮、关卡选择背景 1920×1080；预览 sheets/mock-game.png</dd>
         </dl>
-        <div class="sec"><h4>验收要点</h4><ul><li>首轮按 6 章 60 关规划；发布关卡逐一证明可解，最短步数须有证明</li><li>先定稿方向/反射/连锁/停球/循环规则并做独立预期测试，再批量设计与求解关卡</li><li>撤销/重置/关卡选择/星级/localStorage 可用</li><li>素材与音效 0 个 404、无 console 报错、无外链</li><li>画质按规格第 4 节：DPR 画布、自转、拖尾、进袋吸入、粒子、绒布质感</li><li>主线至少三小时有效内容为目标；须真实首次试玩验证，无证据标待验证，不靠挂机/重复刷关凑数</li><li>记录累计有效游玩/首次主线通关/每关耗时及尝试次数；两端计时、存档、导出与暂停后台边界测试通过</li></ul></div>
-        <p class="note">备注：2026-11-13 07:45按用户要求恢复：保留13个已有代码/测试文件与17个原创素材，先备份再由唯一worker串行续做，CLI已禁用delegation；先补核心引擎与关卡，阶段保存/实测/提交。旧运行已中断，本轮尚未形成新可玩成果，全部验收标准不降低。</p>
+        <p class="detail"><b>当前进度</b>：已发布4关原型：独立重跑47项通过；含LOS两项未提交改动的副本50项通过。四种视口各4关、共16次真实浏览器回放通过；不等于60关或三小时成品。</p><p class="detail"><b>阻塞原因</b>：20:32只读核实：无worker/backend、旧租约已过期；两项恢复改动未提交。原型隐式favicon.ico请求404，干净校验器缺输出目录；真机、美术判定与三小时真人数据未验。</p><p class="detail"><b>下一步</b>：11月13日晚仅提议续做Pocket Bounce：先保护断点、确认四向/六拍/反射规则、补原型与自测缺口，再按6章60关扩充。本提案须新确认；不复用早间flag/run2，不自动迁HW或重启worker。</p><div class="sec"><h4>核验记录</h4><ul><li>2026-11-13 20:32：GitHub main=a0170b3，本机全新克隆核实2dd49dd/d098834/79d1c40均在远端历史；LOS HEAD仍79d1c40且保留2项未提交改动。</li><li>独立执行：远端已发布版9文件47/47，含恢复补丁副本10文件50/50；失败/取消/跳过均0。副本两项SHA-256与LOS相同；4关独立参考BFS最短一致。</li><li>本机真实Chrome：1280×720、1920×1080、360×800、390×844共16次通关，动画中刷新4次恢复；无横向溢出、JS异常0，但隐式图标404未过资源门禁。</li><li>证据：verification-2026-11-13-2030/{independent-tests.json,browser-audit.json,los-readonly.json}；手机仅模拟触控，真机/用户判图/三小时首次盲玩待验。</li></ul></div><p><a href="pocket-bounce-preview/">打开未验收原型</a></p><div class="sec"><h4>验收要点</h4><ul><li>首轮按 6 章 60 关规划；发布关卡逐一证明可解，最短步数须有证明</li><li>先定稿方向/反射/连锁/停球/循环规则并做独立预期测试，再批量设计与求解关卡</li><li>撤销/重置/关卡选择/星级/localStorage 可用</li><li>素材与音效 0 个 404、无 console 报错、无外链</li><li>画质按规格第 4 节：DPR 画布、自转、拖尾、进袋吸入、粒子、绒布质感</li><li>主线至少三小时有效内容为目标；须真实首次试玩验证，无证据标待验证，不靠挂机/重复刷关凑数</li><li>记录累计有效游玩/首次主线通关/每关耗时及尝试次数；两端计时、存档、导出与暂停后台边界测试通过</li></ul></div><div class="sec"><h4>已完成</h4><ul class="done"><li>4个教学关与核心规则/求解器已形成原型。</li><li>选关、击球、提示、撤销、重试、星级、本地存档及计时已接线；不等于全部验收通过。</li><li>检查点79d1c40已推送；另有应用恢复逻辑与恢复测试未提交且保留。</li><li>2026-11-13 13:36独立重跑50项测试通过、0失败（10个文件）。</li></ul></div>
+        <p class="note">备注：PvZ保持终止，不修复/补验。今晚计划已生成但未派工；HW环境/迁移仍为独立待开始任务。四关及自动回放不代表完整内容或真人三小时已通过。</p>
       </article>
       </section>
       <section class="col col-planned">
-        <header><h2>计划中<span class="count">0</span></h2><p>已排进下一轮</p></header>
-<p class="empty">（暂无）</p>
+        <header><h2>待开始<span class="count">1</span></h2><p>已登记，未执行</p></header>
+      <article class="card task" data-task-id="hw-game-environment" data-kind="运维">
+        <div class="chead">
+          <h3>HW 游戏开发环境与迁移准备</h3>
+          <span class="diff">运维</span>
+        </div>
+        <p class="pitch">补齐Node、Hermes、浏览器和依赖，迁移代码、素材与未提交改动。</p>
+        <div class="tags"></div>
+        <dl>
+          <dt>负责</dt><dd>协调方 / HW</dd>
+          <dt>更新</dt><dd>2026-11-13T15:36:30+08:00</dd>
+          <dt>来源</dt><dd>—</dd>
+          <dt>素材</dt><dd>—</dd>
+        </dl>
+        <p class="detail"><b>当前进度</b>：仅完成连接检查；已有Git、Python；尚未安装Node、Hermes或浏览器，尚未迁移。</p><p class="detail"><b>下一步</b>：按用户授权准备环境，核对模型认证与迁移备份后再派工。</p><div class="sec"><h4>验收要点</h4><ul><li>保存并校验LOS未提交改动和素材。</li><li>模型认证单独验证，不在看板公开凭证。</li><li>Node测试和浏览器能实际启动。</li><li>仅一个开发worker，LOS不重复开工。</li></ul></div>
+        <p class="note">备注：登记为待开始，不冒称已执行。</p>
+      </article>
       </section>
       <section class="col col-backlog">
         <header><h2>待排期<span class="count">13</span></h2><p>按难度从低到高</p></header>
-      <article class="card">
+      <article class="card task" data-task-id="arc-jam" data-kind="游戏">
         <div class="chead">
           <h3>Arc Jam（扇形色块 + 小球收集）</h3>
-          <span class="diff" title="难度 3 / 5">★★★☆☆</span>
+          <span class="diff">游戏</span>
         </div>
         <p class="pitch">中心扇形色块收集四周对应颜色小球，扇形块可像华容道一样移动</p>
         <div class="tags"><span class="tag">逻辑解谜</span></div>
         <dl>
+          <dt>负责</dt><dd>待安排</dd>
+          <dt>更新</dt><dd>2026-11-12</dd>
           <dt>来源</dt><dd>一周游语 Vol.166 第 4 款（Sand Block 扇形版）</dd>
           <dt>素材</dt><dd>原创：扇形块、球、底盘</dd>
         </dl>
         <div class="sec"><h4>验收要点</h4><ul><li>≥ 10 关；扇形移动规则有明确合法性判定</li><li>颜色收集判定正确（含同时到达）</li><li>触屏可玩；无 console 报错</li></ul></div>
         <p class="note">备注：规则简单、观感好，适合排在 Roll Sort! 之后</p>
       </article>
-      <article class="card">
+      <article class="card task" data-task-id="sneaky-blend" data-kind="游戏">
         <div class="chead">
           <h3>Sneaky Blend: Paint &amp; Hide（调色潜行）</h3>
-          <span class="diff" title="难度 3 / 5">★★★☆☆</span>
+          <span class="diff">游戏</span>
         </div>
         <p class="pitch">按提示调色把自己涂成背景颜色，躲开巡逻警察</p>
         <div class="tags"><span class="tag">潜行解谜</span><span class="tag">表现力重</span></div>
         <dl>
+          <dt>负责</dt><dd>待安排</dd>
+          <dt>更新</dt><dd>2026-11-12</dd>
           <dt>来源</dt><dd>一周游语 Vol.166 第 6 款（Jam + 捉迷藏）</dd>
           <dt>素材</dt><dd>原创：角色、场景色板、涂层表现（这块决定成色）</dd>
         </dl>
         <div class="sec"><h4>验收要点</h4><ul><li>调色混合规则正确（颜色接近度判定）</li><li>巡逻视线/发现判定可预期，不出现随机失败</li><li>≥ 8 关；触屏可玩；无外链</li></ul></div>
         <p class="note">备注：规则不难，但美术表现权重高；按本项目的美术标准做需要真实素材</p>
       </article>
-      <article class="card">
+      <article class="card task" data-task-id="blocked-in" data-kind="游戏">
         <div class="chead">
           <h3>Blocked In（凹凸槽对接消除）</h3>
-          <span class="diff" title="难度 3 / 5">★★★☆☆</span>
+          <span class="diff">游戏</span>
         </div>
         <p class="pitch">同色积木凹凸插槽相对接即可消除该颜色</p>
         <div class="tags"><span class="tag">消除解谜</span></div>
         <dl>
+          <dt>负责</dt><dd>待安排</dd>
+          <dt>更新</dt><dd>2026-11-12</dd>
           <dt>来源</dt><dd>一周游语 Vol.166 第 7 款（Block Out 反向版）</dd>
           <dt>素材</dt><dd>原创：积木块与插槽图形</dd>
         </dl>
         <div class="sec"><h4>验收要点</h4><ul><li>≥ 15 关，难度曲线单调递增</li><li>对接/消除判定无歧义；有撤销或重置</li><li>触屏可玩；无 console 报错</li></ul></div>
         <p class="note">备注：理解成本比 Block Out 略高，关卡设计要做足</p>
       </article>
-      <article class="card">
+      <article class="card task" data-task-id="melt-it" data-kind="游戏">
         <div class="chead">
           <h3>Melt It! - Sweet Loop（冰淇淋 Jam）</h3>
-          <span class="diff" title="难度 3 / 5">★★★☆☆</span>
+          <span class="diff">游戏</span>
         </div>
         <p class="pitch">上方冰淇淋像素画，用 Jam 玩法把对应颜色圆筒放进摆放区完成收集</p>
         <div class="tags"><span class="tag">休闲收集</span><span class="tag">ASMR</span></div>
         <dl>
+          <dt>负责</dt><dd>待安排</dd>
+          <dt>更新</dt><dd>2026-11-12</dd>
           <dt>来源</dt><dd>一周游语 Vol.166 第 2 款（Sand Drop-like）</dd>
           <dt>素材</dt><dd>原创：冰淇淋质感与圆筒（黏糯质感是卖点，需自绘或生成）</dd>
         </dl>
         <div class="sec"><h4>验收要点</h4><ul><li>收集判定与颜色匹配正确</li><li>质感表现达到可交付观感（本项由用户判定）</li><li>定型关卡 ≥ 15 个；触屏可玩；无外链</li></ul></div>
         <p class="note">备注：玩法偏轻，成败在质感与动画</p>
       </article>
-      <article class="card">
+      <article class="card task" data-task-id="bucket-shot" data-kind="游戏">
         <div class="chead">
           <h3>Bucket Shot（弹弓抛物线进桶）</h3>
-          <span class="diff" title="难度 4 / 5">★★★★☆</span>
+          <span class="diff">游戏</span>
         </div>
         <p class="pitch">控制弹弓把小球抛物线弹进木桶，全进即过关；后续出冰块桶/移动桶</p>
         <div class="tags"><span class="tag">物理休闲</span></div>
         <dl>
+          <dt>负责</dt><dd>待安排</dd>
+          <dt>更新</dt><dd>2026-11-12</dd>
           <dt>来源</dt><dd>一周游语 Vol.166 第 1 款（Smash-like + 抛物线）</dd>
           <dt>素材</dt><dd>原创：弹弓、球、木桶（含冰/移动变体）</dd>
         </dl>
         <div class="sec"><h4>验收要点</h4><ul><li>抛物线手感稳定（同一力度结果一致，无随机穿模）</li><li>桶的碰撞与吸收判定可靠；冰块/移动桶机制正确</li><li>≥ 20 关；触屏可玩；无 console 报错</li></ul></div>
         <p class="note">备注：创意最亮但物理调参占大头，排在有把握的题目之后</p>
       </article>
-      <article class="card">
+      <article class="card task" data-task-id="toy-fall" data-kind="游戏">
         <div class="chead">
           <h3>Toy Fall!（纽扣棋盘 + 木偶下落）</h3>
-          <span class="diff" title="难度 5 / 5">★★★★★</span>
+          <span class="diff">游戏</span>
         </div>
         <p class="pitch">纽扣组成下落棋盘阻挡木偶，7 选 3 拆纽扣让玩具落进盒子</p>
         <div class="tags"><span class="tag">物理消除</span><span class="tag">最重</span></div>
         <dl>
+          <dt>负责</dt><dd>待安排</dd>
+          <dt>更新</dt><dd>2026-11-12</dd>
           <dt>来源</dt><dd>一周游语 Vol.166 第 3 款</dd>
           <dt>素材</dt><dd>原创：纽扣、木偶、盒子</dd>
         </dl>
         <div class="sec"><h4>验收要点</h4><ul><li>刚体下落与消除判定稳定（无卡死/抖动）</li><li>7 选 3 的操作约束与可解性经过验证</li><li>≥ 15 关；触屏可玩；无 console 报错</li></ul></div>
         <p class="note">备注：三消 + 刚体耦合，手感风险最高，放最后</p>
       </article>
-      <article class="card">
+      <article class="card task" data-task-id="hole-shot-black-hole" data-kind="游戏">
         <div class="chead">
           <h3>Hole Shot: Black Hole（黑洞弹射吞噬）</h3>
-          <span class="diff" title="难度 4 / 5">★★★★☆</span>
+          <span class="diff">游戏</span>
         </div>
         <p class="pitch">瞄准弹射黑洞，让它反弹吞噬砖块并逐渐长大，在有限步数内清空场地</p>
         <div class="tags"><span class="tag">物理休闲</span><span class="tag">黑洞吞噬</span><span class="tag">Vol.165</span></div>
         <dl>
+          <dt>负责</dt><dd>待安排</dd>
+          <dt>更新</dt><dd>2026-11-12</dd>
           <dt>来源</dt><dd>一周游语 Vol.165 第 1 款；仅作为同类玩法参考，规则开工前确认</dd>
           <dt>素材</dt><dd>待制作原创：黑洞与融合特效、大小砖块、场景；不提取原作素材</dd>
         </dl>
         <div class="sec"><h4>验收要点</h4><ul><li>至少 15 关，吞噬尺寸门槛、成长与融合规则明确</li><li>反弹/吞噬无穿透，有限步数关卡有可复现解</li><li>触屏瞄准可用，反馈流畅，零资源错误</li></ul></div>
         <p class="note">备注：实现难度为初评；物理与成长反馈风险较高。开工前先定同类自研规则及独立名称。</p>
       </article>
-      <article class="card">
+      <article class="card task" data-task-id="lucky-scratch-virtual-tickets" data-kind="游戏">
         <div class="chead">
           <h3>Lucky Scratch: Virtual Tickets（虚拟刮刮乐）</h3>
-          <span class="diff" title="难度 2 / 5">★★☆☆☆</span>
+          <span class="diff">游戏</span>
         </div>
         <p class="pitch">刮开票面获得虚拟奖励，再用虚拟金币解锁票种与刮奖效率升级</p>
         <div class="tags"><span class="tag">刮擦交互</span><span class="tag">放置升级</span><span class="tag">Vol.165</span></div>
         <dl>
+          <dt>负责</dt><dd>待安排</dd>
+          <dt>更新</dt><dd>2026-11-12</dd>
           <dt>来源</dt><dd>一周游语 Vol.165 第 2 款；仅作为同类玩法参考，规则开工前确认</dd>
           <dt>素材</dt><dd>待制作原创：票面、刮层、奖章、颗粒与界面，不复用原作票面</dd>
         </dl>
         <div class="sec"><h4>验收要点</h4><ul><li>刮层覆盖率与揭奖判定可靠，鼠标/触屏均可操作</li><li>虚拟经济、奖励规则与存档经过测试，可重置</li><li>仅无现金价值的虚拟积分；无充值、提现、付费抽奖、真实兑奖或支付入口</li></ul></div>
         <p class="note">备注：实现难度为初评；仅作无真实赌资的休闲模拟，粒子与音效体现刮擦质感，不承诺设备震动。</p>
       </article>
-      <article class="card">
+      <article class="card task" data-task-id="dust-bus" data-kind="游戏">
         <div class="chead">
           <h3>Dust Bus（清洁工调度）</h3>
-          <span class="diff" title="难度 3 / 5">★★★☆☆</span>
+          <span class="diff">游戏</span>
         </div>
         <p class="pitch">调度不同颜色与容量的车辆派出清洁工，清理对应房间后释放车位</p>
         <div class="tags"><span class="tag">调度解谜</span><span class="tag">房间清洁</span><span class="tag">Vol.165</span></div>
         <dl>
+          <dt>负责</dt><dd>待安排</dd>
+          <dt>更新</dt><dd>2026-11-12</dd>
           <dt>来源</dt><dd>一周游语 Vol.165 第 3 款；仅作为同类玩法参考，规则开工前确认</dd>
           <dt>素材</dt><dd>待制作原创：清洁工、车辆、不同房型、脏污/整洁两态与清理动画</dd>
         </dl>
         <div class="sec"><h4>验收要点</h4><ul><li>至少 15 关；颜色/容量/出车顺序与车位释放规则明确且可解</li><li>清理完成和房间关联状态正确，支持重置或撤销</li><li>脏乱到整洁的变化清楚可见，触屏调度与进度保存可用</li></ul></div>
         <p class="note">备注：实现难度为初评；关卡策略与多房间清理动效为重点，网页可先用高质量俯视 2D 表现。</p>
       </article>
-      <article class="card">
+      <article class="card task" data-task-id="screw-machine" data-kind="游戏">
         <div class="chead">
           <h3>Screw Machine（环形螺母分拣）</h3>
-          <span class="diff" title="难度 3 / 5">★★★☆☆</span>
+          <span class="diff">游戏</span>
         </div>
         <p class="pitch">将上方待分拣的彩色螺母送入环形收集区，按颜色匹配完成收集</p>
         <div class="tags"><span class="tag">颜色分拣</span><span class="tag">环形循环</span><span class="tag">Vol.165</span></div>
         <dl>
+          <dt>负责</dt><dd>待安排</dd>
+          <dt>更新</dt><dd>2026-11-12</dd>
           <dt>来源</dt><dd>一周游语 Vol.165 第 4 款；仅作为同类玩法参考，规则开工前确认</dd>
           <dt>素材</dt><dd>待制作原创：金属螺母、环形轨道、收集盒与机械界面</dd>
         </dl>
         <div class="sec"><h4>验收要点</h4><ul><li>至少 15 关；分拣/环形移动/颜色收集/容量限制规则明确</li><li>循环区无重叠或丢失对象，死局与过关判定正确</li><li>金属质感、收集动画与音效统一，触屏与存档可用</li></ul></div>
         <p class="note">备注：实现难度为初评；文章不足以确定全部交互细节，开工前核实操作与规则，不擅自宣称还原原作。</p>
       </article>
-      <article class="card">
+      <article class="card task" data-task-id="magic-fever" data-kind="游戏">
         <div class="chead">
           <h3>Magic Fever（魔法师范围消除）</h3>
-          <span class="diff" title="难度 3 / 5">★★★☆☆</span>
+          <span class="diff">游戏</span>
         </div>
         <p class="pitch">选择不同颜色魔法师进入传送带，范围消除场中对应颜色的像素砖块</p>
         <div class="tags"><span class="tag">颜色调度</span><span class="tag">范围消除</span><span class="tag">Vol.165</span></div>
         <dl>
+          <dt>负责</dt><dd>待安排</dd>
+          <dt>更新</dt><dd>2026-11-12</dd>
           <dt>来源</dt><dd>一周游语 Vol.165 第 5 款；仅作为同类玩法参考，规则开工前确认</dd>
           <dt>素材</dt><dd>待制作原创：魔法师、传送带、像素图案、法术与连锁消除特效</dd>
         </dl>
         <div class="sec"><h4>验收要点</h4><ul><li>至少 15 关；传送带容量、入场顺序与同色范围消除规则明确</li><li>范围与连锁边界判定正确，目标、剩余容量与失败原因可读</li><li>连续消除反馈清晰，触屏调度与进度保存可用</li></ul></div>
         <p class="note">备注：实现难度为初评；先验证范围消除的可理解性与关卡可解性，再打磨特效。</p>
       </article>
-      <article class="card">
+      <article class="card task" data-task-id="color-arrow-master" data-kind="游戏">
         <div class="chead">
           <h3>Color Arrow Master（同色箭塔防守）</h3>
-          <span class="diff" title="难度 4 / 5">★★★★☆</span>
+          <span class="diff">游戏</span>
         </div>
         <p class="pitch">把对应颜色箭矢送到炮台，阻挡逐渐逼近的同色敌人</p>
         <div class="tags"><span class="tag">防守</span><span class="tag">颜色调度</span><span class="tag">Vol.165</span></div>
         <dl>
+          <dt>负责</dt><dd>待安排</dd>
+          <dt>更新</dt><dd>2026-11-12</dd>
           <dt>来源</dt><dd>一周游语 Vol.165 第 6 款；仅作为同类玩法参考，规则开工前确认</dd>
           <dt>素材</dt><dd>待制作原创：弓箭、炮台、敌人、战场；采用高质量 2.5D 或 3D 需先评估</dd>
         </dl>
         <div class="sec"><h4>验收要点</h4><ul><li>至少 10 个波次关卡，颜色匹配、装填、伤害与突破判定正确</li><li>调度顺序和实时压力可控，无穿透或错误目标选择</li><li>触屏操作、暂停/重开与存档可用；性能与美术质量单独验收</li></ul></div>
         <p class="note">备注：实现难度为初评；3D 仅是参考表现，不自动承诺完全 3D，开工前定渲染方案。</p>
       </article>
-      <article class="card">
+      <article class="card task" data-task-id="hopmatch" data-kind="游戏">
         <div class="chead">
           <h3>HopMatch（乘客跳洞循环消除）</h3>
-          <span class="diff" title="难度 3 / 5">★★★☆☆</span>
+          <span class="diff">游戏</span>
         </div>
         <p class="pitch">整理彩色乘客与单色车辆，结合循环黑洞完成同色收集与消除</p>
         <div class="tags"><span class="tag">乘客整理</span><span class="tag">循环消除</span><span class="tag">Vol.165</span></div>
         <dl>
+          <dt>负责</dt><dd>待安排</dd>
+          <dt>更新</dt><dd>2026-11-12</dd>
           <dt>来源</dt><dd>一周游语 Vol.165 第 7 款；仅作为同类玩法参考，规则开工前确认</dd>
           <dt>素材</dt><dd>待制作原创：乘客、车辆、循环轨道、黑洞入口与跳跃动效</dd>
         </dl>
@@ -287,19 +342,84 @@
       </article>
       </section>
       <section class="col col-shipped">
-        <header><h2>已上线<span class="count">0</span></h2><p>已通过验收</p></header>
-<p class="empty">（暂无）</p>
+        <header><h2>已完成<span class="count">4</span></h2><p>结果已核验，不等同仅生成文件</p></header>
+      <article class="card task" data-task-id="task-board-upgrade" data-kind="工具">
+        <div class="chead">
+          <h3>游戏开发看板升级为任务看板</h3>
+          <span class="diff">工具</span>
+        </div>
+        <p class="pitch">统一游戏与非游戏任务，展示真实进度，并通知任务发布和验收完成。</p>
+        <div class="tags"></div>
+        <dl>
+          <dt>负责</dt><dd>协调方</dd>
+          <dt>更新</dt><dd>2026-11-13T15:40:52+08:00</dd>
+          <dt>来源</dt><dd>—</dd>
+          <dt>素材</dt><dd>—</dd>
+        </dl>
+        <p class="detail"><b>当前进度</b>：改造已完成，公网已发布并通过真实浏览器核验。</p><p class="detail"><b>下一步</b>：今后任务发布、验收完成及阶段进度统一写入看板。</p><div class="sec"><h4>核验记录</h4><ul><li>6项自动化测试通过，涵盖通用任务、完成证据门禁、发布/完成去重与旧游戏保留。</li><li>真实浏览器核验：19张任务卡、15个游戏；搜索与类型筛选正常。</li><li>公网390×844核验：文档宽390px，无横向溢出；弹球正确显示在阻塞列。</li><li>本机与远端部署文件SHA-256一致；通知任务采用no-agent脚本，无模型轮询。</li></ul></div><div class="sec"><h4>验收要点</h4><ul><li>旧游戏队列与取消状态完整保留。</li><li>手机与电脑可读，搜索/类型筛选可用。</li><li>公网内容与本地文件一致。</li><li>发布与完成通知有去重且无模型空转。</li></ul></div>
+        <p class="note">备注：—</p>
+      </article>
+      <article class="card task" data-task-id="hw-access" data-kind="运维">
+        <div class="chead">
+          <h3>HW 内网连接核验</h3>
+          <span class="diff">运维</span>
+        </div>
+        <p class="pitch">通过Tailscale内网与现有SSH密钥连接HW。</p>
+        <div class="tags"></div>
+        <dl>
+          <dt>负责</dt><dd>协调方</dd>
+          <dt>更新</dt><dd>2026-11-13T15:36:30+08:00</dd>
+          <dt>来源</dt><dd>—</dd>
+          <dt>素材</dt><dd>—</dd>
+        </dl>
+        <div class="sec"><h4>核验记录</h4><ul><li>SSH严格主机密钥校验通过，远端id/hostname/资源信息已读回。</li></ul></div><div class="sec"><h4>已完成</h4><ul class="done"><li>已验证root身份、主机与系统资源；仅检查，未安装或迁移。</li></ul></div>
+        <p class="note">备注：Tailscale网络承载普通SSH；不对外开放新端口。</p>
+      </article>
+      <article class="card task" data-task-id="los-mechanical-model-ab" data-kind="验证">
+        <div class="chead">
+          <h3>LOS 机械核对：Luna / Sol Pro 对比</h3>
+          <span class="diff">验证</span>
+        </div>
+        <p class="pitch">同一机械任务串行实测，按独立真值核对结果与开销。</p>
+        <div class="tags"></div>
+        <dl>
+          <dt>负责</dt><dd>协调方 / LOS</dd>
+          <dt>更新</dt><dd>2026-11-13T15:36:30+08:00</dd>
+          <dt>来源</dt><dd>—</dd>
+          <dt>素材</dt><dd>—</dd>
+        </dl>
+        <div class="sec"><h4>核验记录</h4><ul><li>10:50实测报告：Luna与Sol Pro均23/23字段正确，0错误。</li><li>Luna与Sol Pro两份报告相同；测试真值更新为50项。</li></ul></div><div class="sec"><h4>已完成</h4><ul class="done"><li>机械活交给Luna；实现与判断仍用Sol Pro。</li></ul></div>
+        <p class="note">备注：费用为会话估计值，不是订阅额度余额。</p>
+      </article>
+      <article class="card task" data-task-id="instabox-game-capability-audit" data-kind="验证">
+        <div class="chead">
+          <h3>Instabox 游戏作业环境实测</h3>
+          <span class="diff">验证</span>
+        </div>
+        <p class="pitch">检查免费沙箱能否承担网页游戏开发工具、自动化测试及桌面/手机模拟浏览器验收，不启动模型开发任务。</p>
+        <div class="tags"></div>
+        <dl>
+          <dt>负责</dt><dd>协调方 / Instabox</dd>
+          <dt>更新</dt><dd>2026-11-13T17:39:07+08:00</dd>
+          <dt>来源</dt><dd>—</dd>
+          <dt>素材</dt><dd>—</dd>
+        </dl>
+        <p class="detail"><b>当前进度</b>：环境实测完成：可做当前网页游戏测试与短时作业；独立模型开发工人尚未配置。</p><p class="detail"><b>下一步</b>：仅用于临时测试；正式数据与报告保存在LOS/HW。临时副本测后回传、校验、清理，不派正式实现工人。</p><div class="sec"><h4>核验记录</h4><ul><li>免费实例：4核、8GiB内存、20GiB持久数据盘；当前单次120分钟、空闲30分钟自动暂停。</li><li>GitHub e243dd6 已推送版：使用本地校验过的 Node 26.12.1，原测试脚本9文件47项全部通过。</li><li>真实Chromium四种视口：16次教学关通关、鼠标/模拟触控、刷新恢复通过；17图与7音效成功解码，JS及HTTP错误为0。</li><li>Hermes未装、Codex未登录；未迁移凭据、未启动模型任务，也不把本次测试当成游戏完整交付。</li><li>用户存储规则：LOS/HW持久保存；Simular/Instabox仅临时测试。报告已回传LOS并核验10文件摘要，本次沙箱临时目录已清理，未动原有数据。</li></ul></div><div class="sec"><h4>验收要点</h4><ul><li>唤醒现有免费实例并核对实际资源及运行限制。</li><li>运行现有游戏自动测试和真实浏览器交互。</li><li>区分环境能力、模型工人就绪及游戏完整交付。</li></ul></div>
+        <p class="note">备注：—</p>
+      </article>
       </section>
       <section class="col col-cancelled">
         <header><h2>已终止<span class="count">1</span></h2><p>保留历史文件，不再制作</p></header>
-      <article class="card">
+      <article class="card task" data-task-id="plants-vs-zombies" data-kind="游戏">
         <div class="chead">
           <h3>植物大战僵尸（非官方粉丝重制）</h3>
-          <span class="diff" title="难度 4 / 5">★★★★☆</span>
+          <span class="diff">游戏</span>
         </div>
         <p class="pitch">5 行 9 列塔防：种植物挡住 20 波僵尸</p>
         <div class="tags"><span class="tag">塔防</span><span class="tag">已终止</span></div>
         <dl>
+          <dt>负责</dt><dd>历史项目</dd>
+          <dt>更新</dt><dd>2026-11-12</dd>
           <dt>来源</dt><dd>MIT 上游引擎 plantsvszombiesjs + 本项目原创素材</dd>
           <dt>素材</dt><dd>已完成：9 植物 / 5 僵尸 / 场景（房子+分道草坪+绿篱+人行道）/ 割草机 + 14 个 CC0 音效</dd>
         </dl>
@@ -308,7 +428,7 @@
       </article>
       </section>
   </div>
-  <div class="wide">
+  <details><summary>游戏候补与历史授权说明（保留）</summary><div class="wide">
     <section><h2>候补：可以合法使用原版素材的老游戏</h2><div class="board" style="grid-template-columns:repeat(2,minmax(0,1fr))">      <article class="card cand">
         <div class="chead"><h3>DOOM 第一章（shareware）</h3><span class="diff">★★★☆☆</span></div>
         <p class="pitch">GPL 引擎 + id 官方许可可原样再分发的共享版素材（DOOM1.WAD）</p>
@@ -334,8 +454,23 @@
         <p class="note">备注：素材合法且完整，但只能非商业，且体量很大</p>
       </article></div></section>
     <section><h2>不做（授权不允许）</h2><ul><li>任天堂 / 世嘉 / Capcom / SE / Konami / Taito 等大厂 IP（马里奥、索尼克、宝可梦等）：不可用</li><li>植物大战僵尸原版素材（PopCap/EA）：不可用，本项目已改为原创素材</li><li>命令与征服 / 红警：EA 只开源代码，美术与过场未开放</li><li>Marathon 三部曲：官方允许免费下载但无正式授权文件，不入库</li><li>俄罗斯方块：商标与版权双重高压，回避</li></ul></section>
-  </div>
+  </div></details>
 </div>
-<footer>本页由 <code>board.json</code> 生成，不引用任何外部资源；状态列为 shipped / verifying / active / planned / backlog / cancelled。</footer>
+<footer>本页由 <code>board.json</code> 生成。游戏与运维等任务统一登记；已完成须有核验记录。无外部资源、无账号。</footer>
+<script>
+const search = document.querySelector('#search'), kind = document.querySelector('#kind');
+function filterTasks() {
+  const text = search.value.trim().toLowerCase();
+  document.querySelectorAll('#task-columns .task').forEach(card => {
+    card.hidden = (kind.value && card.dataset.kind !== kind.value) || !card.innerText.toLowerCase().includes(text);
+  });
+  document.querySelectorAll('#task-columns .col').forEach(col => {
+    const cards = [...col.querySelectorAll('.task')], visible = cards.filter(c => !c.hidden).length;
+    col.querySelector('.count').textContent = visible;
+    col.hidden = (text || kind.value) && !visible;
+  });
+}
+search.addEventListener('input', filterTasks); kind.addEventListener('change', filterTasks);
+</script>
 </body>
 </html>
