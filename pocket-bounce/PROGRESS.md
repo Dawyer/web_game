@@ -23,6 +23,6 @@
 - 规则基线冻结：RULES.md 去掉“候选规则”，六个小节为唯一规则源；新增 tests/rules-baseline.test.mjs（每条规则手写样例 + tools/reference.mjs 差分，含非空洞对照）。commit 5bd748e。
 - 修补已知缺口：index.html 声明本地 favicon（真实 Chromium 零 4xx）；tools/validate_levels.js 自动创建被忽略的 evidence/（干净检出不再 ENOENT）；收尾 product-boundaries.test.mjs / browser-check.cjs / PLAYTEST-CHECKLIST.txt。commit 26451e7。
 - 体验门禁加强（只加不减）：减弱动效立即收敛动画、A–F 字母为真实渲染开关、版本在 UI 可定位、CSV 与计数账本对账、导入导出为严格不动点、开关落到 document。
-- 关卡扩展：新增 05–10（第 2 章木箱 3 关、第 3 章接力 2 关、第 4 章双镜 2 关中的 09/10），每关 par 由独立参考 BFS 证明，差分回放一致。第 5、6 章仍空。
+- 关卡扩展：新增 05–10（第 2 章木箱 2 关、第 3 章接力 2 关、第 4 章双镜 2 关），每关 par 由独立参考 BFS 证明，差分回放一致。第 5、6 章仍空。
 - 实测：串行 13 文件 / 69 测试全绿；validate_levels 10 关 VERIFIED；真实无头 Chromium 双端（1280/1920/360/390）每端 10 关 3 星、0 脚本错误、0 个 4xx、自动账本与真人账本分离。原始证据在 evidence/（被 .gitignore 忽略，未冒称入库）。
 - 未验证：实体手机、用户画风认可、三小时真人首次主线、协调方独立验收、第 5/6 章内容与 60 关目标。未推送、未部署。
