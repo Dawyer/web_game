@@ -111,7 +111,7 @@ def main():
     --fg: #e8eef2; --dim: #93a4b1; --accent: #6cd97b; --warn: #ffc857; --blue: #62b6ff; --pink: #ff8fb1;
   }}
   * {{ box-sizing: border-box; }}
-  body {{ margin: 0; background: var(--bg); color: var(--fg);
+  body {{ margin: 0; background: var(--bg); color: var(--fg); overflow-wrap: anywhere;
     font-family: -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", Roboto, sans-serif; line-height: 1.5; }}
   a {{ color: var(--blue); }}
   header.top {{ padding: 22px 24px 10px; border-bottom: 1px solid var(--line); }}
@@ -169,7 +169,7 @@ def main():
   footer {{ color: #6d7d88; font-size: 12px; padding: 0 24px 30px; }}
   code {{ background: #1d262e; padding: 1px 5px; border-radius: 4px; font-size: 12px; color: #cfe3ee; }}
   @media (max-width: 1100px) {{ .board {{ grid-template-columns: repeat(2, minmax(0, 1fr)); }} .info, .wide {{ grid-template-columns: 1fr; }} }}
-  @media (max-width: 620px) {{ .board {{ grid-template-columns: 1fr; }} }}
+  @media (max-width: 620px) {{ .board {{ grid-template-columns: minmax(0, 1fr); }} }}
 </style>
 </head>
 <body>
