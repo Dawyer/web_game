@@ -74,7 +74,7 @@
 <body>
 <header class="top">
   <h1>任务看板</h1>
-  <div class="meta">共 21 项任务（已完成 5） · 更新于 2026-11-16T16:54:07+08:00</div>
+  <div class="meta">共 21 项任务（已完成 5） · 更新于 2026-11-16T17:05:34+08:00</div>
   <p class="meta">Pocket Bounce《弹球入袋》：11-14 夜轮 HW 单 cline 工人已正常收尾（23:54:23 cli_close、admission terminal/completed、无租约）。20:30 协调方独立核验通过：20 关最短步数全部与独立参考一致、15 个测试文件 73/0、真实 Chrome 四视口 80/80 关真实通关、教学弹窗返回修复经复现、0 JS 异常 / 0 个 ≥400 / 无横向溢出；合并预演无冲突。3 个提交（257faaa/8c4530d/c4d87b2）仍只在 HW 本机，待 11-15 夜轮（需当晚新确认）合并推送。仍未验收：60 关目标只到 20 关、实体手机、用户画风判定、三小时真人首次盲测、线上部署与版本回退演练。PvZ 保持终止、不恢复。</p>
 </header>
 <div class="wrap">
@@ -93,26 +93,27 @@
 <p class="empty">（暂无）</p>
       </section>
       <section class="col col-blocked">
-        <header><h2>阻塞 / 暂停<span class="count">1</span></h2><p>显示原因与下一步，不冒称在运行</p></header>
+        <header><h2>阻塞 / 暂停<span class="count">0</span></h2><p>显示原因与下一步，不冒称在运行</p></header>
+<p class="empty">（暂无）</p>
+      </section>
+      <section class="col col-planned">
+        <header><h2>待开始<span class="count">2</span></h2><p>已登记，未执行</p></header>
       <article class="card task" data-task-id="pocket-bounce" data-kind="游戏">
         <div class="chead">
           <h3>Pocket Bounce《弹球入袋》（源：Roll Sort!）</h3>
           <span class="diff">游戏</span>
         </div>
         <p class="pitch">台球按箭头方向滚动，撞墙反弹，滚进同色袋口即消除</p>
-        <div class="tags"><span class="tag">自研暂停</span><span class="tag">已有20关</span><span class="tag">源码保留</span></div>
+        <div class="tags"><span class="tag">夜间打磨</span><span class="tag">已有20关</span><span class="tag">待当晚计划确认</span></div>
         <dl>
-          <dt>负责</dt><dd>已暂停（保留归档与旧试玩）</dd>
-          <dt>更新</dt><dd>2026-11-16T16:54:07+08:00</dd>
+          <dt>负责</dt><dd>HW夜间打磨 / 协调方计划与独立验收</dd>
+          <dt>更新</dt><dd>2026-11-16T17:05:34+08:00</dd>
           <dt>来源</dt><dd>一周游语 Vol.166 第 5 款；玩法机制自研实现</dd>
           <dt>素材</dt><dd>已完成 17 个原创素材文件：台面/木边（512² 无缝）、六色球（256²）、箭头/袋口/圆环/镜面/木箱/金星（320²）、面板/按钮、关卡选择背景 1920×1080；预览 sheets/mock-game.png</dd>
         </dl>
-        <p class="detail"><b>当前进度</b>：2026-11-14 23:35 当晚新确认后开工，23:54:23 正常收尾：end_reason=cli_close、session_admissions seq=10 status=terminal/outcome=completed、session_turn_leases 0 行、client PID 149918 已退出（backend gateway PID 149227 仍在）、api_call_count 85/500、日志以工人自检总结 + session_id 结束、无额度/限制错误 → 非额度中断、非异常失活。本轮本机 3 个提交（均未推送未部署，HEAD c4d87b2，工作树 0 改动）：257faaa 教学弹窗关闭后直接回可操作棋盘（新增 tests/tutorial-hints.test.mjs）、8c4530d 第 5–6 章 11–20 关（共 20 关，新增 LEVELS-DESIGN.md）、c4d87b2 加载失败定位 + 门禁 6 测试 + 标准矩阵。核验员在一次性丢弃 clone 中有界独立复测（串行 &lt;100 秒、未动工作树）：validate_levels → VERIFIED 20 levels，20/20 与独立参考 BFS 最短一致（par 1,1,2,1,1,1,2,3,1,1,1,2,1,2,2,2,2,2,3,2）；15 个测试文件 73 通过 / 0 失败。第 1–4 章五角色补齐与 60 关目标未完成；60 关 ≠ 逐关可解 ≠ 三小时 ≠ 美术通过，实体手机、用户画风判定、三小时真人首次盲测仍待验证。本轮不部署。</p><p class="detail"><b>阻塞原因</b>：用户转向现成游戏聚合站，原自研计划与派工暂停</p><p class="detail"><b>下一步</b>：保留已有成果，不继续扩关或发布；需新授权才能恢复自研。</p><div class="sec"><h4>核验记录</h4><ul><li>coordinator_independent_20261115</li></ul></div><p><a href="pocket-bounce-preview/">打开未验收原型</a></p><div class="sec"><h4>验收要点</h4><ul><li>首轮按 6 章 60 关规划；发布关卡逐一证明可解，最短步数须有证明</li><li>先定稿方向/反射/连锁/停球/循环规则并做独立预期测试，再批量设计与求解关卡</li><li>撤销/重置/关卡选择/星级/localStorage 可用</li><li>素材与音效 0 个 404、无 console 报错、无外链</li><li>画质按规格第 4 节：DPR 画布、自转、拖尾、进袋吸入、粒子、绒布质感</li><li>主线至少三小时有效内容为目标；须真实首次试玩验证，无证据标待验证，不靠挂机/重复刷关凑数</li><li>记录累计有效游玩/首次主线通关/每关耗时及尝试次数；两端计时、存档、导出与暂停后台边界测试通过</li></ul></div><div class="sec"><h4>已完成</h4><ul class="done"><li>4个教学关与核心规则/求解器已形成原型。</li><li>选关、击球、提示、撤销、重试、星级、本地存档及计时已接线；不等于全部验收通过。</li><li>2026-11-13 13:36独立重跑50项测试通过、0失败（10个文件）。</li><li>2026-11-13 HW：环境迁移核验通过；本机检查点 4349f24 修复继承 5 项 experience 红灯，55/55 全绿（未推送）。</li><li>恢复检查点27368ab与候选断点4f48b49完整保留并迁至HW，未提交experience测试原文继承。</li><li>2026-11-14 HW 本机 commit a3863f5（未推送）：规则基线冻结+继承改动接线+favicon/ENOENT 修复+扩至 10 关；13 文件 69/69、10 关独立 BFS 证明、四视口浏览器 0 错误。仍为 10/60。</li><li>2026-11-14 夜轮 HW 本机 3 个提交（未推送未部署）：第 5–6 章 11–20 关共 20 关、教学弹窗返回流程修复、加载失败门禁 + 标准矩阵；15 文件 73/73、20 关独立 BFS 最短一致。仍属自检 + 核验员可解性复测，未验收。</li></ul></div>
-        <p class="note">备注：2026-11-16用户提出改做游戏站，已停旧计划/派工，HW无活跃实现工人；非验收完成，不删除、不下线。</p>
+        <p class="detail"><b>当前进度</b>：2026-11-14 23:35 当晚新确认后开工，23:54:23 正常收尾：end_reason=cli_close、session_admissions seq=10 status=terminal/outcome=completed、session_turn_leases 0 行、client PID 149918 已退出（backend gateway PID 149227 仍在）、api_call_count 85/500、日志以工人自检总结 + session_id 结束、无额度/限制错误 → 非额度中断、非异常失活。本轮本机 3 个提交（均未推送未部署，HEAD c4d87b2，工作树 0 改动）：257faaa 教学弹窗关闭后直接回可操作棋盘（新增 tests/tutorial-hints.test.mjs）、8c4530d 第 5–6 章 11–20 关（共 20 关，新增 LEVELS-DESIGN.md）、c4d87b2 加载失败定位 + 门禁 6 测试 + 标准矩阵。核验员在一次性丢弃 clone 中有界独立复测（串行 &lt;100 秒、未动工作树）：validate_levels → VERIFIED 20 levels，20/20 与独立参考 BFS 最短一致（par 1,1,2,1,1,1,2,3,1,1,1,2,1,2,2,2,2,2,3,2）；15 个测试文件 73 通过 / 0 失败。第 1–4 章五角色补齐与 60 关目标未完成；60 关 ≠ 逐关可解 ≠ 三小时 ≠ 美术通过，实体手机、用户画风判定、三小时真人首次盲测仍待验证。本轮不部署。</p><p class="detail"><b>阻塞原因</b>：等待20:30打磨计划与当晚新确认，尚未派工</p><p class="detail"><b>下一步</b>：20:30拟定现有20关打磨计划，新确认后23:30单cline工人续做；旧40关扩关不自动恢复。</p><div class="sec"><h4>核验记录</h4><ul><li>coordinator_independent_20261115</li></ul></div><p><a href="pocket-bounce-preview/">打开未验收原型</a></p><div class="sec"><h4>验收要点</h4><ul><li>首轮按 6 章 60 关规划；发布关卡逐一证明可解，最短步数须有证明</li><li>先定稿方向/反射/连锁/停球/循环规则并做独立预期测试，再批量设计与求解关卡</li><li>撤销/重置/关卡选择/星级/localStorage 可用</li><li>素材与音效 0 个 404、无 console 报错、无外链</li><li>画质按规格第 4 节：DPR 画布、自转、拖尾、进袋吸入、粒子、绒布质感</li><li>主线至少三小时有效内容为目标；须真实首次试玩验证，无证据标待验证，不靠挂机/重复刷关凑数</li><li>记录累计有效游玩/首次主线通关/每关耗时及尝试次数；两端计时、存档、导出与暂停后台边界测试通过</li></ul></div><div class="sec"><h4>已完成</h4><ul class="done"><li>4个教学关与核心规则/求解器已形成原型。</li><li>选关、击球、提示、撤销、重试、星级、本地存档及计时已接线；不等于全部验收通过。</li><li>2026-11-13 13:36独立重跑50项测试通过、0失败（10个文件）。</li><li>2026-11-13 HW：环境迁移核验通过；本机检查点 4349f24 修复继承 5 项 experience 红灯，55/55 全绿（未推送）。</li><li>恢复检查点27368ab与候选断点4f48b49完整保留并迁至HW，未提交experience测试原文继承。</li><li>2026-11-14 HW 本机 commit a3863f5（未推送）：规则基线冻结+继承改动接线+favicon/ENOENT 修复+扩至 10 关；13 文件 69/69、10 关独立 BFS 证明、四视口浏览器 0 错误。仍为 10/60。</li><li>2026-11-14 夜轮 HW 本机 3 个提交（未推送未部署）：第 5–6 章 11–20 关共 20 关、教学弹窗返回流程修复、加载失败门禁 + 标准矩阵；15 文件 73/73、20 关独立 BFS 最短一致。仍属自检 + 核验员可解性复测，未验收。</li></ul></div>
+        <p class="note">备注：2026-11-16用户澄清游戏站也做，同时继续打磨原《弹球入袋》；不删旧暂停记录，不沿用旧扩关授权。</p>
       </article>
-      </section>
-      <section class="col col-planned">
-        <header><h2>待开始<span class="count">1</span></h2><p>已登记，未执行</p></header>
       <article class="card task" data-task-id="game-hub" data-kind="工具">
         <div class="chead">
           <h3>网页小游戏聚合站</h3>
@@ -122,12 +123,12 @@
         <div class="tags"></div>
         <dl>
           <dt>负责</dt><dd>协调方（方案/来源审查）</dd>
-          <dt>更新</dt><dd>2026-11-16T16:54:07+08:00</dd>
+          <dt>更新</dt><dd>2026-11-16T17:05:34+08:00</dd>
           <dt>来源</dt><dd>—</dd>
           <dt>素材</dt><dd>—</dd>
         </dl>
         <p class="detail"><b>当前进度</b>：方向方案已记录；尚未建设或部署，旧自研任务已暂停</p><p class="detail"><b>阻塞原因</b>：逐款代码/素材许可及电脑/手机可用性待核验</p><p class="detail"><b>下一步</b>：先确定授权明确的首批内容与独立站点方案，再建设与验收</p><div class="sec"><h4>验收要点</h4><ul><li>收录游戏代码与素材许可证、来源、署名逐款可追溯</li><li>大厅分类/搜索/本地收藏与最近玩可用</li><li>电脑与触屏逐款实测，不以大厅响应式冒充全部适配</li><li>HTTPS部署与返回大厅等真实流程验收，保留旧作品</li></ul></div>
-        <p class="note">备注：参考Game Space导航方向，不自动搬运全量60款、不默认商业授权；不加账号/支付/广告。</p>
+        <p class="note">备注：参考Game Space导航方向，不自动搬运全量60款、不默认商业授权；不加账号/支付/广告。 2026-11-16用户明确游戏站与原弹球夜间打磨同时保留，互不构成停止条件。</p>
       </article>
       </section>
       <section class="col col-backlog">
