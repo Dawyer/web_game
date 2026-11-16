@@ -74,7 +74,7 @@
 <body>
 <header class="top">
   <h1>任务看板</h1>
-  <div class="meta">共 21 项任务（已完成 5） · 更新于 2026-11-16T23:32:00+0800</div>
+  <div class="meta">共 21 项任务（已完成 5） · 更新于 2026-11-17T00:22:00+0800</div>
   <p class="meta">Pocket Bounce《弹球入袋》：11-14 夜轮 HW 单 cline 工人已正常收尾（23:54:23 cli_close、admission terminal/completed、无租约）。20:30 协调方独立核验通过：20 关最短步数全部与独立参考一致、15 个测试文件 73/0、真实 Chrome 四视口 80/80 关真实通关、教学弹窗返回修复经复现、0 JS 异常 / 0 个 ≥400 / 无横向溢出；合并预演无冲突。3 个提交（257faaa/8c4530d/c4d87b2）仍只在 HW 本机，待 11-15 夜轮（需当晚新确认）合并推送。仍未验收：60 关目标只到 20 关、实体手机、用户画风判定、三小时真人首次盲测、线上部署与版本回退演练。PvZ 保持终止、不恢复。</p>
 </header>
 <div class="wrap">
@@ -85,27 +85,27 @@
   <div class="filters"><input id="search" aria-label="搜索任务" placeholder="搜索任务、负责人、进度"><select id="kind" aria-label="任务类型"><option value="">全部类型</option><option>游戏</option><option>运维</option><option>验证</option><option>工具</option></select></div>
   <div class="board" id="task-columns">
       <section class="col col-verifying">
-        <header><h2>待验收<span class="count">0</span></h2><p>只差协调方本机验收</p></header>
-<p class="empty">（暂无）</p>
-      </section>
-      <section class="col col-active">
-        <header><h2>进行中<span class="count">1</span></h2><p>已核实正在执行</p></header>
+        <header><h2>待验收<span class="count">1</span></h2><p>只差协调方本机验收</p></header>
       <article class="card task" data-task-id="pocket-bounce" data-kind="游戏">
         <div class="chead">
           <h3>Pocket Bounce《弹球入袋》（源：Roll Sort!）</h3>
           <span class="diff">游戏</span>
         </div>
         <p class="pitch">台球按箭头方向滚动，撞墙反弹，滚进同色袋口即消除</p>
-        <div class="tags"><span class="tag">夜间打磨</span><span class="tag">已有20关</span><span class="tag">2026-11-16夜轮进行中</span></div>
+        <div class="tags"><span class="tag">夜间打磨</span><span class="tag">已有20关</span><span class="tag">2026-11-16夜轮待验收</span></div>
         <dl>
           <dt>负责</dt><dd>HW 单 cline worker（cline-pass/deepseek-v4.1-flash / cline / high）</dd>
-          <dt>更新</dt><dd>2026-11-16T23:32:00+0800</dd>
+          <dt>更新</dt><dd>2026-11-17T00:22:00+0800</dd>
           <dt>来源</dt><dd>一周游语 Vol.166 第 5 款；玩法机制自研实现</dd>
           <dt>素材</dt><dd>已完成 17 个原创素材文件：台面/木边（512² 无缝）、六色球（256²）、箭头/袋口/圆环/镜面/木箱/金星（320²）、面板/按钮、关卡选择背景 1920×1080；预览 sheets/mock-game.png</dd>
         </dl>
-        <p class="detail"><b>当前进度</b>：2026-11-16 23:24 已开工（用户「先开始弹球任务，这个拍照游戏后面再优化」+ 当晚 scope-bound 新确认；四项 SHA 全匹配、HW 无 worker/无租约/工作树干净、cline 最小探测 NIGHTOK/exit0）。单 cline worker 已在 HW 启动并由协调方独立核实 session local-4bcaf7b6…/client PID 337198/start_ticks 30159061、started 非 terminal admission(seq12)、有效 lease(holder pid=149227)、payload 正文 SHA == 任务 SHA、子会话 0。范围为现有 20 关体验打磨，继承基线 c4d87b2（20 关/15 文件 73 测试/四视口 80 次通关均属继承，不算本轮成果）。本机提交未推送、未部署；工人自检不等于协调方验收。</p><p class="detail"><b>阻塞原因</b>：等待 2026-11-16 当晚新确认（confirmed-2026-11-16-night.flag）；未派工</p><p class="detail"><b>下一步</b>：等本轮 PROGRESS-2026-11-16-POLISH.md / REPORT-2026-11-16-POLISH.md / RESULT-2026-11-16-POLISH.json 写回；工人完成或失活后由协调方在可丢弃副本独立复测（validate_levels + 串行测试 + 四视口真实回放）再判 active→verifying/shipped。</p><div class="sec"><h4>核验记录</h4><ul><li>coordinator_independent_20261115</li><li>coordinator_independent_20261116</li><li>dispatch_20261116</li></ul></div><p><a href="pocket-bounce-preview/">打开未验收原型</a></p><div class="sec"><h4>验收要点</h4><ul><li>首轮按 6 章 60 关规划；发布关卡逐一证明可解，最短步数须有证明</li><li>先定稿方向/反射/连锁/停球/循环规则并做独立预期测试，再批量设计与求解关卡</li><li>撤销/重置/关卡选择/星级/localStorage 可用</li><li>素材与音效 0 个 404、无 console 报错、无外链</li><li>画质按规格第 4 节：DPR 画布、自转、拖尾、进袋吸入、粒子、绒布质感</li><li>主线至少三小时有效内容为目标；须真实首次试玩验证，无证据标待验证，不靠挂机/重复刷关凑数</li><li>记录累计有效游玩/首次主线通关/每关耗时及尝试次数；两端计时、存档、导出与暂停后台边界测试通过</li></ul></div><div class="sec"><h4>已完成</h4><ul class="done"><li>4个教学关与核心规则/求解器已形成原型。</li><li>选关、击球、提示、撤销、重试、星级、本地存档及计时已接线；不等于全部验收通过。</li><li>2026-11-13 13:36独立重跑50项测试通过、0失败（10个文件）。</li><li>2026-11-13 HW：环境迁移核验通过；本机检查点 4349f24 修复继承 5 项 experience 红灯，55/55 全绿（未推送）。</li><li>恢复检查点27368ab与候选断点4f48b49完整保留并迁至HW，未提交experience测试原文继承。</li><li>2026-11-14 HW 本机 commit a3863f5（未推送）：规则基线冻结+继承改动接线+favicon/ENOENT 修复+扩至 10 关；13 文件 69/69、10 关独立 BFS 证明、四视口浏览器 0 错误。仍为 10/60。</li><li>2026-11-14 夜轮 HW 本机 3 个提交（未推送未部署）：第 5–6 章 11–20 关共 20 关、教学弹窗返回流程修复、加载失败门禁 + 标准矩阵；15 文件 73/73、20 关独立 BFS 最短一致。仍属自检 + 核验员可解性复测，未验收。</li></ul></div>
+        <p class="detail"><b>当前进度</b>：2026-11-16 夜轮打磨已由 HW 单 cline worker 正常收尾（2026-11-16 23:24:37 起，2026-11-17 00:14:31 止，约 50 分钟；end_reason=cli_close，admission seq12/13 均 terminal/completed，session_turn_leases 0 行、open session 0，客户端 PID 337198 已退出、非中断）。本轮本机 2 个提交、工作树干净：206cb37（修复分层提示弹窗关闭落点、坏档提示改明确中文）+ 6d083d4（报告入库），基线 c4d87b2；实际代码 diff 仅 2 处缺陷修复 + 2 个回归测试（7 文件 +257/−5），其余打磨项为依据继承基线的复测，不算本轮新成果。worker 自检：15 文件 75/75、validate_levels 20 关 VERIFIED、四视口回放 80/80。核验员本轮在可丢弃副本独立复测：node --test 75 pass / 0 fail、validate_levels 20/20 最短步数一致（pars 未变），复测后工作树仍干净（HEAD 6d083d4）。本机 5 个提交（257faaa/8c4530d/c4d87b2/206cb37/6d083d4）全部未推送、未部署、未合并；worker 自检与核验员可解性复测均不等于协调方验收。</p><p class="detail"><b>阻塞原因</b>：无技术阻塞。未验收项：协调方四视口真实回放独立复现、实体手机、用户判图、真人首次三小时盲测、线上部署/回滚演练均未做；本机提交未推送未部署（本轮范围明确不 push/不部署）。</p><p class="detail"><b>下一步</b>：由协调方做独立验收（可丢弃副本内四视口真实输入回放 + 逐关可解性 + 存档/计时边界），确认后再判 verifying→shipped；推送/部署与 20→60 关扩关均需用户单独授权，不自动进行、不自动启动下一款游戏。</p><div class="sec"><h4>核验记录</h4><ul><li>coordinator_independent_20261115</li><li>coordinator_independent_20261116</li><li>dispatch_20261116</li><li>coordinator_retest_20261117_night</li></ul></div><p><a href="pocket-bounce-preview/">打开未验收原型</a></p><div class="sec"><h4>验收要点</h4><ul><li>首轮按 6 章 60 关规划；发布关卡逐一证明可解，最短步数须有证明</li><li>先定稿方向/反射/连锁/停球/循环规则并做独立预期测试，再批量设计与求解关卡</li><li>撤销/重置/关卡选择/星级/localStorage 可用</li><li>素材与音效 0 个 404、无 console 报错、无外链</li><li>画质按规格第 4 节：DPR 画布、自转、拖尾、进袋吸入、粒子、绒布质感</li><li>主线至少三小时有效内容为目标；须真实首次试玩验证，无证据标待验证，不靠挂机/重复刷关凑数</li><li>记录累计有效游玩/首次主线通关/每关耗时及尝试次数；两端计时、存档、导出与暂停后台边界测试通过</li></ul></div><div class="sec"><h4>已完成</h4><ul class="done"><li>4个教学关与核心规则/求解器已形成原型。</li><li>选关、击球、提示、撤销、重试、星级、本地存档及计时已接线；不等于全部验收通过。</li><li>2026-11-13 13:36独立重跑50项测试通过、0失败（10个文件）。</li><li>2026-11-13 HW：环境迁移核验通过；本机检查点 4349f24 修复继承 5 项 experience 红灯，55/55 全绿（未推送）。</li><li>恢复检查点27368ab与候选断点4f48b49完整保留并迁至HW，未提交experience测试原文继承。</li><li>2026-11-14 HW 本机 commit a3863f5（未推送）：规则基线冻结+继承改动接线+favicon/ENOENT 修复+扩至 10 关；13 文件 69/69、10 关独立 BFS 证明、四视口浏览器 0 错误。仍为 10/60。</li><li>2026-11-14 夜轮 HW 本机 3 个提交（未推送未部署）：第 5–6 章 11–20 关共 20 关、教学弹窗返回流程修复、加载失败门禁 + 标准矩阵；15 文件 73/73、20 关独立 BFS 最短一致。仍属自检 + 核验员可解性复测，未验收。</li><li>2026-11-16 夜轮打磨（HW 本机 2 个提交 206cb37/6d083d4，未推送未部署）：分层提示弹窗「返回棋盘」直接回可操作棋盘、坏档提示改明确中文并保留原文备份；15 文件 75/75、20 关独立 BFS 最短一致；核验员可丢弃副本独立复测 75/75 + 20/20。仍属自检，待协调方验收。</li></ul></div>
         <p class="note">备注：2026-11-16 用户澄清「继续打磨原来的《弹球入袋》，游戏站也做」；本轮先打磨现有 20 关体验与缺陷，不自动沿用已暂停的 20→40 关扩关或旧授权。范围见 plan-2026-11-16.md（唯一有效计划）与附录 polish-approved-revision-2026-11-16.md。游戏站为独立任务，互不构成停止条件。</p>
       </article>
+      </section>
+      <section class="col col-active">
+        <header><h2>进行中<span class="count">0</span></h2><p>已核实正在执行</p></header>
+<p class="empty">（暂无）</p>
       </section>
       <section class="col col-blocked">
         <header><h2>阻塞 / 暂停<span class="count">0</span></h2><p>显示原因与下一步，不冒称在运行</p></header>
