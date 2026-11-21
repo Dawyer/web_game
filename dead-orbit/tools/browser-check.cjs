@@ -7,16 +7,22 @@ const fs = require('node:fs');
 const path = require('node:path');
 
 let chromium;
-try {
-  // 优先项目本地，其次全局安装的 playwright
-  ({ chromium } = require('playwright'));
-} catch {
-  try { ({ chromium } = require('/root/tools/pocket-browser/node_modules/playwright')); }
-  catch {
-    console.error('BROWSER_UNAVAILABLE: 未找到 Playwright + Chromium，无法执行四视口回放。');
-    process.exit(2);
-  }
+// 允许通过 PLAYWRIGHT_PATH 指定 playwright 模块位置（例如浏览器二进制随 npm 包分发的环境）
+const candidates = [
+  process.env.PLAYWRIGHT_PATH,
+  'playwright',
+  '/root/tools/pocket-browser/node_modules/playwright',
+  '/tmp/do-browser/node_modules/playwright'
+].filter(Boolean);
+for (const p of candidates) {
+  try { ({ chromium } = require(p)); break; } catch { /* 试下一个 */ }
 }
+if (!chromium) {
+  console.error('BROWSER_UNAVAILABLE: 未找到 Playwright，无法执行四视口回放。');
+  process.exit(2);
+}
+// 允许通过 CHROME_PATH 指定 Chromium 可执行文件（无系统 Chrome 的环境）
+const executablePath = process.env.CHROME_PATH || undefined;
 
 const BASE = process.argv[2] || 'http://127.0.0.1:8765/dead-orbit/';
 const OUT = process.argv[3] || path.join(__dirname, '..', 'evidence');
@@ -42,10 +48,17 @@ const SOLUTION = [
 ];
 
 (async () => {
-  const browser = await chromium.launch({ headless: true, args: ['--no-sandbox', '--disable-dev-shm-usage'] });
   const rows = [];
-  try {
-    for (const vp of VIEWPORTS) {
+  const launchArgs = ['--no-sandbox', '--disable-dev-shm-usage', '--disable-gpu',
+    '--disable-software-rasterizer', '--no-zygote', '--disable-setuid-sandbox', '--single-process'];
+  for (const vp of VIEWPORTS) {
+    // 每个视口独立 browser：单进程构建下多 context 会崩，独立实例更稳
+    const browser = await chromium.launch({
+      headless: true,
+      ...(executablePath ? { executablePath } : {}),
+      args: launchArgs
+    });
+    try {
       const context = await browser.newContext({
         viewport: { width: vp.width, height: vp.height },
         isMobile: vp.mobile, hasTouch: vp.mobile, deviceScaleFactor: vp.mobile ? 2 : 1
@@ -55,7 +68,7 @@ const SOLUTION = [
       page.on('pageerror', e => errors.push(String(e)));
       page.on('response', r => { if (r.status() >= 400) bad.push({ status: r.status(), url: r.url() }); });
 
-      await page.goto(`${BASE}?automated=1&layout=${vp.mobile ? 'mobile' : 'desktop'}`, { waitUntil: 'networkidle' });
+      await page.goto(`${BASE}?automated=1&layout=${vp.mobile ? 'mobile' : 'desktop'}`, { waitUntil: 'domcontentloaded', timeout: 20000 });
       await page.waitForFunction(() => document.body.dataset.automatedDone !== undefined, { timeout: 15000 });
       const done = await page.evaluate(() => document.body.dataset.automatedDone);
 
@@ -78,9 +91,9 @@ const SOLUTION = [
       rows.push({ viewport: vp.name, escaped: done === 'true', errors: errors.length, badResponses: bad.length,
         overflow, smallButtons, errorDetails: errors, badDetails: bad });
       await context.close();
+    } finally {
+      await browser.close();
     }
-  } finally {
-    await browser.close();
   }
 
   const summary = {

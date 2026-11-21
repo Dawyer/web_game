@@ -1,0 +1,47 @@
+{
+  "generatedAt": "2026-11-21T10:58:08.507Z",
+  "base": "http://127.0.0.1:8772/dead-orbit/",
+  "viewports": [
+    {
+      "viewport": "desktop-1280x720",
+      "escaped": true,
+      "errors": 0,
+      "badResponses": 0,
+      "overflow": false,
+      "smallButtons": 0,
+      "errorDetails": [],
+      "badDetails": []
+    },
+    {
+      "viewport": "desktop-1920x1080",
+      "escaped": true,
+      "errors": 0,
+      "badResponses": 0,
+      "overflow": false,
+      "smallButtons": 0,
+      "errorDetails": [],
+      "badDetails": []
+    },
+    {
+      "viewport": "mobile-360x800",
+      "escaped": true,
+      "errors": 0,
+      "badResponses": 0,
+      "overflow": false,
+      "smallButtons": 0,
+      "errorDetails": [],
+      "badDetails": []
+    },
+    {
+      "viewport": "mobile-390x844",
+      "escaped": true,
+      "errors": 0,
+      "badResponses": 0,
+      "overflow": false,
+      "smallButtons": 0,
+      "errorDetails": [],
+      "badDetails": []
+    }
+  ],
+  "allPass": true
+}

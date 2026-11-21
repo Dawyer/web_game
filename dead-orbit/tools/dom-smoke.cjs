@@ -90,14 +90,18 @@ process.on('unhandledRejection', e => errors.push(String(e)));
   await new Promise(r => setTimeout(r, 20));
 
   const ending = q('#dialog');
+  const endingTitle = q('#dialog-title');
   const escaped = ending && ending.textContent.includes('替我看看那边的天');
+  const correctTitle = endingTitle && endingTitle.textContent.includes('脱离轨道');
   const save = JSON.parse(window.localStorage.getItem('dead-orbit.save') || '{}');
 
   const result = {
     escaped: !!escaped,
+    endingTitle: endingTitle?.textContent,
+    correctTitle: !!correctTitle,
     savedEscaped: save?.state?.flags?.escaped === true,
     errors,
-    pass: !!escaped && errors.length === 0
+    pass: !!escaped && !!correctTitle && errors.length === 0
   };
   console.log(JSON.stringify(result, null, 2));
   process.exit(result.pass ? 0 : 1);

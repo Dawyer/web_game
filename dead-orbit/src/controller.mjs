@@ -165,8 +165,9 @@ export class GameController {
       this.clock.eventComplete();
       this.clock.setContext('result');
       this.clock.stop();
-      this.push('escape', {});
+      // 先推叙事，再推 escape：consumeEvents 按序处理，escape 最后设为 ending 弹窗
       if (r.narrative) this.push('narrative', { text: r.narrative });
+      this.push('escape', {});
     } else {
       this.clock.eventFailure();
       this.push('failure', { text: r.text });
